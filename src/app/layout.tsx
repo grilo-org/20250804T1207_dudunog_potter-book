@@ -5,7 +5,7 @@ import './globals.css'
 import Providers from './Providers'
 
 export const metadata: Metadata = {
-	title: 'Potter book',
+	title: 'Potter World',
 	description: '',
 }
 
