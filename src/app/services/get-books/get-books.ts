@@ -22,8 +22,8 @@ export type GetBooksAPIResponse = BaseApiResponse<
 
 export type GetBooksDTO = Book
 
-type GetBooksRequest = {
-	name: string
+export type GetBooksRequest = {
+	name?: string
 }
 
 type GetBooksResponse = Promise<GetBooksDTO[]>
@@ -32,7 +32,7 @@ export const getBooks = new ApiService<GetBooksRequest, GetBooksResponse>({
 	cacheKey: 'books',
 	handler: async request => {
 		const { data } = await httpClient.get<GetBooksAPIResponse>(
-			`/books?filter[title_cont]=${request.name}`,
+			`/books?${request.name ? `filter[title_cont]=${request.name}` : ''}`,
 		)
 
 		return data.data.map(

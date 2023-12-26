@@ -1,18 +1,32 @@
-import { useMutation } from '@tanstack/react-query'
-import { getBooks } from '@/app/services/get-books'
+import { useQuery } from '@tanstack/react-query'
+import { GetBooksRequest, getBooks } from '@/app/services/get-books'
 
-export function useGetBooks() {
-	const { mutateAsync, isLoading, error } = useMutation(
-		async (params: any) => getBooks.execute(params),
-		{
-			mutationKey: getBooks.getCacheKey(),
-			cacheTime: Infinity,
+export function useGetBooks(params?: GetBooksRequest) {
+	const {
+		data: books,
+		isLoading,
+		isFetching,
+	} = useQuery({
+		queryKey: getBooks.getCacheKey(),
+		queryFn: async () => {
+			const pageResult = await getBooks.execute(params)
+
+			if (pageResult) {
+				return pageResult
+			}
+
+			return null
 		},
-	)
+		enabled: true,
+		refetchOnWindowFocus: false,
+		staleTime: Infinity,
+		retry: 2,
+		keepPreviousData: true,
+	})
 
 	return {
-		getBooks: mutateAsync,
+		books,
+		isFetching,
 		isLoading,
-		error,
 	}
 }
