@@ -1,22 +1,24 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { inter } from './fonts'
+import { cn } from '@/lib/utils'
 import './globals.css'
-
-const inter = Inter({ subsets: ['latin'] })
+import Providers from './Providers'
 
 export const metadata: Metadata = {
-  title: 'Potter book',
-  description: '',
+	title: 'Potter book',
+	description: '',
 }
 
 export default function RootLayout({
-  children,
+	children,
 }: {
-  children: React.ReactNode
+	children: React.ReactNode
 }) {
-  return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
-    </html>
-  )
+	return (
+		<html lang="en">
+			<body className={cn(inter.className, 'w-full flex justify-center')}>
+				<Providers>{children}</Providers>
+			</body>
+		</html>
+	)
 }
