@@ -10,6 +10,7 @@ import { Spell } from '@/app/entities/Spell'
 import { useGetResources } from '@/app/hooks/use-get-resources'
 import { ResourceItem, ResourceType } from '@/app/components/resource-item'
 import { SearchField } from '@/app/components/search-field'
+import { ActionsList } from '@/app/components/actions-list'
 import { Skeleton } from '@/app/components/ui/skeleton'
 import {
 	Popover,
@@ -69,7 +70,7 @@ export default function Home() {
 				onOpenChange={open => setShowSearchResult(open)}
 			>
 				<PopoverTrigger></PopoverTrigger>
-				<PopoverContent className="w-full max-w-[40rem] max-h-[30rem] flex flex-col gap-3 overflow-y-auto">
+				<PopoverContent className="w-full max-w-[40rem] max-h-[26rem] flex flex-col gap-3 overflow-y-auto">
 					{isLoading ? (
 						<SearchResultsSkeleton length={6} />
 					) : (
@@ -89,6 +90,8 @@ export default function Home() {
 					)}
 				</PopoverContent>
 			</Popover>
+
+			<ActionsList />
 		</div>
 	)
 }

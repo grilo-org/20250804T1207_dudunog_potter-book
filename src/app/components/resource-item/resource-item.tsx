@@ -36,7 +36,7 @@ type ComponentMapType = {
 
 const componentMap: ComponentMapType = {
 	book: (book: Book) => (
-		<Link href={`book/${book.id}`}>
+		<Link href={`books/${book.id}`}>
 			<SearchResultItem key={book.id}>
 				<SearchResultItem.Icon className="w-11 h-11 relative">
 					{book.cover ? (
@@ -55,7 +55,7 @@ const componentMap: ComponentMapType = {
 		</Link>
 	),
 	character: (character: Character) => (
-		<Link href={`character/${character.id}`}>
+		<Link href={`characters/${character.id}`}>
 			<SearchResultItem key={character.id}>
 				<SearchResultItem.Icon className="w-[3rem] h-[3rem] relative">
 					<Avatar className="w-full h-full">
@@ -76,7 +76,7 @@ const componentMap: ComponentMapType = {
 		</Link>
 	),
 	movie: (movie: Movie) => (
-		<Link href={`movie/${movie.id}`}>
+		<Link href={`movies/${movie.id}`}>
 			<SearchResultItem key={movie.id}>
 				<SearchResultItem.Icon className="w-11 h-11 relative">
 					{movie.poster ? (
@@ -95,7 +95,7 @@ const componentMap: ComponentMapType = {
 		</Link>
 	),
 	potion: (potion: Potion) => (
-		<Link href={`potion/${potion.id}`}>
+		<Link href={`potions/${potion.id}`}>
 			<SearchResultItem key={potion.id}>
 				<SearchResultItem.Icon className="w-11 h-11 relative">
 					{potion.image ? (
@@ -114,7 +114,7 @@ const componentMap: ComponentMapType = {
 		</Link>
 	),
 	spell: (spell: Spell) => (
-		<Link href={`spell/${spell.id}`}>
+		<Link href={`spells/${spell.id}`}>
 			<SearchResultItem key={spell.id}>
 				<SearchResultItem.Icon className="w-11 h-11 relative">
 					{spell.image ? (
