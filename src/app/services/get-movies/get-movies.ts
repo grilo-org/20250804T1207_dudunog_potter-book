@@ -31,8 +31,8 @@ export type GetMoviesAPIResponse = BaseApiResponse<
 
 export type GetMoviesDTO = Movie
 
-type GetMoviesRequest = {
-	name: string
+export type GetMoviesRequest = {
+	name?: string
 }
 
 type GetMoviesResponse = Promise<GetMoviesDTO[]>
@@ -41,7 +41,7 @@ export const getMovies = new ApiService<GetMoviesRequest, GetMoviesResponse>({
 	cacheKey: 'movies',
 	handler: async request => {
 		const { data } = await httpClient.get<GetMoviesAPIResponse>(
-			`/movies?filter[title_cont]=${request.name}`,
+			`/movies?${request.name ? `filter[title_cont]=${request.name}` : ''}`,
 		)
 
 		return data.data.map(
