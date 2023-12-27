@@ -1,13 +1,12 @@
-import { useMutation } from '@tanstack/react-query'
+import { Pagination } from '@/app/entities/Pagination'
+import { Book } from '@/app/entities/Book'
+import { Movie } from '@/app/entities/Movie'
 import { getBooks } from '@/app/services/get-books'
 import { GetCharactersDTO, getCharacters } from '@/app/services/get-characters'
 import { getMovies } from '@/app/services/get-movies'
 import { GetPotionsDTO, getPotions } from '@/app/services/get-potions'
-import { getSpells } from '@/app/services/get-spells'
-import { Pagination } from '@/app/entities/Pagination'
-import { Book } from '@/app/entities/Book'
-import { Movie } from '@/app/entities/Movie'
-import { Spell } from '@/app/entities/Spell'
+import { GetSpellsDTO, getSpells } from '@/app/services/get-spells'
+import { useMutation } from '@tanstack/react-query'
 
 type GetResourcesRequest = {
 	name: string
@@ -29,7 +28,11 @@ export function useGetResources() {
 					currentPage: 1,
 					rowsPerPage: 999999,
 				}),
-				getSpells.execute(params),
+				getSpells.execute({
+					name: params.name,
+					currentPage: 1,
+					rowsPerPage: 999999,
+				}),
 			]
 
 			const [books, characters, movies, potions, spells] =
@@ -40,7 +43,7 @@ export function useGetResources() {
 				...(characters as Pagination<GetCharactersDTO[]>).data,
 				...(movies as Movie[]),
 				...(potions as Pagination<GetPotionsDTO[]>).data,
-				...(spells as Spell[]),
+				...(spells as Pagination<GetSpellsDTO[]>).data,
 			]
 		},
 		{

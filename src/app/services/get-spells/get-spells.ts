@@ -1,5 +1,6 @@
 import { BaseApiResponse, ApiService } from '@/app/core'
 import { Spell } from '@/app/entities/Spell'
+import { Pagination } from '@/app/entities/Pagination'
 import { httpClient } from '@/app/infra'
 
 export type GetSpellsAPIResponse = BaseApiResponse<
@@ -23,20 +24,25 @@ export type GetSpellsAPIResponse = BaseApiResponse<
 
 export type GetSpellsDTO = Spell
 
-type GetSpellsRequest = {
-	name: string
+export type GetSpellsRequest = {
+	name?: string
+	currentPage: number
+	rowsPerPage: number
 }
 
-type GetSpellsResponse = Promise<GetSpellsDTO[]>
+type GetSpellsResponse = Promise<Pagination<GetSpellsDTO[]>>
 
 export const getSpells = new ApiService<GetSpellsRequest, GetSpellsResponse>({
 	cacheKey: 'spells',
 	handler: async request => {
 		const { data } = await httpClient.get<GetSpellsAPIResponse>(
-			`/spells?filter[name_cont]=${request.name}`,
+			`/spells?
+				page[number]=${request.currentPage}&
+				page[size]=${request.rowsPerPage}&
+				${request.name ? `filter[name_cont]=${request.name}` : ''}`,
 		)
 
-		return data.data.map(
+		const spells = data.data.map(
 			spell =>
 				new Spell({
 					id: spell.id,
@@ -53,5 +59,13 @@ export const getSpells = new ApiService<GetSpellsRequest, GetSpellsResponse>({
 					wiki: spell.attributes.wiki,
 				}),
 		)
+
+		return new Pagination({
+			itemsPerPage: 10,
+			data: spells,
+			page: data.meta?.pagination.current,
+			totalPages: data.meta.pagination.last,
+			totalRows: data.meta.pagination.records,
+		})
 	},
 })

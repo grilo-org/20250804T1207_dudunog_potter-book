@@ -20,6 +20,8 @@
 
 		--minimal: #ffffff;
 
+		--light-green: #496767;
+
 		--green: #283b3f;
 		/* --green: #212c30; */
 
@@ -52,5 +54,5 @@
 }
 
 body {
-	background-color: #496767;
+	background-color: var(--light-green);
 }

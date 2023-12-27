@@ -5,6 +5,7 @@ import { MdOutlineMovie } from 'react-icons/md'
 import { GiFairyWand, GiStandingPotion } from 'react-icons/gi'
 import { FaArrowRightLong } from 'react-icons/fa6'
 const missingCharacterAvatarPath = '/missing_character.svg'
+const missingCharacterWhiteAvatarPath = '/missing_character_white.svg'
 
 const resources = [
 	{
@@ -41,16 +42,23 @@ const resources = [
 
 const ActionsList = () => {
 	return (
-		<div className="mt-[28rem] grid grid-cols-3 gap-3">
+		<div className="mt-[20rem] grid grid-cols-3 gap-3">
 			{resources.map(resource => (
 				<Link key={resource.key} href={resource.href}>
-					<div className="flex items-center space-x-4 rounded-md border p-4 bg-background">
+					<div className="group flex items-center space-x-4 rounded-md border p-4 bg-background hover:bg-green hover:text-minimal">
 						{typeof resource.icon === 'string' ? (
 							<Avatar className="w-[2.4rem] h-[2.4rem] relative">
 								<AvatarImage
 									width="auto"
 									height="auto"
 									src={missingCharacterAvatarPath}
+									className="group-hover:hidden"
+								/>
+								<AvatarImage
+									width="auto"
+									height="auto"
+									src={missingCharacterWhiteAvatarPath}
+									className="hidden group-hover:block"
 								/>
 							</Avatar>
 						) : (
@@ -62,7 +70,14 @@ const ActionsList = () => {
 							</p>
 						</div>
 						<div>
-							<FaArrowRightLong color="#8c8c8c" />
+							<FaArrowRightLong
+								color="#8c8c8c"
+								className="group-hover:hidden"
+							/>
+							<FaArrowRightLong
+								color="#FFFFFF"
+								className="hidden group-hover:block"
+							/>
 						</div>
 					</div>
 				</Link>

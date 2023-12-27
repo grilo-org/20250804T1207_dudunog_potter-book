@@ -1,5 +1,5 @@
-import { useQuery } from '@tanstack/react-query'
 import { GetMoviesRequest, getMovies } from '@/app/services/get-movies'
+import { useQuery } from '@tanstack/react-query'
 
 export function useGetMovies(params?: GetMoviesRequest) {
 	const {

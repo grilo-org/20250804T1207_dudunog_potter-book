@@ -1,6 +1,6 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { Potion } from '@/app/entities/Potion'
+import { Spell } from '@/app/entities/Spell'
 import { Badge } from '@/app/components/ui/badge'
 import {
 	Card,
@@ -17,31 +17,30 @@ import {
 } from '@/app/components/ui/tooltip'
 import { truncateText } from '@/lib/utils'
 import { GiFairyWand, GiStandingPotion } from 'react-icons/gi'
-import { IoIosInformationCircleOutline } from 'react-icons/io'
 
-type PotionsListProps = {
-	potions: Potion[]
+type SpellsListProps = {
+	spells: Spell[]
 }
 
-const PotionsList = ({ potions }: PotionsListProps) => {
-	return potions.map(potion => (
-		<Card key={potion.id} className="w-[20rem] bg-secondary border-green">
+const SpellsList = ({ spells }: SpellsListProps) => {
+	return spells.map(spell => (
+		<Card key={spell.id} className="w-[20rem] bg-secondary border-green">
 			<CardHeader>
-				<Link href={`potions/${potion.id}`}>
-					<CardTitle className="text-green font-bold">{potion.name}</CardTitle>
+				<Link href={`spells/${spell.id}`}>
+					<CardTitle className="text-green font-bold">{spell.name}</CardTitle>
 				</Link>
 			</CardHeader>
 			<CardContent>
 				<div className="flex justify-center w-full">
 					<Link
-						href={`potions/${potion.id}`}
-						className="w-[12rem] h-[12rem] relative"
+						href={`spells/${spell.id}`}
+						className="w-[20rem] h-[12rem] relative"
 					>
-						{potion.image ? (
+						{spell.image ? (
 							<Image
-								src={potion.image}
+								src={spell.image}
 								className="transition-all hover:scale-105"
-								alt="Potion image"
+								alt="Spell image"
 								fill
 							/>
 						) : (
@@ -52,19 +51,19 @@ const PotionsList = ({ potions }: PotionsListProps) => {
 			</CardContent>
 
 			<CardFooter className="flex flex-col">
-				{potion.difficulty && (
+				{spell.category && (
 					<TooltipProvider>
 						<Tooltip delayDuration={200}>
 							<TooltipTrigger>
-								<Badge>{potion.difficulty}</Badge>
+								<Badge>{spell.category}</Badge>
 							</TooltipTrigger>
 							<TooltipContent>
-								<p>Dificuldade</p>
+								<p>Categoria</p>
 							</TooltipContent>
 						</Tooltip>
 					</TooltipProvider>
 				)}
-				{potion.effect && (
+				{spell.incantation && (
 					<TooltipProvider>
 						<Tooltip delayDuration={200}>
 							<TooltipTrigger>
@@ -74,32 +73,12 @@ const PotionsList = ({ potions }: PotionsListProps) => {
 										className="text-green hover:cursor-default"
 									/>
 									<label className="text-green text-md hover:cursor-text">
-										{truncateText(potion.effect, 40)}
+										{truncateText(spell.incantation, 40)}
 									</label>
 								</div>
 							</TooltipTrigger>
 							<TooltipContent>
-								<p>Efeito</p>
-							</TooltipContent>
-						</Tooltip>
-					</TooltipProvider>
-				)}
-				{potion.characteristics && (
-					<TooltipProvider>
-						<Tooltip delayDuration={200}>
-							<TooltipTrigger>
-								<div className="mt-3 flex items-center gap-2">
-									<IoIosInformationCircleOutline
-										size={20}
-										className="text-green hover:cursor-default"
-									/>
-									<label className="text-green text-md hover:cursor-text">
-										{truncateText(potion.characteristics, 40)}
-									</label>
-								</div>
-							</TooltipTrigger>
-							<TooltipContent>
-								<p>Características</p>
+								<p>Encantamento</p>
 							</TooltipContent>
 						</Tooltip>
 					</TooltipProvider>
@@ -109,4 +88,4 @@ const PotionsList = ({ potions }: PotionsListProps) => {
 	))
 }
 
-export { PotionsList }
+export { SpellsList }
