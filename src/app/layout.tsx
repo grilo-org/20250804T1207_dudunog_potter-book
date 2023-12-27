@@ -19,12 +19,12 @@ export default function RootLayout({
 		<html lang="en">
 			<body className={cn(inter.className, 'w-full flex justify-center')}>
 				<Providers>
-					<div className="mt-4 max-w-7xl w-full flex flex-col items-center">
+					<div className="mt-4 max-w-7xl px-4 w-full flex flex-col items-center">
 						<Link href="/">
 							<h1
 								className={cn(
 									harryPotterFont.className,
-									'text-[5rem] text-minimal',
+									'text-[5rem] text-minimal text-center leading-none',
 								)}
 							>
 								Harry Potter World

@@ -42,7 +42,7 @@ const resources = [
 
 const ActionsList = () => {
 	return (
-		<div className="mt-[20rem] grid grid-cols-3 gap-3">
+		<div className="mt-[20rem] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
 			{resources.map(resource => (
 				<Link key={resource.key} href={resource.href}>
 					<div className="group flex items-center space-x-4 rounded-md border p-4 bg-background hover:bg-green hover:text-minimal">
@@ -74,10 +74,7 @@ const ActionsList = () => {
 								color="#8c8c8c"
 								className="group-hover:hidden"
 							/>
-							<FaArrowRightLong
-								color="#FFFFFF"
-								className="hidden group-hover:block"
-							/>
+							<FaArrowRightLong className="hidden group-hover:block" />
 						</div>
 					</div>
 				</Link>

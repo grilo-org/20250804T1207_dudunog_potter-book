@@ -49,7 +49,9 @@ const CharactersList = ({ characters }: CharactersListProps) => {
 			</CardContent>
 
 			<CardFooter className="flex flex-col">
-				{character.species && <Badge>{character.species}</Badge>}
+				{character.species && (
+					<Badge className="bg-green">{character.species}</Badge>
+				)}
 				{character.gender && (
 					<TooltipProvider>
 						<Tooltip delayDuration={200}>

@@ -48,7 +48,7 @@ const MoviesList = ({ movies }: MoviesListProps) => {
 				<TooltipProvider>
 					<Tooltip delayDuration={200}>
 						<TooltipTrigger>
-							<Badge>{movie.rating}</Badge>
+							<Badge className="bg-green">{movie.rating}</Badge>
 						</TooltipTrigger>
 						<TooltipContent>
 							<p>Avaliação</p>
