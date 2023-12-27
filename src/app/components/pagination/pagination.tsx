@@ -63,7 +63,12 @@ const Pagination = ({
 			</div>
 			<PaginationContent className="flex flex-col sm:flex-row">
 				<PaginationItem>
-					<PaginationPrevious href="#" />
+					<PaginationPrevious
+						onClick={() =>
+							onPageChange(currentPage === 1 ? 1 : currentPage - 1)
+						}
+						href=""
+					/>
 				</PaginationItem>
 				<div className="flex">
 					{currentPage > 1 + siblingsCount && (
@@ -121,7 +126,14 @@ const Pagination = ({
 					)}
 				</div>
 				<PaginationItem>
-					<PaginationNext href="#" />
+					<PaginationNext
+						onClick={() =>
+							onPageChange(
+								nextPages.length === 0 ? currentPage : currentPage + 1,
+							)
+						}
+						href=""
+					/>
 				</PaginationItem>
 			</PaginationContent>
 		</PaginationUi>

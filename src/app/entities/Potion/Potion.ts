@@ -25,15 +25,15 @@ export class Potion {
 	}
 
 	get characteristics() {
-		return this.props.characteristics.toString()
+		return this.props.characteristics?.toString()
 	}
 
 	get difficulty() {
-		return this.props.difficulty.toString()
+		return this.props.difficulty?.toString()
 	}
 
 	get effect() {
-		return this.props.effect.toString()
+		return this.props.effect?.toString()
 	}
 
 	get image() {

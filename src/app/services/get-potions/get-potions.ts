@@ -1,5 +1,6 @@
 import { BaseApiResponse, ApiService } from '@/app/core'
 import { Potion } from '@/app/entities/Potion'
+import { Pagination } from '@/app/entities/Pagination'
 import { httpClient } from '@/app/infra'
 
 export type GetPotionsAPIResponse = BaseApiResponse<
@@ -25,21 +26,26 @@ export type GetPotionsAPIResponse = BaseApiResponse<
 
 export type GetPotionsDTO = Potion
 
-type GetPotionsRequest = {
-	name: string
+export type GetPotionsRequest = {
+	name?: string
+	currentPage: number
+	rowsPerPage: number
 }
 
-type GetPotionsResponse = Promise<GetPotionsDTO[]>
+type GetPotionsResponse = Promise<Pagination<GetPotionsDTO[]>>
 
 export const getPotions = new ApiService<GetPotionsRequest, GetPotionsResponse>(
 	{
 		cacheKey: 'potions',
 		handler: async request => {
 			const { data } = await httpClient.get<GetPotionsAPIResponse>(
-				`/potions?filter[name_cont]=${request.name}`,
+				`/potions?
+					page[number]=${request.currentPage}&
+					page[size]=${request.rowsPerPage}&
+					${request.name ? `filter[name_cont]=${request.name}` : ''}`,
 			)
 
-			return data.data.map(
+			const potions = data.data.map(
 				potion =>
 					new Potion({
 						id: potion.id,
@@ -58,6 +64,14 @@ export const getPotions = new ApiService<GetPotionsRequest, GetPotionsResponse>(
 						wiki: potion.attributes.wiki,
 					}),
 			)
+
+			return new Pagination({
+				itemsPerPage: 10,
+				data: potions,
+				page: data.meta?.pagination.current,
+				totalPages: data.meta.pagination.last,
+				totalRows: data.meta.pagination.records,
+			})
 		},
 	},
 )
