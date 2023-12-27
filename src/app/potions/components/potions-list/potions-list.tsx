@@ -56,7 +56,7 @@ const PotionsList = ({ potions }: PotionsListProps) => {
 					<TooltipProvider>
 						<Tooltip delayDuration={200}>
 							<TooltipTrigger>
-								<Badge>{potion.difficulty}</Badge>
+								<Badge className="bg-green">{potion.difficulty}</Badge>
 							</TooltipTrigger>
 							<TooltipContent>
 								<p>Dificuldade</p>

@@ -43,7 +43,7 @@ const SearchSection = () => {
 	return (
 		<>
 			<SearchField
-				className="mt-40 max-w-[30rem]"
+				className="mt-[9rem] max-w-[30rem]"
 				placeholder="Procurando algo específico?"
 				onSearch={handleSearch}
 				onClick={() => {

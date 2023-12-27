@@ -44,7 +44,7 @@ const BooksList = ({ books }: BooksListProps) => {
 			</CardContent>
 
 			<CardFooter className="flex flex-col">
-				<Badge>{book.pages} páginas</Badge>
+				<Badge className="bg-green">{book.pages} páginas</Badge>
 				<TooltipProvider>
 					<Tooltip delayDuration={200}>
 						<TooltipTrigger>

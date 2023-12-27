@@ -55,7 +55,7 @@ const SpellsList = ({ spells }: SpellsListProps) => {
 					<TooltipProvider>
 						<Tooltip delayDuration={200}>
 							<TooltipTrigger>
-								<Badge>{spell.category}</Badge>
+								<Badge className="bg-green">{spell.category}</Badge>
 							</TooltipTrigger>
 							<TooltipContent>
 								<p>Categoria</p>
