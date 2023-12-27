@@ -1,5 +1,6 @@
 import { BaseApiResponse, ApiService } from '@/app/core'
 import { Character } from '@/app/entities/Character'
+import { Pagination } from '@/app/entities/Pagination'
 import { httpClient } from '@/app/infra'
 
 export type GetCharactersAPIResponse = BaseApiResponse<
@@ -23,11 +24,13 @@ export type GetCharactersAPIResponse = BaseApiResponse<
 
 export type GetCharactersDTO = Character
 
-type GetCharactersRequest = {
-	name: string
+export type GetCharactersRequest = {
+	name?: string
+	currentPage: number
+	rowsPerPage: number
 }
 
-type GetCharactersResponse = Promise<GetCharactersDTO[]>
+type GetCharactersResponse = Promise<Pagination<GetCharactersDTO[]>>
 
 export const getCharacters = new ApiService<
 	GetCharactersRequest,
@@ -36,10 +39,13 @@ export const getCharacters = new ApiService<
 	cacheKey: 'characters',
 	handler: async request => {
 		const { data } = await httpClient.get<GetCharactersAPIResponse>(
-			`/characters?filter[name_cont]=${request.name}`,
+			`/characters?
+				page[number]=${request.currentPage}&
+				page[size]=${request.rowsPerPage}&
+				${request.name ? `filter[name_cont]=${request.name}` : ''}`,
 		)
 
-		return data.data.map(
+		const characters = data.data.map(
 			character =>
 				new Character({
 					id: character.id,
@@ -56,5 +62,13 @@ export const getCharacters = new ApiService<
 					wiki: character.attributes.wiki,
 				}),
 		)
+
+		return new Pagination({
+			itemsPerPage: 10,
+			data: characters,
+			page: data.meta?.pagination.current,
+			totalPages: data.meta.pagination.last,
+			totalRows: data.meta.pagination.records,
+		})
 	},
 })

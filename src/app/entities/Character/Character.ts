@@ -23,11 +23,11 @@ export class Character {
 	}
 
 	get born() {
-		return this.props.born.toString()
+		return this.props.born?.toString()
 	}
 
 	get gender() {
-		return this.props.gender.toString()
+		return this.props.gender?.toString()
 	}
 
 	get image() {
@@ -51,7 +51,7 @@ export class Character {
 	}
 
 	get species() {
-		return this.props.species.toString()
+		return this.props.species?.toString()
 	}
 
 	get wands() {

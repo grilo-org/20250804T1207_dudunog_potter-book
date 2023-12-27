@@ -28,11 +28,13 @@ const config = {
 					foreground: 'hsl(var(--primary-foreground))',
 				},
 				secondary: {
-					DEFAULT: 'hsl(var(--secondary))',
-					foreground: 'hsl(var(--secondary-foreground))',
+					DEFAULT: 'var(--secondary)',
 				},
 				minimal: {
 					DEFAULT: 'var(--minimal)',
+				},
+				green: {
+					DEFAULT: 'var(--green)',
 				},
 				gray: {
 					DEFAULT: 'var(--gray)',
