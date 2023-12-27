@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Link from 'next/link'
 import { harryPotterFont, inter } from '@/app/fonts'
 import Providers from '@/app/Providers'
 import { cn } from '@/lib/utils'
@@ -19,14 +20,16 @@ export default function RootLayout({
 			<body className={cn(inter.className, 'w-full flex justify-center')}>
 				<Providers>
 					<div className="mt-4 max-w-7xl w-full flex flex-col items-center">
-						<h1
-							className={cn(
-								harryPotterFont.className,
-								'text-[5rem] text-minimal',
-							)}
-						>
-							Harry Potter World
-						</h1>
+						<Link href="/">
+							<h1
+								className={cn(
+									harryPotterFont.className,
+									'text-[5rem] text-minimal',
+								)}
+							>
+								Harry Potter World
+							</h1>
+						</Link>
 
 						{children}
 					</div>

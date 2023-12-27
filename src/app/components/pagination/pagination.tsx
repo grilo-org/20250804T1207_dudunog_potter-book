@@ -8,6 +8,7 @@ import {
 	PaginationPrevious,
 	Pagination as PaginationUi,
 } from '@/app/components/ui/pagination'
+import { cn } from '@/lib/utils'
 
 type PaginationProps = {
 	totalCountOfRegisters?: number
@@ -67,10 +68,14 @@ const Pagination = ({
 						onClick={() =>
 							onPageChange(currentPage === 1 ? 1 : currentPage - 1)
 						}
+						className={cn({
+							'opacity-50 hover:bg-inherit hover:text-inherit hover:cursor-not-allowed':
+								currentPage === 1,
+						})}
 						href=""
 					/>
 				</PaginationItem>
-				<div className="flex">
+				<div className="flex gap-1">
 					{currentPage > 1 + siblingsCount && (
 						<>
 							<PaginationItem>
@@ -132,6 +137,10 @@ const Pagination = ({
 								nextPages.length === 0 ? currentPage : currentPage + 1,
 							)
 						}
+						className={cn({
+							'opacity-50 hover:bg-inherit hover:text-inherit hover:cursor-not-allowed':
+								nextPages.length === 0,
+						})}
 						href=""
 					/>
 				</PaginationItem>

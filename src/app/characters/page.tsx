@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { Character } from '@/app/entities/Character'
+import { DEFAULT_PAGINATION_PAGE_SIZE } from '@/app/constants'
 import { useGetCharacters } from '@/app/hooks/use-get-characters'
 import { CharactersList } from '@/app/characters/components/characters-list'
 import { Skeleton } from '@/app/components/ui/skeleton'
@@ -15,14 +16,12 @@ const CharactersListSkeleton = ({ length = 4 }: { length?: number }) => {
 	))
 }
 
-const DEFAULT_PAGE_SIZE = 10
-
 export default function Characters() {
 	const [currentPage, setCurrentPage] = useState(1)
 
 	const { characters, isLoading } = useGetCharacters({
 		currentPage,
-		rowsPerPage: DEFAULT_PAGE_SIZE,
+		rowsPerPage: DEFAULT_PAGINATION_PAGE_SIZE,
 	})
 
 	return (
@@ -38,12 +37,14 @@ export default function Characters() {
 					)}
 				</div>
 
-				<Pagination
-					currentPage={currentPage}
-					registersPerPage={DEFAULT_PAGE_SIZE}
-					totalCountOfRegisters={characters?.totalRows}
-					onPageChange={setCurrentPage}
-				/>
+				{characters?.data && !isLoading && (
+					<Pagination
+						currentPage={currentPage}
+						registersPerPage={DEFAULT_PAGINATION_PAGE_SIZE}
+						totalCountOfRegisters={characters?.totalRows}
+						onPageChange={setCurrentPage}
+					/>
+				)}
 
 				{characters?.data?.length === 0 && !isLoading && (
 					<div className="flex flex-col items-center max-w-[40rem] max-h-[30rem]">

@@ -23,7 +23,7 @@ export class Spell {
 	}
 
 	get category() {
-		return this.props.category.toString()
+		return this.props.category?.toString()
 	}
 
 	get creator() {
@@ -43,7 +43,7 @@ export class Spell {
 	}
 
 	get incantation() {
-		return this.props.incantation.toString()
+		return this.props.incantation?.toString()
 	}
 
 	get light() {

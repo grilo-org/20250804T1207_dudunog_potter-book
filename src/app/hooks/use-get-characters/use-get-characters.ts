@@ -1,11 +1,12 @@
-import { useQuery } from '@tanstack/react-query'
+import {
+	DEFAULT_PAGINATION_PAGE,
+	DEFAULT_PAGINATION_PAGE_SIZE,
+} from '@/app/constants'
 import {
 	GetCharactersRequest,
 	getCharacters,
 } from '@/app/services/get-characters'
-
-const DEFAULT_PAGE = 1
-const DEFAULT_PAGE_SIZE = 10
+import { useQuery } from '@tanstack/react-query'
 
 export function useGetCharacters(params?: GetCharactersRequest) {
 	const {
@@ -20,8 +21,8 @@ export function useGetCharacters(params?: GetCharactersRequest) {
 		}),
 		queryFn: async () => {
 			const pageResult = await getCharacters.execute({
-				currentPage: params?.currentPage || DEFAULT_PAGE,
-				rowsPerPage: params?.rowsPerPage || DEFAULT_PAGE_SIZE,
+				currentPage: params?.currentPage || DEFAULT_PAGINATION_PAGE,
+				rowsPerPage: params?.rowsPerPage || DEFAULT_PAGINATION_PAGE_SIZE,
 				name: params?.name,
 			})
 

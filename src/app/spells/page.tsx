@@ -2,13 +2,13 @@
 
 import { useState } from 'react'
 import { DEFAULT_PAGINATION_PAGE_SIZE } from '@/app/constants'
-import { Potion } from '@/app/entities/Potion'
-import { useGetPotions } from '@/app/hooks/use-get-potions'
-import { PotionsList } from '@/app/potions/components/potions-list'
+import { Spell } from '@/app/entities/Spell'
+import { useGetSpells } from '@/app/hooks/use-get-spells'
+import { SpellsList } from '@/app/spells/components/spells-list'
 import { Skeleton } from '@/app/components/ui/skeleton'
 import { Pagination } from '@/app/components/pagination'
 
-const PotionsListSkeleton = ({ length = 4 }: { length?: number }) => {
+const SpellsListSkeleton = ({ length = 4 }: { length?: number }) => {
 	return Array.from({ length }, (_, index) => (
 		<div key={index} className="flex items-center gap-2">
 			<Skeleton className="h-[30rem] w-[20rem]" />
@@ -16,10 +16,10 @@ const PotionsListSkeleton = ({ length = 4 }: { length?: number }) => {
 	))
 }
 
-export default function Potions() {
+export default function Spells() {
 	const [currentPage, setCurrentPage] = useState(1)
 
-	const { potions, isLoading } = useGetPotions({
+	const { spells, isLoading } = useGetSpells({
 		currentPage,
 		rowsPerPage: DEFAULT_PAGINATION_PAGE_SIZE,
 	})
@@ -27,29 +27,29 @@ export default function Potions() {
 	return (
 		<div className="mt-4 mb-8 max-w-7xl w-full flex flex-col items-center">
 			<div>
-				<h2 className="mt-6 text-minimal text-3xl font-bold">Poções</h2>
+				<h2 className="mt-6 text-minimal text-3xl font-bold">Feitiços</h2>
 
 				<div className="mt-4 grid grid-cols-1 justify-items-center md:grid-cols-2 lg:grid-cols-3 gap-3">
 					{isLoading ? (
-						<PotionsListSkeleton length={6} />
+						<SpellsListSkeleton length={6} />
 					) : (
-						<PotionsList potions={potions?.data as Potion[]} />
+						<SpellsList spells={spells?.data as Spell[]} />
 					)}
 				</div>
 
-				{potions?.data && !isLoading && (
+				{spells?.data && !isLoading && (
 					<Pagination
 						currentPage={currentPage}
 						registersPerPage={DEFAULT_PAGINATION_PAGE_SIZE}
-						totalCountOfRegisters={potions?.totalRows}
+						totalCountOfRegisters={spells?.totalRows}
 						onPageChange={setCurrentPage}
 					/>
 				)}
 
-				{potions?.data?.length === 0 && !isLoading && (
+				{spells?.data?.length === 0 && !isLoading && (
 					<div className="flex flex-col items-center max-w-[40rem] max-h-[30rem]">
 						<p className="text-minimal text-lg">
-							Não há poções para serem listados
+							Não há feitiços para serem listados
 						</p>
 					</div>
 				)}

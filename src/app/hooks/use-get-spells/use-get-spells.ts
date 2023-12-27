@@ -1,18 +1,44 @@
-import { useMutation } from '@tanstack/react-query'
-import { getSpells } from '@/app/services/get-spells'
+import {
+	DEFAULT_PAGINATION_PAGE,
+	DEFAULT_PAGINATION_PAGE_SIZE,
+} from '@/app/constants'
+import { GetSpellsRequest, getSpells } from '@/app/services/get-spells'
+import { useQuery } from '@tanstack/react-query'
 
-export function useGetSpells() {
-	const { mutateAsync, isLoading, error } = useMutation(
-		async (params: any) => getSpells.execute(params),
-		{
-			mutationKey: getSpells.getCacheKey(),
-			cacheTime: Infinity,
+export function useGetSpells(params?: GetSpellsRequest) {
+	const {
+		data: spells,
+		isLoading,
+		isFetching,
+	} = useQuery({
+		queryKey: getSpells.getCacheKey({
+			currentPage: params?.currentPage,
+			rowsPerPage: params?.rowsPerPage,
+			name: params?.name,
+		}),
+		queryFn: async () => {
+			const pageResult = await getSpells.execute({
+				currentPage: params?.currentPage || DEFAULT_PAGINATION_PAGE,
+				rowsPerPage: params?.rowsPerPage || DEFAULT_PAGINATION_PAGE_SIZE,
+				name: params?.name,
+			})
+
+			if (pageResult) {
+				return pageResult
+			}
+
+			return null
 		},
-	)
+		enabled: true,
+		refetchOnWindowFocus: false,
+		staleTime: Infinity,
+		retry: 2,
+		keepPreviousData: true,
+	})
 
 	return {
-		getv: mutateAsync,
+		spells,
+		isFetching,
 		isLoading,
-		error,
 	}
 }

@@ -1,8 +1,9 @@
-import { useMutation, useQuery } from '@tanstack/react-query'
+import {
+	DEFAULT_PAGINATION_PAGE,
+	DEFAULT_PAGINATION_PAGE_SIZE,
+} from '@/app/constants'
 import { GetPotionsRequest, getPotions } from '@/app/services/get-potions'
-
-const DEFAULT_PAGE = 1
-const DEFAULT_PAGE_SIZE = 10
+import { useQuery } from '@tanstack/react-query'
 
 export function useGetPotions(params?: GetPotionsRequest) {
 	const {
@@ -17,8 +18,8 @@ export function useGetPotions(params?: GetPotionsRequest) {
 		}),
 		queryFn: async () => {
 			const pageResult = await getPotions.execute({
-				currentPage: params?.currentPage || DEFAULT_PAGE,
-				rowsPerPage: params?.rowsPerPage || DEFAULT_PAGE_SIZE,
+				currentPage: params?.currentPage || DEFAULT_PAGINATION_PAGE,
+				rowsPerPage: params?.rowsPerPage || DEFAULT_PAGINATION_PAGE_SIZE,
 				name: params?.name,
 			})
 
