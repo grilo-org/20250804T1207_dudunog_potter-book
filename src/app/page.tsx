@@ -45,11 +45,7 @@ export default function Home() {
 	}, [])
 
 	return (
-		<div className="mt-4 max-w-7xl w-full flex flex-col items-center">
-			<h1 className={cn(harryPotterFont.className, 'text-[5rem] text-minimal')}>
-				Harry Potter World
-			</h1>
-
+		<>
 			<q className="text-md text-minimal">
 				Palavras na minha não tão humilde opinião são nossa inesgotável fonte de
 				magia.
@@ -92,6 +88,6 @@ export default function Home() {
 			</Popover>
 
 			<ActionsList />
-		</div>
+		</>
 	)
 }

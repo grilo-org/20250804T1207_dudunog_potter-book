@@ -33,11 +33,11 @@ const BooksList = ({ books }: BooksListProps) => {
 				<div className="flex justify-center w-full">
 					<Link href={`books/${book.id}`}>
 						<Image
-							src={book.cover}
-							alt="Book image"
-							className="transition-all hover:scale-105"
 							width={200}
 							height={200}
+							src={book.cover}
+							className="transition-all hover:scale-105"
+							alt="Book image"
 						/>
 					</Link>
 				</div>

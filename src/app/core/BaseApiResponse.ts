@@ -1,6 +1,8 @@
 export type BaseApiMetadata = {
 	pagination: {
 		current: number
+		last: number
+		next: number
 		records: number
 	}
 }

@@ -1,11 +1,11 @@
 import type { Metadata } from 'next'
-import { inter } from './fonts'
+import { harryPotterFont, inter } from '@/app/fonts'
+import Providers from '@/app/Providers'
 import { cn } from '@/lib/utils'
 import './globals.css'
-import Providers from './Providers'
 
 export const metadata: Metadata = {
-	title: 'Potter World',
+	title: 'Harry Potter World',
 	description: '',
 }
 
@@ -17,7 +17,20 @@ export default function RootLayout({
 	return (
 		<html lang="en">
 			<body className={cn(inter.className, 'w-full flex justify-center')}>
-				<Providers>{children}</Providers>
+				<Providers>
+					<div className="mt-4 max-w-7xl w-full flex flex-col items-center">
+						<h1
+							className={cn(
+								harryPotterFont.className,
+								'text-[5rem] text-minimal',
+							)}
+						>
+							Harry Potter World
+						</h1>
+
+						{children}
+					</div>
+				</Providers>
 			</body>
 		</html>
 	)
