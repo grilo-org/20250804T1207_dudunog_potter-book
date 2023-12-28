@@ -19,7 +19,7 @@ export type GetMoviesAPIResponse = BaseApiResponse<
 			rating: string
 			release_date: string
 			running_time: string
-			screenwriters: string
+			screenwriters: string[]
 			slug: string
 			summary: string
 			title: string
