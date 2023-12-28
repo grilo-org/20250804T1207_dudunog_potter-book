@@ -13,7 +13,7 @@ type MovieProps = {
 	rating: string
 	releaseDate: string
 	runningTime: string
-	screenwriters: string
+	screenwriters: string[]
 	slug: string
 	summary: string
 	title: string
@@ -39,23 +39,23 @@ export class Movie {
 	}
 
 	get cinematographers() {
-		return this.props.cinematographers.toString()
+		return this.props.cinematographers
 	}
 
 	get directors() {
-		return this.props.directors.toString()
+		return this.props.directors
 	}
 
 	get distributors() {
-		return this.props.distributors.toString()
+		return this.props.distributors
 	}
 
 	get editors() {
-		return this.props.editors.toString()
+		return this.props.editors
 	}
 
 	get musicComposers() {
-		return this.props.musicComposers.toString()
+		return this.props.musicComposers
 	}
 
 	get poster() {
@@ -63,7 +63,7 @@ export class Movie {
 	}
 
 	get producers() {
-		return this.props.producers.toString()
+		return this.props.producers
 	}
 
 	get rating() {
@@ -79,7 +79,7 @@ export class Movie {
 	}
 
 	get screenwriters() {
-		return this.props.screenwriters.toString()
+		return this.props.screenwriters
 	}
 
 	get slug() {
