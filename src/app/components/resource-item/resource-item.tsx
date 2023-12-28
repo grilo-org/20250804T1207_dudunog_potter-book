@@ -63,6 +63,7 @@ const componentMap: ComponentMapType = {
 							width="auto"
 							height="auto"
 							src={character.image || missingCharacterAvatarPath}
+							alt="Character image"
 						/>
 					</Avatar>
 				</SearchResultItem.Icon>

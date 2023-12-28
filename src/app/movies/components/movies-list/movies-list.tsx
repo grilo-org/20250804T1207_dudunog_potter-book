@@ -26,7 +26,7 @@ const MoviesList = ({ movies }: MoviesListProps) => {
 	return movies.map(movie => (
 		<Card key={movie.id} className="w-[20rem] bg-secondary border-green">
 			<CardHeader>
-				<Link href={`books/${movie.id}`}>
+				<Link href={`movies/${movie.id}`}>
 					<CardTitle className="text-green font-bold">{movie.title}</CardTitle>
 				</Link>
 			</CardHeader>
@@ -38,7 +38,7 @@ const MoviesList = ({ movies }: MoviesListProps) => {
 							height={200}
 							src={movie.poster}
 							className="transition-all hover:scale-105"
-							alt="Book image"
+							alt="Movie image"
 						/>
 					</Link>
 				</div>

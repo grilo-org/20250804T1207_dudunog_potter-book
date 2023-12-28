@@ -35,13 +35,13 @@ const CharactersList = ({ characters }: CharactersListProps) => {
 			<CardContent>
 				<div className="flex justify-center w-full">
 					<Link
-						href={`books/${character.id}`}
+						href={`characters/${character.id}`}
 						className="w-[12rem] h-[12rem] relative"
 					>
 						<Image
 							src={character.image || missingCharacterAvatarPath}
 							className="transition-all hover:scale-105"
-							alt="Book image"
+							alt="Character image"
 							fill
 						/>
 					</Link>

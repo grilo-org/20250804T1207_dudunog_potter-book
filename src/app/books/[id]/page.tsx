@@ -20,7 +20,7 @@ import { FaArrowRightLong } from 'react-icons/fa6'
 const BookSkeleton = () => (
 	<>
 		<CardHeader className="flex flex-row items-center justify-between">
-			<Skeleton className="h-[2rem] w-[25rem]" />
+			<Skeleton className="h-[1.5rem] w-[25rem]" />
 			<Skeleton className="h-[2.5rem] w-[5rem]" />
 		</CardHeader>
 		<CardContent className="flex flex-col md:flex-row gap-8">
