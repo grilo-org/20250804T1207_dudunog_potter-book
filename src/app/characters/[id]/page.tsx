@@ -21,10 +21,10 @@ const missingCharacterAvatarPath = '/missing_character.svg'
 
 const CharacterSkeleton = () => (
 	<>
-		<CardHeader className="flex flex-row items-center justify-between">
+		<CardHeader className="flex items-center gap-4 justify-between xs:flex-row">
 			<div className="mt-2 w-full flex flex-col gap-1">
-				<Skeleton className="h-[1.5rem] w-[25rem]" />
-				<Skeleton className="h-[1rem] w-[15rem]" />
+				<Skeleton className="h-[1.5rem] w-full max-w-[25rem]" />
+				<Skeleton className="h-[1rem] w-full max-w-[15rem]" />
 			</div>
 			<Skeleton className="h-[2.5rem] w-[5rem]" />
 		</CardHeader>
@@ -33,22 +33,22 @@ const CharacterSkeleton = () => (
 				<Skeleton className="h-[18rem] w-[12.5rem]" />
 				<Skeleton className="h-[1.3rem] w-[5.5rem] rounded-full" />
 			</div>
-			<div className="flex flex-col gap-4">
+			<div className="w-full flex flex-col gap-4">
 				<div className="space-y-1">
 					<Skeleton className="h-[1rem] w-[5rem]" />
-					<Skeleton className="h-[1rem] w-[35rem]" />
+					<Skeleton className="h-[1rem] w-full" />
 				</div>
 				<div className="space-y-1">
 					<Skeleton className="h-[1rem] w-[5rem]" />
-					<Skeleton className="h-[1rem] w-[35rem]" />
+					<Skeleton className="h-[1rem] w-full" />
 				</div>
-				<div className="space-y-1 max-w-[35rem]">
+				<div className="space-y-1">
 					<Skeleton className="h-[1rem] w-[5rem]" />
-					<Skeleton className="h-[1rem] w-[35rem]" />
+					<Skeleton className="h-[1rem] w-full" />
 				</div>
-				<div className="space-y-1 max-w-[35rem]">
+				<div className="space-y-1">
 					<Skeleton className="h-[1rem] w-[5rem]" />
-					<Skeleton className="h-[1rem] w-[35rem]" />
+					<Skeleton className="h-[1rem] w-full" />
 				</div>
 			</div>
 		</CardContent>
@@ -56,7 +56,7 @@ const CharacterSkeleton = () => (
 			<Skeleton className="h-[2.5rem] w-full" />
 			<div className="mt-2 w-full flex flex-col gap-2">
 				{Array.from({ length: 6 }, (_, index) => (
-					<Skeleton key={index} className="h-[1rem] w-[12rem]" />
+					<Skeleton key={index} className="h-[1rem] w-full max-w-[12rem]" />
 				))}
 			</div>
 		</CardFooter>
