@@ -1,18 +1,18 @@
 'use client'
 
 import { useState } from 'react'
-import { DEFAULT_PAGINATION_PAGE_SIZE } from '@/app/constants'
-import { Potion } from '@/app/entities/Potion'
-import { useGetPotions } from '@/app/hooks/use-get-potions'
+import { DEFAULT_PAGINATION_PAGE_SIZE } from '@/constants'
+import { Potion } from '@/entities/Potion'
+import { useGetPotions } from '@/shared/hooks/use-get-potions'
 import { PotionsList } from '@/app/potions/components/potions-list'
-import { Skeleton } from '@/app/components/ui/skeleton'
-import { Pagination } from '@/app/components/pagination'
+import { Skeleton } from '@/shared/components/ui/skeleton'
+import { Pagination } from '@/shared/components/pagination'
 import {
 	Card,
 	CardContent,
 	CardFooter,
 	CardHeader,
-} from '@/app/components/ui/card'
+} from '@/shared/components/ui/card'
 
 const PotionsListSkeleton = ({ length = 4 }: { length?: number }) => {
 	return Array.from({ length }, (_, index) => (

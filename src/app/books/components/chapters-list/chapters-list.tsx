@@ -4,13 +4,13 @@ import {
 	TabsContent,
 	TabsList,
 	TabsTrigger,
-} from '@/app/components/ui/tabs'
+} from '@/shared/components/ui/tabs'
 import {
 	Accordion,
 	AccordionContent,
 	AccordionItem,
 	AccordionTrigger,
-} from '@/app/components/ui/accordion'
+} from '@/shared/components/ui/accordion'
 
 type ChaptersListProps = {
 	bookId: string

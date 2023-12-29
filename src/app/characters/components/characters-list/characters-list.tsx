@@ -1,20 +1,20 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { Character } from '@/app/entities/Character'
-import { Badge } from '@/app/components/ui/badge'
+import { Character } from '@/entities/Character'
+import { Badge } from '@/shared/components/ui/badge'
 import {
 	Card,
 	CardContent,
 	CardFooter,
 	CardHeader,
 	CardTitle,
-} from '@/app/components/ui/card'
+} from '@/shared/components/ui/card'
 import {
 	Tooltip,
 	TooltipContent,
 	TooltipProvider,
 	TooltipTrigger,
-} from '@/app/components/ui/tooltip'
+} from '@/shared/components/ui/tooltip'
 import { BsGenderMale, BsGenderFemale } from 'react-icons/bs'
 const missingCharacterAvatarPath = '/missing_character.svg'
 

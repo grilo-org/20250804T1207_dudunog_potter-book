@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { harryPotterFont, inter } from '@/app/fonts'
+import { harryPotterFont, inter } from '@/fonts'
 import Providers from '@/app/Providers'
 import { cn } from '@/lib/utils'
 import './globals.css'

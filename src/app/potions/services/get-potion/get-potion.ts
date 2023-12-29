@@ -1,6 +1,6 @@
-import { BaseApiResponse, ApiService } from '@/app/core'
-import { Potion } from '@/app/entities/Potion'
-import { httpClient } from '@/app/infra'
+import { BaseApiResponse, ApiService } from '@/shared/core'
+import { Potion } from '@/entities/Potion'
+import { httpClient } from '@/infra'
 
 export type GetPotionAPIResponse = BaseApiResponse<{
 	id: string

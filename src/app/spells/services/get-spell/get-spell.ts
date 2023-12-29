@@ -1,6 +1,6 @@
-import { BaseApiResponse, ApiService } from '@/app/core'
-import { Spell } from '@/app/entities/Spell'
-import { httpClient } from '@/app/infra'
+import { BaseApiResponse, ApiService } from '@/shared/core'
+import { Spell } from '@/entities/Spell'
+import { httpClient } from '@/infra'
 
 export type GetSpellAPIResponse = BaseApiResponse<{
 	id: string

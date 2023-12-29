@@ -1,20 +1,20 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { Potion } from '@/app/entities/Potion'
-import { Badge } from '@/app/components/ui/badge'
+import { Potion } from '@/entities/Potion'
+import { Badge } from '@/shared/components/ui/badge'
 import {
 	Card,
 	CardContent,
 	CardFooter,
 	CardHeader,
 	CardTitle,
-} from '@/app/components/ui/card'
+} from '@/shared/components/ui/card'
 import {
 	Tooltip,
 	TooltipContent,
 	TooltipProvider,
 	TooltipTrigger,
-} from '@/app/components/ui/tooltip'
+} from '@/shared/components/ui/tooltip'
 import { truncateText } from '@/lib/utils'
 import { GiFairyWand, GiStandingPotion } from 'react-icons/gi'
 import { IoIosInformationCircleOutline } from 'react-icons/io'

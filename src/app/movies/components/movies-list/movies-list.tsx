@@ -1,20 +1,20 @@
 import Link from 'next/link'
 import Image from 'next/image'
-import { Movie } from '@/app/entities/Movie'
-import { Badge } from '@/app/components/ui/badge'
+import { Movie } from '@/entities/Movie'
+import { Badge } from '@/shared/components/ui/badge'
 import {
 	Card,
 	CardContent,
 	CardFooter,
 	CardHeader,
 	CardTitle,
-} from '@/app/components/ui/card'
+} from '@/shared/components/ui/card'
 import {
 	Tooltip,
 	TooltipContent,
 	TooltipProvider,
 	TooltipTrigger,
-} from '@/app/components/ui/tooltip'
+} from '@/shared/components/ui/tooltip'
 import { IoCalendarNumberOutline } from 'react-icons/io5'
 import { IoTimeOutline } from 'react-icons/io5'
 

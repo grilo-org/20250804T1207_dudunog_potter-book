@@ -1,6 +1,6 @@
-import { BaseApiResponse, ApiService } from '@/app/core'
-import { Character } from '@/app/entities/Character'
-import { httpClient } from '@/app/infra'
+import { BaseApiResponse, ApiService } from '@/shared/core'
+import { Character } from '@/entities/Character'
+import { httpClient } from '@/infra'
 
 export type GetCharacterAPIResponse = BaseApiResponse<{
 	id: string

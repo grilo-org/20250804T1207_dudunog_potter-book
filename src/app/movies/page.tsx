@@ -1,15 +1,15 @@
 'use client'
 
-import { Movie } from '@/app/entities/Movie'
-import { useGetMovies } from '@/app/hooks/use-get-movies'
+import { Movie } from '@/entities/Movie'
+import { useGetMovies } from '@/shared/hooks/use-get-movies'
 import { MoviesList } from '@/app/movies/components/movies-list'
-import { Skeleton } from '@/app/components/ui/skeleton'
+import { Skeleton } from '@/shared/components/ui/skeleton'
 import {
 	Card,
 	CardContent,
 	CardFooter,
 	CardHeader,
-} from '@/app/components/ui/card'
+} from '@/shared/components/ui/card'
 
 const MoviesListSkeleton = ({ length = 4 }: { length?: number }) => {
 	return Array.from({ length }, (_, index) => (

@@ -1,18 +1,18 @@
 'use client'
 
 import { useState } from 'react'
-import { DEFAULT_PAGINATION_PAGE_SIZE } from '@/app/constants'
-import { Character } from '@/app/entities/Character'
-import { useGetCharacters } from '@/app/hooks/use-get-characters'
+import { DEFAULT_PAGINATION_PAGE_SIZE } from '@/constants'
+import { Character } from '@/entities/Character'
+import { useGetCharacters } from '@/shared/hooks/use-get-characters'
 import { CharactersList } from '@/app/characters/components/characters-list'
-import { Skeleton } from '@/app/components/ui/skeleton'
-import { Pagination } from '@/app/components/pagination'
+import { Skeleton } from '@/shared/components/ui/skeleton'
+import { Pagination } from '@/shared/components/pagination'
 import {
 	Card,
 	CardContent,
 	CardFooter,
 	CardHeader,
-} from '@/app/components/ui/card'
+} from '@/shared/components/ui/card'
 
 const CharactersListSkeleton = ({ length = 4 }: { length?: number }) => {
 	return Array.from({ length }, (_, index) => (
