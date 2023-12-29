@@ -58,7 +58,7 @@ export const getPotions = new ApiService<GetPotionsRequest, GetPotionsResponse>(
 						inventors: potion.attributes.inventors,
 						manufacturers: potion.attributes.manufacturers,
 						name: potion.attributes.name,
-						side_effects: potion.attributes.side_effects,
+						sideEffects: potion.attributes.side_effects,
 						slug: potion.attributes.slug,
 						time: potion.attributes.time,
 						wiki: potion.attributes.wiki,

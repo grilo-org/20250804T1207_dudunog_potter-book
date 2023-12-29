@@ -37,7 +37,7 @@ const PotionsList = ({ potions }: PotionsListProps) => {
 						href={`potions/${potion.id}`}
 						className="w-[12rem] h-[12rem] relative"
 					>
-						{potion.image ? (
+						{potion?.image ? (
 							<Image
 								src={potion.image}
 								className="transition-all hover:scale-105"
