@@ -9,7 +9,7 @@ type PotionProps = {
 	inventors: string
 	manufacturers: string
 	name: string
-	side_effects: string
+	sideEffects: string
 	slug: string
 	time: string
 	wiki: string
@@ -41,23 +41,23 @@ export class Potion {
 	}
 
 	get ingredients() {
-		return this.props.ingredients.toString()
+		return this.props.ingredients?.toString()
 	}
 
 	get inventors() {
-		return this.props.inventors.toString()
+		return this.props.inventors?.toString()
 	}
 
 	get manufacturers() {
-		return this.props.manufacturers.toString()
+		return this.props.manufacturers?.toString()
 	}
 
 	get name() {
 		return this.props.name.toString()
 	}
 
-	get side_effects() {
-		return this.props.side_effects.toString()
+	get sideEffects() {
+		return this.props.sideEffects?.toString()
 	}
 
 	get slug() {
@@ -65,7 +65,7 @@ export class Potion {
 	}
 
 	get time() {
-		return this.props.time.toString()
+		return this.props.time?.toString()
 	}
 
 	get wiki() {

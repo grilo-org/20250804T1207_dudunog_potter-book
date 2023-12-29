@@ -4,8 +4,8 @@ import { useMemo } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
-import { useGetMovie } from '@/app/movies/hooks/use-get-movie'
-import { MovieTabsList } from '@/app/movies/components/movie-tabs-list'
+import { useGetPotion } from '@/app/potions/hooks/use-get-potion'
+import { PotionTabsList } from '@/app/potions/components/potion-tabs-list'
 import { Badge } from '@/app/components/ui/badge'
 import { Button } from '@/app/components/ui/button'
 import { Skeleton } from '@/app/components/ui/skeleton'
@@ -17,8 +17,9 @@ import {
 	CardTitle,
 } from '@/app/components/ui/card'
 import { FaArrowRightLong } from 'react-icons/fa6'
+import { GiStandingPotion } from 'react-icons/gi'
 
-const MovieSkeleton = () => (
+const PotionSkeleton = () => (
 	<>
 		<CardHeader className="flex items-center gap-4 justify-between xs:flex-row">
 			<div className="mt-2 w-full flex flex-col gap-1">
@@ -28,9 +29,8 @@ const MovieSkeleton = () => (
 		</CardHeader>
 		<CardContent className="flex flex-col md:flex-row gap-8">
 			<div className="flex flex-col items-center gap-6">
-				<Skeleton className="h-[18rem] w-[12.5rem]" />
+				<Skeleton className="h-[14rem] w-[16.5rem]" />
 				<Skeleton className="h-[1.8rem] w-[5.5rem] rounded-full" />
-				<Skeleton className="h-[10rem] w-full max-w-[18rem] sm:max-w-none sm:w-[18rem]" />
 			</div>
 			<div className="w-full flex flex-col gap-4">
 				<div className="space-y-1">
@@ -62,38 +62,33 @@ const MovieSkeleton = () => (
 	</>
 )
 
-export default function Movie() {
-	const { id: movieId } = useParams()
+export default function Potion() {
+	const { id: potionId } = useParams()
 
-	const { movie, isLoading } = useGetMovie({
-		id: String(movieId),
+	const { potion, isLoading } = useGetPotion({
+		id: String(potionId),
 	})
 
 	const hasData = useMemo(
-		() =>
-			movie &&
-			(movie.releaseDate ||
-				movie?.boxOffice ||
-				movie?.budget ||
-				movie?.summary),
-		[movie],
+		() => potion && (potion.name || potion?.effect),
+		[potion],
 	)
 
 	return (
 		<Card
-			key={movie?.id}
+			key={potion?.id}
 			className="my-4 bg-secondary border-green max-w-[52rem] w-full"
 		>
 			{isLoading ? (
-				<MovieSkeleton />
+				<PotionSkeleton />
 			) : (
 				<>
 					<CardHeader className="flex items-center gap-4 justify-between xs:flex-row">
 						<CardTitle className="mt-2 text-green font-bold w-full">
-							{movie?.title}
+							{potion?.name}
 						</CardTitle>
 						<Link
-							href={String(movie?.wiki)}
+							href={String(potion?.wiki)}
 							target="_blank"
 							className="flex items-center gap-3"
 						>
@@ -107,70 +102,53 @@ export default function Movie() {
 						</Link>
 					</CardHeader>
 					<CardContent className="flex flex-col md:flex-row gap-8">
-						<div className="flex flex-col items-center">
-							<Image
-								width={200}
-								height={200}
-								src={String(movie?.poster)}
-								className="transition-all hover:scale-105"
-								alt="Movie image"
-							/>
-
-							{movie?.rating && (
-								<Badge className="bg-green">{movie?.rating}</Badge>
+						<div className="flex flex-col items-center gap-6">
+							{potion?.image ? (
+								<Image
+									width={200}
+									height={200}
+									src={String(potion?.image)}
+									className="transition-all hover:scale-105"
+									alt="Potion image"
+								/>
+							) : (
+								<GiStandingPotion size="100%" />
 							)}
 
-							{movie?.trailer && (
-								<div className="mt-6 w-72 h-40">
-									<iframe
-										src={movie?.trailer.split('watch?v=').join('embed/')}
-										allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-										allowFullScreen
-										title="Embedded youtube"
-									/>
-								</div>
+							{potion?.difficulty && (
+								<Badge className="mt-2 bg-green">{potion?.difficulty}</Badge>
 							)}
 						</div>
 
 						{hasData && (
 							<div className="flex flex-col gap-4">
-								{movie?.releaseDate && (
+								{potion?.effect && (
 									<div className="space-y-1 max-w-[35rem]">
 										<p className="text-sm text-green font-bold leading-none">
-											Data de lançamento
+											Efeito
 										</p>
 										<p className="text-sm text-muted-foreground">
-											{movie?.releaseDate}
+											{potion?.effect}
 										</p>
 									</div>
 								)}
-								{movie?.boxOffice && (
-									<div className="space-y-1">
+								{potion?.time && (
+									<div className="space-y-1 max-w-[35rem]">
 										<p className="text-sm text-green font-bold leading-none">
-											Bilheteria
+											Duração
 										</p>
 										<p className="text-sm text-muted-foreground">
-											{movie?.boxOffice}
+											{potion?.time}
 										</p>
 									</div>
 								)}
-								{movie?.budget && (
+								{potion?.sideEffects && (
 									<div className="space-y-1 max-w-[35rem]">
 										<p className="text-sm text-green font-bold leading-none">
-											Orçamento
+											Efeitos colaterais
 										</p>
 										<p className="text-sm text-muted-foreground">
-											{movie?.budget}
-										</p>
-									</div>
-								)}
-								{movie?.summary && (
-									<div className="space-y-1 max-w-[35rem]">
-										<p className="text-sm text-green font-bold leading-none">
-											Resumo
-										</p>
-										<p className="text-sm text-muted-foreground">
-											{movie?.summary}
+											{potion?.sideEffects}
 										</p>
 									</div>
 								)}
@@ -180,14 +158,14 @@ export default function Movie() {
 						{!hasData && (
 							<div className="mt-6">
 								<p className="text-base text-green leading-none">
-									Não há dados para este filme
+									Não há dados para esta poção
 								</p>
 							</div>
 						)}
 					</CardContent>
 
 					<CardFooter>
-						<MovieTabsList movieId={String(movieId)} />
+						<PotionTabsList potionId={String(potionId)} />
 					</CardFooter>
 				</>
 			)}
