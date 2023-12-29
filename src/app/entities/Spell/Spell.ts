@@ -27,7 +27,7 @@ export class Spell {
 	}
 
 	get creator() {
-		return this.props.creator.toString()
+		return this.props.creator?.toString()
 	}
 
 	get effect() {

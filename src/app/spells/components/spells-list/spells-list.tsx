@@ -16,7 +16,7 @@ import {
 	TooltipTrigger,
 } from '@/app/components/ui/tooltip'
 import { truncateText } from '@/lib/utils'
-import { GiFairyWand, GiStandingPotion } from 'react-icons/gi'
+import { GiFairyWand } from 'react-icons/gi'
 
 type SpellsListProps = {
 	spells: Spell[]
@@ -44,7 +44,7 @@ const SpellsList = ({ spells }: SpellsListProps) => {
 								fill
 							/>
 						) : (
-							<GiStandingPotion size="100%" />
+							<GiFairyWand size="100%" />
 						)}
 					</Link>
 				</div>
