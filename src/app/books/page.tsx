@@ -1,15 +1,15 @@
 'use client'
 
-import { Book } from '@/app/entities/Book'
-import { useGetBooks } from '@/app/hooks/use-get-books'
+import { Book } from '@/entities/Book'
+import { useGetBooks } from '@/shared/hooks/use-get-books'
 import { BooksList } from '@/app/books/components/books-list'
-import { Skeleton } from '@/app/components/ui/skeleton'
+import { Skeleton } from '@/shared/components/ui/skeleton'
 import {
 	Card,
 	CardContent,
 	CardFooter,
 	CardHeader,
-} from '@/app/components/ui/card'
+} from '@/shared/components/ui/card'
 
 const BooksListSkeleton = ({ length = 4 }: { length?: number }) => {
 	return Array.from({ length }, (_, index) => (

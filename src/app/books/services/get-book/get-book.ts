@@ -1,6 +1,6 @@
-import { BaseApiResponse, ApiService } from '@/app/core'
-import { Book } from '@/app/entities/Book'
-import { httpClient } from '@/app/infra'
+import { BaseApiResponse, ApiService } from '@/shared/core'
+import { Book } from '@/entities/Book'
+import { httpClient } from '@/infra'
 
 export type GetBookAPIResponse = BaseApiResponse<{
 	id: string

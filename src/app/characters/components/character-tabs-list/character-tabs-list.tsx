@@ -4,7 +4,7 @@ import {
 	TabsContent,
 	TabsList,
 	TabsTrigger,
-} from '@/app/components/ui/tabs'
+} from '@/shared/components/ui/tabs'
 
 type TabsKey = 'aliasNames' | 'familyMembers' | 'jobs' | 'romances' | 'wands'
 

@@ -1,0 +1,3 @@
+export const BASE_API_URL = process.env.NEXT_PUBLIC_SERVER_URL
+export const DEFAULT_PAGINATION_PAGE_SIZE = 10
+export const DEFAULT_PAGINATION_PAGE = 1

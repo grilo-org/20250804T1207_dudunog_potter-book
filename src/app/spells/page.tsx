@@ -1,18 +1,18 @@
 'use client'
 
 import { useState } from 'react'
-import { DEFAULT_PAGINATION_PAGE_SIZE } from '@/app/constants'
-import { Spell } from '@/app/entities/Spell'
-import { useGetSpells } from '@/app/hooks/use-get-spells'
+import { DEFAULT_PAGINATION_PAGE_SIZE } from '@/constants'
+import { Spell } from '@/entities/Spell'
+import { useGetSpells } from '@/shared/hooks/use-get-spells'
 import { SpellsList } from '@/app/spells/components/spells-list'
-import { Skeleton } from '@/app/components/ui/skeleton'
-import { Pagination } from '@/app/components/pagination'
+import { Skeleton } from '@/shared/components/ui/skeleton'
+import { Pagination } from '@/shared/components/pagination'
 import {
 	Card,
 	CardContent,
 	CardFooter,
 	CardHeader,
-} from '@/app/components/ui/card'
+} from '@/shared/components/ui/card'
 
 const SpellsListSkeleton = ({ length = 4 }: { length?: number }) => {
 	return Array.from({ length }, (_, index) => (

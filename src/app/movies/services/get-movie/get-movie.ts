@@ -1,6 +1,6 @@
-import { BaseApiResponse, ApiService } from '@/app/core'
-import { Movie } from '@/app/entities/Movie'
-import { httpClient } from '@/app/infra'
+import { BaseApiResponse, ApiService } from '@/shared/core'
+import { Movie } from '@/entities/Movie'
+import { httpClient } from '@/infra'
 
 export type GetMovieAPIResponse = BaseApiResponse<{
 	id: string

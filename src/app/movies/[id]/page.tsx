@@ -6,16 +6,16 @@ import Link from 'next/link'
 import { useParams } from 'next/navigation'
 import { useGetMovie } from '@/app/movies/hooks/use-get-movie'
 import { MovieTabsList } from '@/app/movies/components/movie-tabs-list'
-import { Badge } from '@/app/components/ui/badge'
-import { Button } from '@/app/components/ui/button'
-import { Skeleton } from '@/app/components/ui/skeleton'
+import { Badge } from '@/shared/components/ui/badge'
+import { Button } from '@/shared/components/ui/button'
+import { Skeleton } from '@/shared/components/ui/skeleton'
 import {
 	Card,
 	CardContent,
 	CardFooter,
 	CardHeader,
 	CardTitle,
-} from '@/app/components/ui/card'
+} from '@/shared/components/ui/card'
 import { FaArrowRightLong } from 'react-icons/fa6'
 
 const MovieSkeleton = () => (

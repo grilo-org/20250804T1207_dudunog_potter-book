@@ -5,16 +5,16 @@ import Link from 'next/link'
 import { useParams } from 'next/navigation'
 import { useGetBook } from '@/app/books/hooks/use-get-book'
 import { ChaptersList } from '@/app/books/components/chapters-list'
-import { Badge } from '@/app/components/ui/badge'
-import { Button } from '@/app/components/ui/button'
-import { Skeleton } from '@/app/components/ui/skeleton'
+import { Badge } from '@/shared/components/ui/badge'
+import { Button } from '@/shared/components/ui/button'
+import { Skeleton } from '@/shared/components/ui/skeleton'
 import {
 	Card,
 	CardContent,
 	CardFooter,
 	CardHeader,
 	CardTitle,
-} from '@/app/components/ui/card'
+} from '@/shared/components/ui/card'
 import { FaArrowRightLong } from 'react-icons/fa6'
 
 const BookSkeleton = () => (
