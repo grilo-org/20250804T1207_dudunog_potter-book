@@ -4,11 +4,11 @@ import {
 } from '@/constants'
 import { server } from '@/setup-tests'
 import { getCharacters } from '@/shared/services/get-characters'
-import { HttpHandler } from 'msw'
 import {
 	charactersErrorResponseHandler,
 	charactersSuccessResponseHandler,
 } from '@/tests/hooks/handlers'
+import { HttpHandler } from 'msw'
 
 const makeSut = (handler: HttpHandler) => {
 	server.use(handler)
