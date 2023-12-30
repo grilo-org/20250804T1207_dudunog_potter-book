@@ -1,8 +1,8 @@
 import { server } from '@/setup-tests'
 import { getMovies } from '@/shared/services/get-movies'
 import {
-	moviesErrorResponseHandler,
-	moviesSuccessResponseHandler,
+	getMoviesErrorResponseHandler,
+	getMoviesSuccessResponseHandler,
 } from '@/tests/hooks/handlers'
 import { HttpHandler } from 'msw'
 
@@ -14,7 +14,7 @@ const makeSut = (handler: HttpHandler) => {
 
 describe('get-movies service', () => {
 	test('should return a list of movies', async () => {
-		makeSut(moviesSuccessResponseHandler)
+		makeSut(getMoviesSuccessResponseHandler)
 
 		const movies = await getMovies.execute()
 
@@ -22,7 +22,7 @@ describe('get-movies service', () => {
 	})
 
 	test('should return a list of movies when filters was passed', async () => {
-		makeSut(moviesSuccessResponseHandler)
+		makeSut(getMoviesSuccessResponseHandler)
 
 		const movies = await getMovies.execute({
 			name: 'Harry Potter and the Half-Blood Prince',
@@ -32,7 +32,7 @@ describe('get-movies service', () => {
 	})
 
 	test.fails('should fails when the request fails', async () => {
-		makeSut(moviesErrorResponseHandler)
+		makeSut(getMoviesErrorResponseHandler)
 
 		const movies = await getMovies.execute({
 			name: 'Harry Potter',

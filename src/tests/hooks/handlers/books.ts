@@ -171,7 +171,7 @@ export const makeBookListResponse = () => ({
 	},
 })
 
-export const booksSuccessResponseHandler = http.get(
+export const getBooksSuccessResponseHandler = http.get(
 	`${BASE_API_URL}books`,
 	async () => {
 		return new Response(JSON.stringify(makeBookListResponse()), {
@@ -180,7 +180,7 @@ export const booksSuccessResponseHandler = http.get(
 	},
 )
 
-export const booksErrorResponseHandler = http.get(
+export const getBooksErrorResponseHandler = http.get(
 	`${BASE_API_URL}books`,
 	async () => {
 		return new Response(null, {

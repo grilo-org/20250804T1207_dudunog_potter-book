@@ -5,8 +5,8 @@ import {
 import { server } from '@/setup-tests'
 import { getCharacters } from '@/shared/services/get-characters'
 import {
-	charactersErrorResponseHandler,
-	charactersSuccessResponseHandler,
+	getCharactersErrorResponseHandler,
+	getCharactersSuccessResponseHandler,
 } from '@/tests/hooks/handlers'
 import { HttpHandler } from 'msw'
 
@@ -18,7 +18,7 @@ const makeSut = (handler: HttpHandler) => {
 
 describe('get-characters service', () => {
 	test('should return a list of characters', async () => {
-		makeSut(charactersSuccessResponseHandler)
+		makeSut(getCharactersSuccessResponseHandler)
 
 		const characters = await getCharacters.execute()
 
@@ -26,7 +26,7 @@ describe('get-characters service', () => {
 	})
 
 	test('should return a list of characters when filters was passed', async () => {
-		makeSut(charactersSuccessResponseHandler)
+		makeSut(getCharactersSuccessResponseHandler)
 
 		const characters = await getCharacters.execute({
 			name: 'Harry Potter',
@@ -38,7 +38,7 @@ describe('get-characters service', () => {
 	})
 
 	test.fails('should fails when the request fails', async () => {
-		makeSut(charactersErrorResponseHandler)
+		makeSut(getCharactersErrorResponseHandler)
 
 		const characters = await getCharacters.execute({
 			name: 'Harry Potter',

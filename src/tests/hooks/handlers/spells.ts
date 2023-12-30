@@ -123,7 +123,7 @@ export const makeSpellListResponse = () => ({
 	},
 })
 
-export const spellsSuccessResponseHandler = http.get(
+export const getSpellsSuccessResponseHandler = http.get(
 	`${BASE_API_URL}spells`,
 	async () => {
 		return new Response(JSON.stringify(makeSpellListResponse()), {
@@ -132,7 +132,7 @@ export const spellsSuccessResponseHandler = http.get(
 	},
 )
 
-export const spellsErrorResponseHandler = http.get(
+export const getSpellsErrorResponseHandler = http.get(
 	`${BASE_API_URL}spells`,
 	async () => {
 		return new Response(null, {

@@ -5,8 +5,8 @@ import {
 import { server } from '@/setup-tests'
 import { getSpells } from '@/shared/services/get-spells'
 import {
-	spellsErrorResponseHandler,
-	spellsSuccessResponseHandler,
+	getSpellsErrorResponseHandler,
+	getSpellsSuccessResponseHandler,
 } from '@/tests/hooks/handlers'
 import { HttpHandler } from 'msw'
 
@@ -18,7 +18,7 @@ const makeSut = (handler: HttpHandler) => {
 
 describe('get-spells service', () => {
 	test('should return a list of spells', async () => {
-		makeSut(spellsSuccessResponseHandler)
+		makeSut(getSpellsSuccessResponseHandler)
 
 		const spells = await getSpells.execute()
 
@@ -26,7 +26,7 @@ describe('get-spells service', () => {
 	})
 
 	test('should return a list of spells when filters was passed', async () => {
-		makeSut(spellsSuccessResponseHandler)
+		makeSut(getSpellsSuccessResponseHandler)
 
 		const spells = await getSpells.execute({
 			name: 'Harry Potter and the Half-Blood Prince',
@@ -38,7 +38,7 @@ describe('get-spells service', () => {
 	})
 
 	test.fails('should fails when the request fails', async () => {
-		makeSut(spellsErrorResponseHandler)
+		makeSut(getSpellsErrorResponseHandler)
 
 		const spells = await getSpells.execute({
 			name: 'Harry Potter',

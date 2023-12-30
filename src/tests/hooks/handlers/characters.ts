@@ -199,7 +199,7 @@ export const makeCharacterListResponse = () => ({
 	},
 })
 
-export const charactersSuccessResponseHandler = http.get(
+export const getCharactersSuccessResponseHandler = http.get(
 	`${BASE_API_URL}characters`,
 	async () => {
 		return new Response(JSON.stringify(makeCharacterListResponse()), {
@@ -208,7 +208,7 @@ export const charactersSuccessResponseHandler = http.get(
 	},
 )
 
-export const charactersErrorResponseHandler = http.get(
+export const getCharactersErrorResponseHandler = http.get(
 	`${BASE_API_URL}characters`,
 	async () => {
 		return new Response(null, {

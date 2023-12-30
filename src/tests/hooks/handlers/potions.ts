@@ -134,7 +134,7 @@ export const makePotionListResponse = () => ({
 	},
 })
 
-export const potionsSuccessResponseHandler = http.get(
+export const getPotionsSuccessResponseHandler = http.get(
 	`${BASE_API_URL}potions`,
 	async () => {
 		return new Response(JSON.stringify(makePotionListResponse()), {
@@ -143,7 +143,7 @@ export const potionsSuccessResponseHandler = http.get(
 	},
 )
 
-export const potionsErrorResponseHandler = http.get(
+export const getPotionsErrorResponseHandler = http.get(
 	`${BASE_API_URL}potions`,
 	async () => {
 		return new Response(null, {

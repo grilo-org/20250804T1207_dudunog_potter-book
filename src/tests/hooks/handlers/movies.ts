@@ -163,7 +163,7 @@ export const makeMovieListResponse = () => ({
 	},
 })
 
-export const moviesSuccessResponseHandler = http.get(
+export const getMoviesSuccessResponseHandler = http.get(
 	`${BASE_API_URL}movies`,
 	async () => {
 		return new Response(JSON.stringify(makeMovieListResponse()), {
@@ -172,7 +172,7 @@ export const moviesSuccessResponseHandler = http.get(
 	},
 )
 
-export const moviesErrorResponseHandler = http.get(
+export const getMoviesErrorResponseHandler = http.get(
 	`${BASE_API_URL}movies`,
 	async () => {
 		return new Response(null, {

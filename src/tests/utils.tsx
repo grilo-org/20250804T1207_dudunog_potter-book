@@ -1,11 +1,14 @@
 import { ReactNode } from 'react'
 import {
-	booksErrorResponseHandler,
-	booksSuccessResponseHandler,
+	getBooksErrorResponseHandler,
+	getBooksSuccessResponseHandler,
 } from '@/tests/hooks/handlers'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 
-export const handlers = [booksSuccessResponseHandler, booksErrorResponseHandler]
+export const handlers = [
+	getBooksSuccessResponseHandler,
+	getBooksErrorResponseHandler,
+]
 
 const createQueryClient = () =>
 	new QueryClient({
