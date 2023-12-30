@@ -1,6 +1,6 @@
-import { server } from '@/setup-tests'
 import { Spell } from '@/entities/Spell'
 import { getSpell } from '@/app/spells/services/get-spell'
+import { server } from '@/setup-tests'
 import {
 	getSpellErrorResponseHandler,
 	getSpellSuccessResponseHandler,

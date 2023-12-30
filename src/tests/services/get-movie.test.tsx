@@ -1,6 +1,6 @@
-import { server } from '@/setup-tests'
 import { Movie } from '@/entities/Movie'
 import { getMovie } from '@/app/movies/services/get-movie'
+import { server } from '@/setup-tests'
 import {
 	getMovieErrorResponseHandler,
 	getMovieSuccessResponseHandler,

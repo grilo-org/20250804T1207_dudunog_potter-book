@@ -1,6 +1,6 @@
-import { server } from '@/setup-tests'
 import { Potion } from '@/entities/Potion'
 import { getPotion } from '@/app/potions/services/get-potion'
+import { server } from '@/setup-tests'
 import {
 	getPotionErrorResponseHandler,
 	getPotionSuccessResponseHandler,

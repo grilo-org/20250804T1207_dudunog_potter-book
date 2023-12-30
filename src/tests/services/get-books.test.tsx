@@ -1,5 +1,5 @@
-import { server } from '@/setup-tests'
 import { getBooks } from '@/shared/services/get-books'
+import { server } from '@/setup-tests'
 import {
 	getBooksErrorResponseHandler,
 	getBooksSuccessResponseHandler,

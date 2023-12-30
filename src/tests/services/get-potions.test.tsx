@@ -2,8 +2,8 @@ import {
 	DEFAULT_PAGINATION_PAGE,
 	DEFAULT_PAGINATION_PAGE_SIZE,
 } from '@/constants'
-import { server } from '@/setup-tests'
 import { getPotions } from '@/shared/services/get-potions'
+import { server } from '@/setup-tests'
 import {
 	getPotionsErrorResponseHandler,
 	getPotionsSuccessResponseHandler,
