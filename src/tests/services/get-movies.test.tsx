@@ -1,6 +1,9 @@
 import { server } from '@/setup-tests'
 import { getMovies } from '@/shared/services/get-movies'
-import { moviesSuccessResponseHandler } from '@/tests/hooks/handlers'
+import {
+	moviesErrorResponseHandler,
+	moviesSuccessResponseHandler,
+} from '@/tests/hooks/handlers'
 import { HttpHandler } from 'msw'
 
 const makeSut = (handler: HttpHandler) => {
@@ -29,7 +32,7 @@ describe('get-movies service', () => {
 	})
 
 	test.fails('should fails when the request fails', async () => {
-		makeSut(moviesSuccessResponseHandler)
+		makeSut(moviesErrorResponseHandler)
 
 		const movies = await getMovies.execute({
 			name: 'Harry Potter',
