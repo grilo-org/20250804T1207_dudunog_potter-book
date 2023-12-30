@@ -40,9 +40,9 @@ export const getPotions = new ApiService<GetPotionsRequest, GetPotionsResponse>(
 		handler: async request => {
 			const { data } = await httpClient.get<GetPotionsAPIResponse>(
 				`/potions?
-					page[number]=${request.currentPage}&
-					page[size]=${request.rowsPerPage}&
-					${request.name ? `filter[name_cont]=${request.name}` : ''}`,
+					${request?.currentPage ? `page[number]=${request?.currentPage}` : ''}&
+					${request?.rowsPerPage ? `page[size]=${request?.rowsPerPage}` : ''}&
+					${request?.name ? `filter[name_cont]=${request?.name}` : ''}`,
 			)
 
 			const potions = data.data.map(

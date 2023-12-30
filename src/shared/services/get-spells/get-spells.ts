@@ -16,7 +16,7 @@ export type GetSpellsAPIResponse = BaseApiResponse<
 			incantation: string
 			light: string
 			name: string
-			slug: string[]
+			slug: string
 			wiki: string
 		}
 	}[]
@@ -37,9 +37,9 @@ export const getSpells = new ApiService<GetSpellsRequest, GetSpellsResponse>({
 	handler: async request => {
 		const { data } = await httpClient.get<GetSpellsAPIResponse>(
 			`/spells?
-				page[number]=${request.currentPage}&
-				page[size]=${request.rowsPerPage}&
-				${request.name ? `filter[name_cont]=${request.name}` : ''}`,
+				${request?.currentPage ? `page[number]=${request?.currentPage}` : ''}&
+				${request?.rowsPerPage ? `page[size]=${request?.rowsPerPage}` : ''}&
+				${request?.name ? `filter[name_cont]=${request?.name}` : ''}`,
 		)
 
 		const spells = data.data.map(
