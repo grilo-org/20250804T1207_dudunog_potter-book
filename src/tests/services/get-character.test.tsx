@@ -1,6 +1,6 @@
 import { server } from '@/setup-tests'
 import { Character } from '@/entities/Character'
-import { getCharacter } from '.'
+import { getCharacter } from '@/app/characters/services/get-character'
 import {
 	getCharacterErrorResponseHandler,
 	getCharacterSuccessResponseHandler,

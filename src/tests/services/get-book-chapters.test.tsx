@@ -1,6 +1,6 @@
 import { server } from '@/setup-tests'
 import { Chapter } from '@/entities/Chapter'
-import { getBookChapters } from '.'
+import { getBookChapters } from '@/app/books/services/get-book-chapters'
 import {
 	getBookChapterErrorResponseHandler,
 	getBookChapterSuccessResponseHandler,
