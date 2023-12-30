@@ -16,7 +16,7 @@ export type GetSpellsAPIResponse = BaseApiResponse<
 			incantation: string
 			light: string
 			name: string
-			slug: string[]
+			slug: string
 			wiki: string
 		}
 	}[]
