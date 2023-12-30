@@ -54,18 +54,7 @@ describe('use-get-books hook', () => {
 		const { result } = makeSut(getBooksErrorResponseHandler)
 
 		await waitFor(() => {
-			console.log('result.current:', result.current)
 			expect(result.current.isError).toBeTruthy()
 		})
 	})
-
-	// test('should return a list of books when a name filter was passed', async () => {
-	// 	makeSut(getBooksSuccessResponseHandler)
-
-	// 	const books = await getBooks.execute({
-	// 		name: 'Harry Potter',
-	// 	})
-
-	// 	expect(books).toHaveLength(5)
-	// })
 })
