@@ -9,7 +9,7 @@ type SpellProps = {
 	incantation: string
 	light: string
 	name: string
-	slug: string[]
+	slug: string
 	wiki: string
 }
 
