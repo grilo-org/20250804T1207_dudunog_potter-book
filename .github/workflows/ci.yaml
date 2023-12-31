@@ -17,4 +17,4 @@ jobs:
       - name: Build
         run: yarn build
       - name: Coveralls
-        uses: yarn run test:coveralls
+        run: yarn run test:coveralls
