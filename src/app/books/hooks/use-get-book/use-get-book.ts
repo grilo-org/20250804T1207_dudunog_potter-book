@@ -6,6 +6,8 @@ export function useGetBook(params?: GetBookRequest) {
 		data: book,
 		isLoading,
 		isFetching,
+		isSuccess,
+		isError,
 	} = useQuery({
 		queryKey: getBook.getCacheKey({
 			id: params?.id,
@@ -22,7 +24,6 @@ export function useGetBook(params?: GetBookRequest) {
 		enabled: true,
 		refetchOnWindowFocus: false,
 		staleTime: Infinity,
-		retry: 2,
 		keepPreviousData: true,
 	})
 
@@ -30,5 +31,7 @@ export function useGetBook(params?: GetBookRequest) {
 		book,
 		isFetching,
 		isLoading,
+		isSuccess,
+		isError,
 	}
 }

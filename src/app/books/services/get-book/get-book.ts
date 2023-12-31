@@ -18,7 +18,7 @@ export type GetBookAPIResponse = BaseApiResponse<{
 	}
 }>
 
-export type GetBookDTO = Book
+export type GetBookDTO = Book | null
 
 export type GetBookRequest = {
 	id: string
@@ -32,6 +32,10 @@ export const getBook = new ApiService<GetBookRequest, GetBookResponse>({
 		const {
 			data: { data: book },
 		} = await httpClient.get<GetBookAPIResponse>(`/books/${request.id}`)
+
+		if (!book) {
+			return null
+		}
 
 		return new Book({
 			id: book.id,

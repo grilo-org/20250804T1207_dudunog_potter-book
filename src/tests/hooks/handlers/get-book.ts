@@ -49,6 +49,13 @@ export const getBookSuccessResponseHandler = (id: string) =>
 		})
 	})
 
+export const getBookEmptyResponseHandler = (id: string) =>
+	http.get(`${BASE_API_URL}books/${id}`, async () => {
+		return new Response(JSON.stringify({}), {
+			status: 200,
+		})
+	})
+
 export const getBookErrorResponseHandler = (id: string) =>
 	http.get(`${BASE_API_URL}books/${id}`, async () => {
 		return new Response(null, {
