@@ -2,8 +2,8 @@ import { Chapter } from '@/entities/Chapter'
 import { getBookChapters } from '@/app/books/services/get-book-chapters'
 import { server } from '@/setup-tests'
 import {
-	getBookChapterErrorResponseHandler,
-	getBookChapterSuccessResponseHandler,
+	getBookChaptersErrorResponseHandler,
+	getBookChaptersSuccessResponseHandler,
 	makeBookChaptersResponse,
 } from '@/tests/hooks/handlers'
 import { HttpHandler } from 'msw'
@@ -20,7 +20,7 @@ describe('get-book-chapters service', () => {
 
 		const { data } = makeBookChaptersResponse()
 
-		makeSut(getBookChapterSuccessResponseHandler(bookId))
+		makeSut(getBookChaptersSuccessResponseHandler(bookId))
 
 		const bookChaptersResponse = await getBookChapters.execute({
 			id: bookId,
@@ -41,7 +41,7 @@ describe('get-book-chapters service', () => {
 
 	test.fails("should fails when an id wasn't passed", async () => {
 		const bookId = '99015cdb-bf16-4042-863a-b25b41b004f2'
-		makeSut(getBookChapterSuccessResponseHandler(bookId))
+		makeSut(getBookChaptersSuccessResponseHandler(bookId))
 
 		const bookChapters = await getBookChapters.execute()
 
@@ -51,7 +51,7 @@ describe('get-book-chapters service', () => {
 	test.fails('should fails when the request fails', async () => {
 		const bookId = '99015cdb-bf16-4042-863a-b25b41b004f2'
 
-		makeSut(getBookChapterErrorResponseHandler(bookId))
+		makeSut(getBookChaptersErrorResponseHandler(bookId))
 
 		const bookChapters = await getBookChapters.execute({
 			id: bookId,

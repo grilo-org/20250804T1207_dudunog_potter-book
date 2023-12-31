@@ -129,14 +129,21 @@ export const makeBookChaptersResponse = () => ({
 	},
 })
 
-export const getBookChapterSuccessResponseHandler = (id: string) =>
+export const getBookChaptersSuccessResponseHandler = (id: string) =>
 	http.get(`${BASE_API_URL}books/${id}/chapters`, async () => {
 		return new Response(JSON.stringify(makeBookChaptersResponse()), {
 			status: 200,
 		})
 	})
 
-export const getBookChapterErrorResponseHandler = (id: string) =>
+export const getBookChaptersEmptyResponseHandler = (id: string) =>
+	http.get(`${BASE_API_URL}books/${id}/chapters`, async () => {
+		return new Response(JSON.stringify({}), {
+			status: 200,
+		})
+	})
+
+export const getBookChaptersErrorResponseHandler = (id: string) =>
 	http.get(`${BASE_API_URL}books/${id}/chapters`, async () => {
 		return new Response(null, {
 			status: 500,
