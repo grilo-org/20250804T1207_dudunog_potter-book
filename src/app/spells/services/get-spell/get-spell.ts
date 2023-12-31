@@ -19,7 +19,7 @@ export type GetSpellAPIResponse = BaseApiResponse<{
 	}
 }>
 
-export type GetSpellDTO = Spell
+export type GetSpellDTO = Spell | null
 
 export type GetSpellRequest = {
 	id: string
@@ -33,6 +33,10 @@ export const getSpell = new ApiService<GetSpellRequest, GetSpellResponse>({
 		const {
 			data: { data: spell },
 		} = await httpClient.get<GetSpellAPIResponse>(`/spells/${request.id}`)
+
+		if (!spell) {
+			return null
+		}
 
 		return new Spell({
 			id: spell.id,

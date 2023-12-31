@@ -38,6 +38,13 @@ export const getSpellSuccessResponseHandler = (id: string) =>
 		})
 	})
 
+export const getSpellEmptyResponseHandler = (id: string) =>
+	http.get(`${BASE_API_URL}spells/${id}`, async () => {
+		return new Response(JSON.stringify({}), {
+			status: 200,
+		})
+	})
+
 export const getSpellErrorResponseHandler = (id: string) =>
 	http.get(`${BASE_API_URL}spells/${id}`, async () => {
 		return new Response(null, {
