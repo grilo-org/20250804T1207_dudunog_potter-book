@@ -6,6 +6,8 @@ export function useGetMovie(params?: GetMovieRequest) {
 		data: movie,
 		isLoading,
 		isFetching,
+		isSuccess,
+		isError,
 	} = useQuery({
 		queryKey: getMovie.getCacheKey({
 			id: params?.id,
@@ -22,7 +24,6 @@ export function useGetMovie(params?: GetMovieRequest) {
 		enabled: true,
 		refetchOnWindowFocus: false,
 		staleTime: Infinity,
-		retry: 2,
 		keepPreviousData: true,
 	})
 
@@ -30,5 +31,7 @@ export function useGetMovie(params?: GetMovieRequest) {
 		movie,
 		isFetching,
 		isLoading,
+		isSuccess,
+		isError,
 	}
 }

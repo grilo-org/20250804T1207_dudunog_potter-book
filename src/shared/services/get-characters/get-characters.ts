@@ -57,7 +57,7 @@ export const getCharacters = new ApiService<
 				${request?.name ? `filter[name_cont]=${request?.name}` : ''}`,
 		)
 
-		const characters = data.data.map(
+		const characters = data?.data?.map(
 			character =>
 				new Character({
 					id: character.id,
@@ -88,11 +88,11 @@ export const getCharacters = new ApiService<
 		)
 
 		return new Pagination({
-			itemsPerPage: 10,
-			data: characters,
-			page: data.meta?.pagination.current,
-			totalPages: data.meta.pagination.last,
-			totalRows: data.meta.pagination.records,
+			itemsPerPage: request?.rowsPerPage,
+			data: characters || [],
+			page: data?.meta?.pagination.current,
+			totalPages: data?.meta?.pagination.last,
+			totalRows: data?.meta?.pagination.records,
 		})
 	},
 })

@@ -21,7 +21,7 @@ export type GetPotionAPIResponse = BaseApiResponse<{
 	}
 }>
 
-export type GetPotionDTO = Potion
+export type GetPotionDTO = Potion | null
 
 export type GetPotionRequest = {
 	id: string
@@ -35,6 +35,10 @@ export const getPotion = new ApiService<GetPotionRequest, GetPotionResponse>({
 		const {
 			data: { data: potion },
 		} = await httpClient.get<GetPotionAPIResponse>(`/potions/${request.id}`)
+
+		if (!potion) {
+			return null
+		}
 
 		return new Potion({
 			id: potion.id,

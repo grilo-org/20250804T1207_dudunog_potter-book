@@ -47,6 +47,13 @@ export const getMovieSuccessResponseHandler = (id: string) =>
 		})
 	})
 
+export const getMovieEmptyResponseHandler = (id: string) =>
+	http.get(`${BASE_API_URL}movies/${id}`, async () => {
+		return new Response(JSON.stringify({}), {
+			status: 200,
+		})
+	})
+
 export const getMovieErrorResponseHandler = (id: string) =>
 	http.get(`${BASE_API_URL}movies/${id}`, async () => {
 		return new Response(null, {

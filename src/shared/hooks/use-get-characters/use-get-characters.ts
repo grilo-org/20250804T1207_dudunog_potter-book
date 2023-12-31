@@ -13,6 +13,8 @@ export function useGetCharacters(params?: GetCharactersRequest) {
 		data: characters,
 		isLoading,
 		isFetching,
+		isSuccess,
+		isError,
 	} = useQuery({
 		queryKey: getCharacters.getCacheKey({
 			currentPage: params?.currentPage,
@@ -26,16 +28,11 @@ export function useGetCharacters(params?: GetCharactersRequest) {
 				name: params?.name,
 			})
 
-			if (pageResult) {
-				return pageResult
-			}
-
-			return null
+			return pageResult
 		},
 		enabled: true,
 		refetchOnWindowFocus: false,
 		staleTime: Infinity,
-		retry: 2,
 		keepPreviousData: true,
 	})
 
@@ -43,5 +40,7 @@ export function useGetCharacters(params?: GetCharactersRequest) {
 		characters,
 		isFetching,
 		isLoading,
+		isSuccess,
+		isError,
 	}
 }

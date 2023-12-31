@@ -1,6 +1,6 @@
-import { server } from '@/setup-tests'
 import { Book } from '@/entities/Book'
 import { getBook } from '@/app/books/services/get-book'
+import { server } from '@/setup-tests'
 import {
 	getBookErrorResponseHandler,
 	getBookSuccessResponseHandler,

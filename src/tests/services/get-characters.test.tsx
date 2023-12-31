@@ -2,8 +2,8 @@ import {
 	DEFAULT_PAGINATION_PAGE,
 	DEFAULT_PAGINATION_PAGE_SIZE,
 } from '@/constants'
-import { server } from '@/setup-tests'
 import { getCharacters } from '@/shared/services/get-characters'
+import { server } from '@/setup-tests'
 import {
 	getCharactersErrorResponseHandler,
 	getCharactersSuccessResponseHandler,

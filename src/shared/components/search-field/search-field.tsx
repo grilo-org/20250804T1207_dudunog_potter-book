@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { Input } from '@/shared/components/ui/input'
-import { useDebounce } from '@/shared/hooks/useDebounce'
+import { useDebounce } from '@/shared/hooks/use-debounce'
 
 interface SearchFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
 	onSearch: (search: string) => void

@@ -58,6 +58,13 @@ export const getCharacterSuccessResponseHandler = (id: string) =>
 		})
 	})
 
+export const getCharacterEmptyResponseHandler = (id: string) =>
+	http.get(`${BASE_API_URL}characters/${id}`, async () => {
+		return new Response(JSON.stringify({}), {
+			status: 200,
+		})
+	})
+
 export const getCharacterErrorResponseHandler = (id: string) =>
 	http.get(`${BASE_API_URL}characters/${id}`, async () => {
 		return new Response(null, {

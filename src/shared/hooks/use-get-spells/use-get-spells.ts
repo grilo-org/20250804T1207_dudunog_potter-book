@@ -10,6 +10,8 @@ export function useGetSpells(params?: GetSpellsRequest) {
 		data: spells,
 		isLoading,
 		isFetching,
+		isSuccess,
+		isError,
 	} = useQuery({
 		queryKey: getSpells.getCacheKey({
 			currentPage: params?.currentPage,
@@ -23,16 +25,11 @@ export function useGetSpells(params?: GetSpellsRequest) {
 				name: params?.name,
 			})
 
-			if (pageResult) {
-				return pageResult
-			}
-
-			return null
+			return pageResult
 		},
 		enabled: true,
 		refetchOnWindowFocus: false,
 		staleTime: Infinity,
-		retry: 2,
 		keepPreviousData: true,
 	})
 
@@ -40,5 +37,7 @@ export function useGetSpells(params?: GetSpellsRequest) {
 		spells,
 		isFetching,
 		isLoading,
+		isSuccess,
+		isError,
 	}
 }

@@ -45,6 +45,12 @@ export default defineConfig(({ mode }) => {
 				statements: 95,
 				reporter: ['text', 'lcov'],
 				reportsDirectory: 'coverage',
+				exclude: [
+					'next.config.js',
+					'postcss.config.js',
+					'tailwind.config.ts',
+					'.next/',
+				],
 			},
 		},
 	}

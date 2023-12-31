@@ -6,6 +6,8 @@ export function useGetSpell(params?: GetSpellRequest) {
 		data: spell,
 		isLoading,
 		isFetching,
+		isSuccess,
+		isError,
 	} = useQuery({
 		queryKey: getSpell.getCacheKey({
 			id: params?.id,
@@ -22,7 +24,6 @@ export function useGetSpell(params?: GetSpellRequest) {
 		enabled: true,
 		refetchOnWindowFocus: false,
 		staleTime: Infinity,
-		retry: 2,
 		keepPreviousData: true,
 	})
 
@@ -30,5 +31,7 @@ export function useGetSpell(params?: GetSpellRequest) {
 		spell,
 		isFetching,
 		isLoading,
+		isSuccess,
+		isError,
 	}
 }

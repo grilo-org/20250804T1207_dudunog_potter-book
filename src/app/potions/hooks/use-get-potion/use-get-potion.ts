@@ -6,6 +6,8 @@ export function useGetPotion(params?: GetPotionRequest) {
 		data: potion,
 		isLoading,
 		isFetching,
+		isSuccess,
+		isError,
 	} = useQuery({
 		queryKey: getPotion.getCacheKey({
 			id: params?.id,
@@ -22,7 +24,6 @@ export function useGetPotion(params?: GetPotionRequest) {
 		enabled: true,
 		refetchOnWindowFocus: false,
 		staleTime: Infinity,
-		retry: 2,
 		keepPreviousData: true,
 	})
 
@@ -30,5 +31,7 @@ export function useGetPotion(params?: GetPotionRequest) {
 		potion,
 		isFetching,
 		isLoading,
+		isSuccess,
+		isError,
 	}
 }

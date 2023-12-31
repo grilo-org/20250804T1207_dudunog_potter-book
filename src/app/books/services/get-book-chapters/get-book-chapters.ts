@@ -33,7 +33,7 @@ export const getBookChapters = new ApiService<
 			`/books/${request.id}/chapters`,
 		)
 
-		return data.data.map(
+		return data?.data?.map(
 			chapter =>
 				new Chapter({
 					id: chapter.id,

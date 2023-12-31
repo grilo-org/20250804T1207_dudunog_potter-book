@@ -9,6 +9,8 @@ export function useGetCharacter(params?: GetCharacterRequest) {
 		data: character,
 		isLoading,
 		isFetching,
+		isSuccess,
+		isError,
 	} = useQuery({
 		queryKey: getCharacter.getCacheKey({
 			id: params?.id,
@@ -25,7 +27,6 @@ export function useGetCharacter(params?: GetCharacterRequest) {
 		enabled: true,
 		refetchOnWindowFocus: false,
 		staleTime: Infinity,
-		retry: 2,
 		keepPreviousData: true,
 	})
 
@@ -33,5 +34,7 @@ export function useGetCharacter(params?: GetCharacterRequest) {
 		character,
 		isFetching,
 		isLoading,
+		isSuccess,
+		isError,
 	}
 }

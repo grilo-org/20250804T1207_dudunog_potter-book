@@ -44,7 +44,7 @@ export const getMovies = new ApiService<GetMoviesRequest, GetMoviesResponse>({
 			`/movies?${request?.name ? `filter[title_cont]=${request?.name}` : ''}`,
 		)
 
-		return data.data.map(
+		return data?.data?.map(
 			movie =>
 				new Movie({
 					id: movie.id,

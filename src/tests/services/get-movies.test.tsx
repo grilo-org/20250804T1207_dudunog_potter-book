@@ -1,5 +1,5 @@
-import { server } from '@/setup-tests'
 import { getMovies } from '@/shared/services/get-movies'
+import { server } from '@/setup-tests'
 import {
 	getMoviesErrorResponseHandler,
 	getMoviesSuccessResponseHandler,

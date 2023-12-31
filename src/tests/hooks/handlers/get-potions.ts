@@ -143,6 +143,15 @@ export const getPotionsSuccessResponseHandler = http.get(
 	},
 )
 
+export const getPotionsEmptyResponseHandler = http.get(
+	`${BASE_API_URL}potions`,
+	async () => {
+		return new Response(JSON.stringify({}), {
+			status: 200,
+		})
+	},
+)
+
 export const getPotionsErrorResponseHandler = http.get(
 	`${BASE_API_URL}potions`,
 	async () => {

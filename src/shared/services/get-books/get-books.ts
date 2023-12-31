@@ -35,7 +35,7 @@ export const getBooks = new ApiService<GetBooksRequest, GetBooksResponse>({
 			`/books?${request?.name ? `filter[title_cont]=${request?.name}` : ''}`,
 		)
 
-		return data.data.map(
+		return data?.data?.map(
 			book =>
 				new Book({
 					id: book.id,

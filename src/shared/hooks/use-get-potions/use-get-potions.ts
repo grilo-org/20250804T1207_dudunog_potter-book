@@ -10,6 +10,8 @@ export function useGetPotions(params?: GetPotionsRequest) {
 		data: potions,
 		isLoading,
 		isFetching,
+		isSuccess,
+		isError,
 	} = useQuery({
 		queryKey: getPotions.getCacheKey({
 			currentPage: params?.currentPage,
@@ -23,16 +25,11 @@ export function useGetPotions(params?: GetPotionsRequest) {
 				name: params?.name,
 			})
 
-			if (pageResult) {
-				return pageResult
-			}
-
-			return null
+			return pageResult
 		},
 		enabled: true,
 		refetchOnWindowFocus: false,
 		staleTime: Infinity,
-		retry: 2,
 		keepPreviousData: true,
 	})
 
@@ -40,5 +37,7 @@ export function useGetPotions(params?: GetPotionsRequest) {
 		potions,
 		isFetching,
 		isLoading,
+		isSuccess,
+		isError,
 	}
 }

@@ -42,7 +42,7 @@ export const getSpells = new ApiService<GetSpellsRequest, GetSpellsResponse>({
 				${request?.name ? `filter[name_cont]=${request?.name}` : ''}`,
 		)
 
-		const spells = data.data.map(
+		const spells = data?.data?.map(
 			spell =>
 				new Spell({
 					id: spell.id,
@@ -61,11 +61,11 @@ export const getSpells = new ApiService<GetSpellsRequest, GetSpellsResponse>({
 		)
 
 		return new Pagination({
-			itemsPerPage: 10,
-			data: spells,
-			page: data.meta?.pagination.current,
-			totalPages: data.meta.pagination.last,
-			totalRows: data.meta.pagination.records,
+			itemsPerPage: request?.rowsPerPage,
+			data: spells || [],
+			page: data?.meta?.pagination.current,
+			totalPages: data?.meta?.pagination.last,
+			totalRows: data?.meta?.pagination.records,
 		})
 	},
 })

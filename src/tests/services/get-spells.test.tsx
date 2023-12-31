@@ -2,8 +2,8 @@ import {
 	DEFAULT_PAGINATION_PAGE,
 	DEFAULT_PAGINATION_PAGE_SIZE,
 } from '@/constants'
-import { server } from '@/setup-tests'
 import { getSpells } from '@/shared/services/get-spells'
+import { server } from '@/setup-tests'
 import {
 	getSpellsErrorResponseHandler,
 	getSpellsSuccessResponseHandler,
