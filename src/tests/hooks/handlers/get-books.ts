@@ -180,12 +180,28 @@ export const getBooksSuccessResponseHandler = http.get(
 	},
 )
 
-export const getBooksEmptyResponseHandler = http.get(
+export const getBooksNullBodyResponseHandler = http.get(
 	`${BASE_API_URL}books`,
 	async () => {
 		return new Response(JSON.stringify({}), {
 			status: 200,
 		})
+	},
+)
+
+export const getBooksEmptyResponseHandler = http.get(
+	`${BASE_API_URL}books`,
+	async () => {
+		return new Response(
+			JSON.stringify({
+				meta: makeBookListResponse().meta,
+				links: makeBookListResponse().links,
+				data: [],
+			}),
+			{
+				status: 200,
+			},
+		)
 	},
 )
 

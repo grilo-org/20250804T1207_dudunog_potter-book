@@ -38,6 +38,7 @@
 		"vite-tsconfig-paths": "^4.2.3"
 	},
 	"devDependencies": {
+		"@testing-library/jest-dom": "^6.1.6",
 		"@testing-library/react": "^14.1.2",
 		"@types/lodash": "^4.14.202",
 		"@types/node": "^20",

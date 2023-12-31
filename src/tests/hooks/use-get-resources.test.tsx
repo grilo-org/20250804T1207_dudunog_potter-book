@@ -7,7 +7,7 @@ import { useGetResources } from '@/shared/hooks/use-get-resources'
 import { server } from '@/setup-tests'
 import { wrapper } from '@/tests/utils'
 import {
-	getBooksEmptyResponseHandler,
+	getBooksNullBodyResponseHandler,
 	getBooksErrorResponseHandler,
 	getBooksSuccessResponseHandler,
 	getCharactersEmptyResponseHandler,
@@ -65,7 +65,7 @@ describe('use-get-resources hook', async () => {
 	test('should return an empty list when the server returns no resources', async () => {
 		const name = 'Harry Potter'
 		const { result } = await makeSut(
-			getBooksEmptyResponseHandler,
+			getBooksNullBodyResponseHandler,
 			getCharactersEmptyResponseHandler,
 			getMoviesEmptyResponseHandler,
 			getPotionsEmptyResponseHandler,

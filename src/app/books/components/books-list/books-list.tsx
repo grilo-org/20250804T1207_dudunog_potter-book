@@ -1,71 +1,74 @@
-import Link from 'next/link'
-import Image from 'next/image'
-import { Book } from '@/entities/Book'
-import { Badge } from '@/shared/components/ui/badge'
+import { Fragment } from 'react'
+import { useGetBooks } from '@/shared/hooks/use-get-books'
+import { Skeleton } from '@/shared/components/ui/skeleton'
+import { Error } from '@/shared/components/error'
 import {
 	Card,
 	CardContent,
 	CardFooter,
 	CardHeader,
-	CardTitle,
 } from '@/shared/components/ui/card'
-import {
-	Tooltip,
-	TooltipContent,
-	TooltipProvider,
-	TooltipTrigger,
-} from '@/shared/components/ui/tooltip'
-import { IoCalendarNumberOutline } from 'react-icons/io5'
+import { BookItem } from '@/app/books/components/book-item'
 
-type BooksListProps = {
-	books: Book[]
-}
-
-const BooksList = ({ books }: BooksListProps) => {
-	return books.map(book => (
-		<Card key={book.id} className="w-[20rem] bg-secondary border-green">
+const BooksListSkeleton = ({ length }: { length: number }) => {
+	return Array.from({ length }, (_, index) => (
+		<Card
+			data-testid="book-skeleton-item"
+			key={index}
+			className="w-[20rem] bg-secondary border-green"
+		>
 			<CardHeader>
-				<Link href={`books/${book.id}`}>
-					<CardTitle className="text-green font-bold">{book.title}</CardTitle>
-				</Link>
+				<Skeleton className="h-[2rem] w-full" />
 			</CardHeader>
 			<CardContent>
-				<div className="flex justify-center w-full">
-					<Link href={`books/${book.id}`}>
-						<Image
-							width={200}
-							height={200}
-							src={book.cover}
-							className="transition-all hover:scale-105"
-							alt="Book image"
-						/>
-					</Link>
+				<div className="flex flex-col items-center gap-6">
+					<Skeleton className="h-[18rem] w-[12.5rem]" />
 				</div>
 			</CardContent>
 
 			<CardFooter className="flex flex-col">
-				<Badge className="bg-green">{book.pages} páginas</Badge>
-				<TooltipProvider>
-					<Tooltip delayDuration={200}>
-						<TooltipTrigger>
-							<div className="mt-3 flex items-center gap-2">
-								<IoCalendarNumberOutline
-									size={20}
-									className="text-green hover:cursor-default"
-								/>
-								<label className="text-green text-md hover:cursor-text">
-									{book.releaseDate}
-								</label>
-							</div>
-						</TooltipTrigger>
-						<TooltipContent>
-							<p>Data de lançamento</p>
-						</TooltipContent>
-					</Tooltip>
-				</TooltipProvider>
+				<Skeleton className="h-[1.3rem] w-[5.5rem] rounded-full" />
+				<div className="mt-3 flex items-center gap-2">
+					<Skeleton className="h-[1.2rem] w-[1.2rem]" />
+					<Skeleton className="h-[1.3rem] w-[5.5rem] rounded-full" />
+				</div>
 			</CardFooter>
 		</Card>
 	))
+}
+
+const BooksList = () => {
+	const { books, isLoading, isFetching, isError } = useGetBooks({})
+
+	return (
+		<Fragment>
+			{isError ? (
+				<Error
+					title="Erro ao buscar dados"
+					error="Ocorreu algum erro ao buscar os livros. Tente novamente recarregando
+				a página!"
+				/>
+			) : (
+				<Fragment>
+					<div className="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+						{isLoading || isFetching ? (
+							<BooksListSkeleton length={6} />
+						) : (
+							books?.map(book => <BookItem key={book.id} book={book} />)
+						)}
+					</div>
+
+					{books?.length === 0 && !isLoading && !isFetching && (
+						<div className="flex flex-col items-center max-w-[40rem] max-h-[30rem]">
+							<p className="text-minimal text-lg">
+								Não há livros para serem listados
+							</p>
+						</div>
+					)}
+				</Fragment>
+			)}
+		</Fragment>
+	)
 }
 
 export { BooksList }

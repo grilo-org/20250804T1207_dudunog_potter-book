@@ -3,7 +3,7 @@ import { useGetBooks } from '@/shared/hooks/use-get-books'
 import { server } from '@/setup-tests'
 import { wrapper } from '@/tests/utils'
 import {
-	getBooksEmptyResponseHandler,
+	getBooksNullBodyResponseHandler,
 	getBooksErrorResponseHandler,
 	getBooksSuccessResponseHandler,
 } from '@/tests/hooks/handlers'
@@ -42,7 +42,7 @@ describe('use-get-books hook', () => {
 	})
 
 	test('should return null when the server returns no books', async () => {
-		const { result } = makeSut(getBooksEmptyResponseHandler)
+		const { result } = makeSut(getBooksNullBodyResponseHandler)
 
 		await waitFor(() => {
 			expect(result.current.isSuccess).toBeTruthy()
