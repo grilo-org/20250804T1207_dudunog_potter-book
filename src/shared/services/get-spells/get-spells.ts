@@ -61,7 +61,7 @@ export const getSpells = new ApiService<GetSpellsRequest, GetSpellsResponse>({
 		)
 
 		return new Pagination({
-			itemsPerPage: 10,
+			itemsPerPage: request?.rowsPerPage,
 			data: spells,
 			page: data.meta?.pagination.current,
 			totalPages: data.meta.pagination.last,

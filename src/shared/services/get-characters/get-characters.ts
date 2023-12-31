@@ -88,11 +88,11 @@ export const getCharacters = new ApiService<
 		)
 
 		return new Pagination({
-			itemsPerPage: 10,
+			itemsPerPage: request?.rowsPerPage,
 			data: characters || [],
-			page: data?.meta?.pagination?.current,
-			totalPages: data?.meta?.pagination?.last,
-			totalRows: data?.meta?.pagination?.records,
+			page: data?.meta?.pagination.current,
+			totalPages: data?.meta?.pagination.last,
+			totalRows: data?.meta?.pagination.records,
 		})
 	},
 })

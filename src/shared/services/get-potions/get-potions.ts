@@ -45,7 +45,7 @@ export const getPotions = new ApiService<GetPotionsRequest, GetPotionsResponse>(
 					${request?.name ? `filter[name_cont]=${request?.name}` : ''}`,
 			)
 
-			const potions = data.data.map(
+			const potions = data?.data?.map(
 				potion =>
 					new Potion({
 						id: potion.id,
@@ -66,11 +66,11 @@ export const getPotions = new ApiService<GetPotionsRequest, GetPotionsResponse>(
 			)
 
 			return new Pagination({
-				itemsPerPage: 10,
-				data: potions,
-				page: data.meta?.pagination.current,
-				totalPages: data.meta.pagination.last,
-				totalRows: data.meta.pagination.records,
+				itemsPerPage: request?.rowsPerPage,
+				data: potions || [],
+				page: data?.meta?.pagination.current,
+				totalPages: data?.meta?.pagination.last,
+				totalRows: data?.meta?.pagination.records,
 			})
 		},
 	},
