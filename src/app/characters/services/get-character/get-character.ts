@@ -31,7 +31,7 @@ export type GetCharacterAPIResponse = BaseApiResponse<{
 	}
 }>
 
-export type GetCharacterDTO = Character
+export type GetCharacterDTO = Character | null
 
 export type GetCharacterRequest = {
 	id: string
@@ -50,6 +50,10 @@ export const getCharacter = new ApiService<
 		} = await httpClient.get<GetCharacterAPIResponse>(
 			`/characters/${request.id}`,
 		)
+
+		if (!character) {
+			return null
+		}
 
 		return new Character({
 			id: character.id,
