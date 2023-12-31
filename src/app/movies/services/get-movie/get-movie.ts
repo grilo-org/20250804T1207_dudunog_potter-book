@@ -27,7 +27,7 @@ export type GetMovieAPIResponse = BaseApiResponse<{
 	}
 }>
 
-export type GetMovieDTO = Movie
+export type GetMovieDTO = Movie | null
 
 export type GetMovieRequest = {
 	id: string
@@ -41,6 +41,10 @@ export const getMovie = new ApiService<GetMovieRequest, GetMovieResponse>({
 		const {
 			data: { data: movie },
 		} = await httpClient.get<GetMovieAPIResponse>(`/movies/${request.id}`)
+
+		if (!movie) {
+			return null
+		}
 
 		return new Movie({
 			id: movie.id,
