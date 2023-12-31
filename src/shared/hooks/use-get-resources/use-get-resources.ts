@@ -16,7 +16,7 @@ type GetResourcesRequest = {
 }
 
 export function useGetResources() {
-	const { mutateAsync, isLoading, error } = useMutation(
+	const { mutateAsync, isLoading, isSuccess, isError, error } = useMutation(
 		async (params: GetResourcesRequest) => {
 			const calls = [
 				getBooks.execute(params),
@@ -42,9 +42,9 @@ export function useGetResources() {
 				await Promise.all(calls)
 
 			return [
-				...(books as Book[]),
+				...((books as Book[]) || []),
 				...(characters as Pagination<GetCharactersDTO[]>).data,
-				...(movies as Movie[]),
+				...((movies as Movie[]) || []),
 				...(potions as Pagination<GetPotionsDTO[]>).data,
 				...(spells as Pagination<GetSpellsDTO[]>).data,
 			]
@@ -58,6 +58,8 @@ export function useGetResources() {
 	return {
 		getResources: mutateAsync,
 		isLoading,
+		isSuccess,
+		isError,
 		error,
 	}
 }
