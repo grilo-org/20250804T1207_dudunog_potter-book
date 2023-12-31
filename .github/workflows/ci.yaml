@@ -1,4 +1,4 @@
-name: Deployment
+name: Continuous integration
 on:
   pull_request:
     branches:
