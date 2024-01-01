@@ -172,12 +172,28 @@ export const getMoviesSuccessResponseHandler = http.get(
 	},
 )
 
-export const getMoviesEmptyResponseHandler = http.get(
+export const getMoviesNullBodyResponseHandler = http.get(
 	`${BASE_API_URL}movies`,
 	async () => {
 		return new Response(JSON.stringify({}), {
 			status: 200,
 		})
+	},
+)
+
+export const getMoviesEmptyResponseHandler = http.get(
+	`${BASE_API_URL}movies`,
+	async () => {
+		return new Response(
+			JSON.stringify({
+				meta: makeMovieListResponse().meta,
+				links: makeMovieListResponse().links,
+				data: [],
+			}),
+			{
+				status: 200,
+			},
+		)
 	},
 )
 

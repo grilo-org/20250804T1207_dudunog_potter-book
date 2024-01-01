@@ -13,7 +13,7 @@ import {
 	getCharactersNullBodyResponseHandler,
 	getCharactersErrorResponseHandler,
 	getCharactersSuccessResponseHandler,
-	getMoviesEmptyResponseHandler,
+	getMoviesNullBodyResponseHandler,
 	getMoviesErrorResponseHandler,
 	getMoviesSuccessResponseHandler,
 	getPotionsEmptyResponseHandler,
@@ -67,7 +67,7 @@ describe('use-get-resources hook', async () => {
 		const { result } = await makeSut(
 			getBooksNullBodyResponseHandler,
 			getCharactersNullBodyResponseHandler,
-			getMoviesEmptyResponseHandler,
+			getMoviesNullBodyResponseHandler,
 			getPotionsEmptyResponseHandler,
 			getSpellsEmptyResponseHandler,
 		)
