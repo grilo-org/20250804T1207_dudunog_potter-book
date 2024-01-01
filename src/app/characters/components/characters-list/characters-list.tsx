@@ -1,8 +1,8 @@
 import { Fragment, useState } from 'react'
 import { DEFAULT_PAGINATION_PAGE_SIZE } from '@/constants'
 import { useGetCharacters } from '@/shared/hooks/use-get-characters'
-import { Pagination } from '@/shared/components/pagination'
 import { Error } from '@/shared/components/error'
+import { Pagination } from '@/shared/components/pagination'
 import { Skeleton } from '@/shared/components/ui/skeleton'
 import {
 	Card,

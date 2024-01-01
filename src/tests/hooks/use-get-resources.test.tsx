@@ -16,7 +16,7 @@ import {
 	getMoviesNullBodyResponseHandler,
 	getMoviesErrorResponseHandler,
 	getMoviesSuccessResponseHandler,
-	getPotionsEmptyResponseHandler,
+	getPotionsNullBodyResponseHandler,
 	getPotionsErrorResponseHandler,
 	getPotionsSuccessResponseHandler,
 	getSpellsEmptyResponseHandler,
@@ -68,7 +68,7 @@ describe('use-get-resources hook', async () => {
 			getBooksNullBodyResponseHandler,
 			getCharactersNullBodyResponseHandler,
 			getMoviesNullBodyResponseHandler,
-			getPotionsEmptyResponseHandler,
+			getPotionsNullBodyResponseHandler,
 			getSpellsEmptyResponseHandler,
 		)
 

@@ -1,112 +1,96 @@
-import Link from 'next/link'
-import Image from 'next/image'
-import { Potion } from '@/entities/Potion'
-import { Badge } from '@/shared/components/ui/badge'
+import { Fragment, useState } from 'react'
+import { DEFAULT_PAGINATION_PAGE_SIZE } from '@/constants'
+import { useGetPotions } from '@/shared/hooks/use-get-potions'
+import { Error } from '@/shared/components/error'
+import { Pagination } from '@/shared/components/pagination'
+import { Skeleton } from '@/shared/components/ui/skeleton'
 import {
 	Card,
 	CardContent,
 	CardFooter,
 	CardHeader,
-	CardTitle,
 } from '@/shared/components/ui/card'
-import {
-	Tooltip,
-	TooltipContent,
-	TooltipProvider,
-	TooltipTrigger,
-} from '@/shared/components/ui/tooltip'
-import { truncateText } from '@/lib/utils'
-import { GiFairyWand, GiStandingPotion } from 'react-icons/gi'
-import { IoIosInformationCircleOutline } from 'react-icons/io'
+import { PotionItem } from '@/app/potions/components/potion-item'
 
-type PotionsListProps = {
-	potions: Potion[]
-}
-
-const PotionsList = ({ potions }: PotionsListProps) => {
-	return potions.map(potion => (
-		<Card key={potion.id} className="w-[20rem] bg-secondary border-green">
+const PotionsListSkeleton = ({ length }: { length: number }) => {
+	return Array.from({ length }, (_, index) => (
+		<Card
+			data-testid="potion-skeleton-item"
+			key={index}
+			className="w-[20rem] bg-secondary border-green"
+		>
 			<CardHeader>
-				<Link href={`potions/${potion.id}`}>
-					<CardTitle className="text-green font-bold">{potion.name}</CardTitle>
-				</Link>
+				<Skeleton className="h-[2rem] w-full" />
 			</CardHeader>
 			<CardContent>
-				<div className="flex justify-center w-full">
-					<Link
-						href={`potions/${potion.id}`}
-						className="w-[12rem] h-[12rem] relative"
-					>
-						{potion?.image ? (
-							<Image
-								src={potion.image}
-								className="transition-all hover:scale-105"
-								alt="Potion image"
-								fill
-							/>
-						) : (
-							<GiStandingPotion size="100%" />
-						)}
-					</Link>
+				<div className="flex flex-col items-center gap-6">
+					<Skeleton className="h-[12.5rem] w-[12.5rem]" />
 				</div>
 			</CardContent>
 
 			<CardFooter className="flex flex-col">
-				{potion.difficulty && (
-					<TooltipProvider>
-						<Tooltip delayDuration={200}>
-							<TooltipTrigger>
-								<Badge className="bg-green">{potion.difficulty}</Badge>
-							</TooltipTrigger>
-							<TooltipContent>
-								<p>Dificuldade</p>
-							</TooltipContent>
-						</Tooltip>
-					</TooltipProvider>
-				)}
-				{potion.effect && (
-					<TooltipProvider>
-						<Tooltip delayDuration={200}>
-							<TooltipTrigger>
-								<div className="mt-3 flex items-center gap-2">
-									<GiFairyWand
-										size={20}
-										className="text-green hover:cursor-default"
-									/>
-									<label className="text-green text-md hover:cursor-text">
-										{truncateText(potion.effect, 40)}
-									</label>
-								</div>
-							</TooltipTrigger>
-							<TooltipContent>
-								<p>Efeito</p>
-							</TooltipContent>
-						</Tooltip>
-					</TooltipProvider>
-				)}
-				{potion.characteristics && (
-					<TooltipProvider>
-						<Tooltip delayDuration={200}>
-							<TooltipTrigger>
-								<div className="mt-3 flex items-center gap-2">
-									<IoIosInformationCircleOutline
-										size={20}
-										className="text-green hover:cursor-default"
-									/>
-									<label className="text-green text-md hover:cursor-text">
-										{truncateText(potion.characteristics, 40)}
-									</label>
-								</div>
-							</TooltipTrigger>
-							<TooltipContent>
-								<p>Características</p>
-							</TooltipContent>
-						</Tooltip>
-					</TooltipProvider>
-				)}
+				<Skeleton className="h-[1.3rem] w-[5.5rem] rounded-full" />
+				<div className="mt-3 flex items-center gap-2">
+					<Skeleton className="h-[1.2rem] w-[1.2rem]" />
+					<Skeleton className="h-[1.3rem] w-[5.5rem] rounded-full" />
+				</div>
+				<div className="mt-3 flex items-center gap-2">
+					<Skeleton className="h-[1.2rem] w-[1.2rem]" />
+					<Skeleton className="h-[1.3rem] w-[5.5rem] rounded-full" />
+				</div>
 			</CardFooter>
 		</Card>
 	))
+}
+
+const PotionsList = () => {
+	const [currentPage, setCurrentPage] = useState(1)
+
+	const { potions, isLoading, isFetching, isError } = useGetPotions({
+		currentPage,
+		rowsPerPage: DEFAULT_PAGINATION_PAGE_SIZE,
+	})
+
+	return (
+		<Fragment>
+			{isError ? (
+				<Error
+					title="Erro ao buscar dados"
+					error="Ocorreu algum erro ao buscar as poções. Tente novamente recarregando
+				a página!"
+				/>
+			) : (
+				<Fragment>
+					<div className="mt-4 grid grid-cols-1 justify-items-center md:grid-cols-2 lg:grid-cols-3 gap-3">
+						{isLoading || isFetching ? (
+							<PotionsListSkeleton length={6} />
+						) : (
+							potions?.data.map(potion => (
+								<PotionItem key={potion.id} potion={potion} />
+							))
+						)}
+					</div>
+
+					{potions?.data && !isLoading && !isFetching && (
+						<Pagination
+							currentPage={currentPage}
+							registersPerPage={DEFAULT_PAGINATION_PAGE_SIZE}
+							totalCountOfRegisters={potions?.totalRows}
+							onPageChange={setCurrentPage}
+						/>
+					)}
+
+					{potions?.data?.length === 0 && !isLoading && !isFetching && (
+						<div className="flex flex-col items-center max-w-[40rem] max-h-[30rem]">
+							<p className="text-minimal text-lg">
+								Não há poções para serem listadas
+							</p>
+						</div>
+					)}
+				</Fragment>
+			)}
+		</Fragment>
+	)
 }
 
 export { PotionsList }
