@@ -8,7 +8,6 @@ export function useGetBooks(params?: GetBooksRequest) {
 		isFetching,
 		isSuccess,
 		isError,
-		error,
 	} = useQuery({
 		queryKey: getBooks.getCacheKey(),
 		queryFn: async () => {
@@ -32,6 +31,5 @@ export function useGetBooks(params?: GetBooksRequest) {
 		isLoading,
 		isSuccess,
 		isError,
-		error,
 	}
 }

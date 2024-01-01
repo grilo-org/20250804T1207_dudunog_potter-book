@@ -208,12 +208,28 @@ export const getCharactersSuccessResponseHandler = http.get(
 	},
 )
 
-export const getCharactersEmptyResponseHandler = http.get(
+export const getCharactersNullBodyResponseHandler = http.get(
 	`${BASE_API_URL}characters`,
 	async () => {
 		return new Response(JSON.stringify({}), {
 			status: 200,
 		})
+	},
+)
+
+export const getCharactersEmptyResponseHandler = http.get(
+	`${BASE_API_URL}characters`,
+	async () => {
+		return new Response(
+			JSON.stringify({
+				meta: makeCharacterListResponse().meta,
+				links: makeCharacterListResponse().links,
+				data: [],
+			}),
+			{
+				status: 200,
+			},
+		)
 	},
 )
 
