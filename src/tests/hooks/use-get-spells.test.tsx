@@ -4,7 +4,7 @@ import { useGetSpells } from '@/shared/hooks/use-get-spells'
 import { server } from '@/setup-tests'
 import { wrapper } from '@/tests/utils'
 import {
-	getSpellsEmptyResponseHandler,
+	getSpellsNullBodyResponseHandler,
 	getSpellsErrorResponseHandler,
 	getSpellsSuccessResponseHandler,
 } from '@/tests/hooks/handlers'
@@ -44,7 +44,7 @@ describe('use-get-spells hook', () => {
 	})
 
 	test('should return an empty list when the server returns no spells', async () => {
-		const { result } = makeSut(getSpellsEmptyResponseHandler)
+		const { result } = makeSut(getSpellsNullBodyResponseHandler)
 
 		await waitFor(() => {
 			expect(result.current.isSuccess).toBeTruthy()

@@ -35,7 +35,7 @@ export class Spell {
 	}
 
 	get hand() {
-		return this.props.hand.toString()
+		return this.props.hand?.toString()
 	}
 
 	get image() {
@@ -47,7 +47,7 @@ export class Spell {
 	}
 
 	get light() {
-		return this.props.light.toString()
+		return this.props.light?.toString()
 	}
 
 	get name() {

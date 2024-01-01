@@ -19,7 +19,7 @@ import {
 	getPotionsNullBodyResponseHandler,
 	getPotionsErrorResponseHandler,
 	getPotionsSuccessResponseHandler,
-	getSpellsEmptyResponseHandler,
+	getSpellsNullBodyResponseHandler,
 	getSpellsErrorResponseHandler,
 	getSpellsSuccessResponseHandler,
 } from '@/tests/hooks/handlers'
@@ -69,7 +69,7 @@ describe('use-get-resources hook', async () => {
 			getCharactersNullBodyResponseHandler,
 			getMoviesNullBodyResponseHandler,
 			getPotionsNullBodyResponseHandler,
-			getSpellsEmptyResponseHandler,
+			getSpellsNullBodyResponseHandler,
 		)
 
 		const resources = await result.current.getResources({
