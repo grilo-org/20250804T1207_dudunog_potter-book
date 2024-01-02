@@ -48,7 +48,11 @@ const SpellItem = ({ spell }: SpellItemProps) => {
 								fill
 							/>
 						) : (
-							<GiFairyWand size="100%" />
+							<GiFairyWand
+								data-testid="alternative-spell-image"
+								size="100%"
+								title="Alternative spell image"
+							/>
 						)}
 					</Link>
 				</div>
