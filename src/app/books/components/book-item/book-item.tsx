@@ -46,7 +46,11 @@ const BookItem = ({ book }: BookItemProps) => {
 								alt="Book image"
 							/>
 						) : (
-							<GoBook data-testid="alternative-book-icon" size="100%" />
+							<GoBook
+								data-testid="alternative-book-image"
+								size="100%"
+								title="Alternative book image"
+							/>
 						)}
 					</Link>
 				</div>

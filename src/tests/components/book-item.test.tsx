@@ -57,11 +57,7 @@ describe('book-item component', () => {
 			}),
 		)
 
-		console.log(
-			'screen.getByAltText:',
-			screen.getByTestId('alternative-book-icon'),
-		)
-		expect(screen.getByTestId('alternative-book-icon')).toBeInTheDocument()
+		expect(screen.getByTestId('alternative-book-image')).toBeInTheDocument()
 	})
 
 	test('should redirect to book details page when clicking on book title', async () => {

@@ -42,12 +42,22 @@ const CharacterItem = ({ character }: CharacterItemProps) => {
 						href={`characters/${character.id}`}
 						className="w-[12rem] h-[12rem] relative"
 					>
-						<Image
-							src={character.image || missingCharacterAvatarPath}
-							className="transition-all hover:scale-105"
-							alt="Character image"
-							fill
-						/>
+						{character.image ? (
+							<Image
+								src={character.image}
+								className="transition-all hover:scale-105"
+								alt="Character image"
+								fill
+							/>
+						) : (
+							<Image
+								data-testid="alternative-character-image"
+								src={missingCharacterAvatarPath}
+								className="transition-all hover:scale-105"
+								alt="Alternative character image"
+								fill
+							/>
+						)}
 					</Link>
 				</div>
 			</CardContent>
