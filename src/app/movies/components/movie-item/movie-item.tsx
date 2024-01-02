@@ -17,6 +17,7 @@ import {
 } from '@/shared/components/ui/tooltip'
 import { IoCalendarNumberOutline } from 'react-icons/io5'
 import { IoTimeOutline } from 'react-icons/io5'
+import { MdOutlineMovie } from 'react-icons/md'
 
 type MovieItemProps = {
 	movie: Movie
@@ -37,13 +38,21 @@ const MovieItem = ({ movie }: MovieItemProps) => {
 			<CardContent>
 				<div className="flex justify-center w-full">
 					<Link href={`movies/${movie.id}`}>
-						<Image
-							width={200}
-							height={200}
-							src={movie.poster}
-							className="transition-all hover:scale-105"
-							alt="Movie image"
-						/>
+						{movie.poster ? (
+							<Image
+								width={200}
+								height={200}
+								src={movie.poster}
+								className="transition-all hover:scale-105"
+								alt="Movie image"
+							/>
+						) : (
+							<MdOutlineMovie
+								data-testid="alternative-movie-image"
+								size="100%"
+								title="Alternative movie image"
+							/>
+						)}
 					</Link>
 				</div>
 			</CardContent>

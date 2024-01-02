@@ -36,7 +36,7 @@ const makeSut = (initialCharacter?: Character) => {
 }
 
 describe('character-item component', () => {
-	afterEach(() => resetMockRouter('/books'))
+	afterEach(() => resetMockRouter('/characters'))
 
 	test('renders character details correctly', async () => {
 		const { character } = makeSut()
