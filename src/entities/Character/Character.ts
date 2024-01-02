@@ -1,4 +1,4 @@
-type CharacterProps = {
+export type CharacterProps = {
 	id: string
 	type: string
 	aliasNames: string[]

@@ -1,4 +1,4 @@
-type SpellProps = {
+export type SpellProps = {
 	id: string
 	type: string
 	category: string

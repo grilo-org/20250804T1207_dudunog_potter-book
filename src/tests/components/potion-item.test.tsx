@@ -1,7 +1,7 @@
 import { Potion } from '@/entities/Potion'
 import { PotionItem } from '@/app/potions/components/potion-item'
-import { makePotionResponse } from '@/tests/hooks/handlers'
 import { makeRouterSut, resetMockRouter } from '@/tests/utils'
+import { PotionPropsMock } from '@/tests/mocks/potion.mock'
 import { fireEvent, render, screen } from '@testing-library/react'
 import { MemoryRouterProvider } from 'next-router-mock/MemoryRouterProvider'
 import mockRouter from 'next-router-mock'
@@ -9,16 +9,10 @@ import mockRouter from 'next-router-mock'
 const makeSut = (initialPotion?: Potion) => {
 	makeRouterSut()
 
-	const {
-		data: { attributes, ...basePotion },
-	} = makePotionResponse()
-
 	const potion =
 		initialPotion ??
 		new Potion({
-			...basePotion,
-			...attributes,
-			sideEffects: attributes.side_effects,
+			...PotionPropsMock,
 		})
 
 	render(<PotionItem potion={potion} />, {
@@ -45,15 +39,9 @@ describe('potion-item component', () => {
 	})
 
 	test('should renders alternative image when potion image is not available', async () => {
-		const {
-			data: { attributes, ...basePotion },
-		} = makePotionResponse()
-
 		makeSut(
 			new Potion({
-				...basePotion,
-				...attributes,
-				sideEffects: attributes.side_effects,
+				...PotionPropsMock,
 				image: '',
 			}),
 		)

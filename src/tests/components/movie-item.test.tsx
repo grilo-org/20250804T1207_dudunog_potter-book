@@ -2,6 +2,7 @@ import { Movie } from '@/entities/Movie'
 import { MovieItem } from '@/app/movies/components/movie-item'
 import { makeMovieResponse } from '@/tests/hooks/handlers'
 import { makeRouterSut, resetMockRouter } from '@/tests/utils'
+import { MoviePropsMock } from '@/tests/mocks/movie.mock'
 import { fireEvent, render, screen } from '@testing-library/react'
 import { MemoryRouterProvider } from 'next-router-mock/MemoryRouterProvider'
 import mockRouter from 'next-router-mock'
@@ -16,12 +17,7 @@ const makeSut = (initialMovie?: Movie) => {
 	const movie =
 		initialMovie ??
 		new Movie({
-			...baseMovie,
-			...attributes,
-			boxOffice: attributes.box_office,
-			musicComposers: attributes.music_composers,
-			releaseDate: attributes.release_date,
-			runningTime: attributes.running_time,
+			...MoviePropsMock,
 		})
 
 	render(<MovieItem movie={movie} />, {
@@ -48,18 +44,9 @@ describe('movie-item component', () => {
 	})
 
 	test('should renders alternative image when movie image is not available', async () => {
-		const {
-			data: { attributes, ...baseMovie },
-		} = makeMovieResponse()
-
 		makeSut(
 			new Movie({
-				...baseMovie,
-				...attributes,
-				boxOffice: attributes.box_office,
-				musicComposers: attributes.music_composers,
-				releaseDate: attributes.release_date,
-				runningTime: attributes.running_time,
+				...MoviePropsMock,
 				poster: '',
 			}),
 		)

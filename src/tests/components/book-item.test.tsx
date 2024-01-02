@@ -1,7 +1,7 @@
 import { Book } from '@/entities/Book'
 import { BookItem } from '@/app/books/components/book-item'
-import { makeBookResponse } from '@/tests/hooks/handlers'
 import { makeRouterSut, resetMockRouter } from '@/tests/utils'
+import { BookPropsMock } from '@/tests/mocks/book.mock'
 import { fireEvent, render, screen } from '@testing-library/react'
 import { MemoryRouterProvider } from 'next-router-mock/MemoryRouterProvider'
 import mockRouter from 'next-router-mock'
@@ -9,16 +9,10 @@ import mockRouter from 'next-router-mock'
 const makeSut = (initialBook?: Book) => {
 	makeRouterSut()
 
-	const {
-		data: { attributes, ...baseBook },
-	} = makeBookResponse()
-
 	const book =
 		initialBook ??
 		new Book({
-			...baseBook,
-			...attributes,
-			releaseDate: attributes.release_date,
+			...BookPropsMock,
 		})
 
 	render(<BookItem book={book} />, {
@@ -44,15 +38,9 @@ describe('book-item component', () => {
 	})
 
 	test('should renders alternative image when book image is not available', async () => {
-		const {
-			data: { attributes, ...baseBook },
-		} = makeBookResponse()
-
 		makeSut(
 			new Book({
-				...baseBook,
-				...attributes,
-				releaseDate: attributes.release_date,
+				...BookPropsMock,
 				cover: '',
 			}),
 		)

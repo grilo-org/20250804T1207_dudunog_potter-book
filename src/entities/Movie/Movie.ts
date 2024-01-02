@@ -1,4 +1,4 @@
-type MovieProps = {
+export type MovieProps = {
 	id: string
 	type: string
 	boxOffice: string

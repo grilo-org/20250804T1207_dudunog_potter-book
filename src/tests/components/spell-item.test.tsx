@@ -2,6 +2,7 @@ import { Spell } from '@/entities/Spell'
 import { SpellItem } from '@/app/spells/components/spell-item'
 import { makeSpellResponse } from '@/tests/hooks/handlers'
 import { makeRouterSut, resetMockRouter } from '@/tests/utils'
+import { SpellPropsMock } from '@/tests/mocks/spell.mock'
 import { fireEvent, render, screen } from '@testing-library/react'
 import { MemoryRouterProvider } from 'next-router-mock/MemoryRouterProvider'
 import mockRouter from 'next-router-mock'
@@ -9,15 +10,10 @@ import mockRouter from 'next-router-mock'
 const makeSut = (initialSpell?: Spell) => {
 	makeRouterSut()
 
-	const {
-		data: { attributes, ...baseSpell },
-	} = makeSpellResponse()
-
 	const spell =
 		initialSpell ??
 		new Spell({
-			...baseSpell,
-			...attributes,
+			...SpellPropsMock,
 		})
 
 	render(<SpellItem spell={spell} />, {
@@ -43,14 +39,9 @@ describe('spell-item component', () => {
 	})
 
 	test('should renders alternative image when spell image is not available', async () => {
-		const {
-			data: { attributes, ...baseSpell },
-		} = makeSpellResponse()
-
 		makeSut(
 			new Spell({
-				...baseSpell,
-				...attributes,
+				...SpellPropsMock,
 				image: '',
 			}),
 		)

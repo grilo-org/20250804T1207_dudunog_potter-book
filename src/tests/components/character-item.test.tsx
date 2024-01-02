@@ -2,6 +2,7 @@ import { Character } from '@/entities/Character'
 import { CharacterItem } from '@/app/characters/components/character-item'
 import { makeCharacterResponse } from '@/tests/hooks/handlers'
 import { makeRouterSut, resetMockRouter } from '@/tests/utils'
+import { CharacterPropsMock } from '@/tests/mocks/character.mock'
 import { fireEvent, render, screen } from '@testing-library/react'
 import { MemoryRouterProvider } from 'next-router-mock/MemoryRouterProvider'
 import mockRouter from 'next-router-mock'
@@ -9,21 +10,10 @@ import mockRouter from 'next-router-mock'
 const makeSut = (initialCharacter?: Character) => {
 	makeRouterSut()
 
-	const {
-		data: { attributes, ...baseCharacter },
-	} = makeCharacterResponse()
-
 	const character =
 		initialCharacter ??
 		new Character({
-			...baseCharacter,
-			...attributes,
-			aliasNames: attributes.alias_names,
-			bloodStatus: attributes.blood_status,
-			eyeColor: attributes.eye_color,
-			familyMembers: attributes.family_members,
-			hairColor: attributes.hair_color,
-			maritalStatus: attributes.marital_status,
+			...CharacterPropsMock,
 		})
 
 	render(<CharacterItem character={character} />, {
@@ -49,20 +39,9 @@ describe('character-item component', () => {
 	})
 
 	test('should renders alternative image when character image is not available', async () => {
-		const {
-			data: { attributes, ...baseCharacter },
-		} = makeCharacterResponse()
-
 		makeSut(
 			new Character({
-				...baseCharacter,
-				...attributes,
-				aliasNames: attributes.alias_names,
-				bloodStatus: attributes.blood_status,
-				eyeColor: attributes.eye_color,
-				familyMembers: attributes.family_members,
-				hairColor: attributes.hair_color,
-				maritalStatus: attributes.marital_status,
+				...CharacterPropsMock,
 				image: '',
 			}),
 		)
