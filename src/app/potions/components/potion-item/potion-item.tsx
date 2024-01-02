@@ -49,7 +49,11 @@ const PotionItem = ({ potion }: PotionItemProps) => {
 								fill
 							/>
 						) : (
-							<GiStandingPotion size="100%" />
+							<GiStandingPotion
+								data-testid="alternative-potion-image"
+								size="100%"
+								title="Alternative potion image"
+							/>
 						)}
 					</Link>
 				</div>
