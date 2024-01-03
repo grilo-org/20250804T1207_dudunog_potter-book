@@ -1,4 +1,4 @@
-import { ReactElement } from 'react'
+import { Fragment, ReactElement } from 'react'
 import {
 	PaginationContent,
 	PaginationEllipsis,
@@ -77,7 +77,7 @@ const Pagination = ({
 				</PaginationItem>
 				<div className="flex gap-1">
 					{currentPage > 1 + siblingsCount && (
-						<>
+						<Fragment>
 							<PaginationItem>
 								<PaginationLink onClick={() => onPageChange(1)} href="#">
 									1
@@ -88,7 +88,7 @@ const Pagination = ({
 									<PaginationEllipsis />
 								</PaginationItem>
 							)}
-						</>
+						</Fragment>
 					)}
 					{previousPages.length > 0 &&
 						previousPages.map(page => {
@@ -116,7 +116,7 @@ const Pagination = ({
 							)
 						})}
 					{currentPage < lastPage - siblingsCount && (
-						<>
+						<Fragment>
 							{currentPage < lastPage - siblingsCount - 1 && (
 								<PaginationItem>
 									<PaginationEllipsis />
@@ -127,7 +127,7 @@ const Pagination = ({
 									{lastPage}
 								</PaginationLink>
 							</PaginationItem>
-						</>
+						</Fragment>
 					)}
 				</div>
 				<PaginationItem>

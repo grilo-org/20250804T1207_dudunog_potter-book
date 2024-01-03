@@ -1,6 +1,6 @@
 'use client'
 
-import { useMemo } from 'react'
+import { Fragment, useMemo } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
@@ -19,7 +19,7 @@ import { FaArrowRightLong } from 'react-icons/fa6'
 import { GiFairyWand } from 'react-icons/gi'
 
 const SpellSkeleton = () => (
-	<>
+	<Fragment>
 		<CardHeader className="flex items-center gap-4 justify-between xs:flex-row">
 			<div className="mt-2 w-full flex flex-col gap-1">
 				<Skeleton className="h-[1.5rem] w-full max-w-[25rem]" />
@@ -51,7 +51,7 @@ const SpellSkeleton = () => (
 			</div>
 		</CardContent>
 		<CardFooter />
-	</>
+	</Fragment>
 )
 
 export default function Spell() {
@@ -71,7 +71,7 @@ export default function Spell() {
 			{isLoading ? (
 				<SpellSkeleton />
 			) : (
-				<>
+				<Fragment>
 					<CardHeader className="flex items-center gap-4 justify-between xs:flex-row">
 						<CardTitle className="mt-2 text-green font-bold w-full">
 							{spell?.name}
@@ -164,7 +164,7 @@ export default function Spell() {
 					</CardContent>
 
 					<CardFooter />
-				</>
+				</Fragment>
 			)}
 		</Card>
 	)
