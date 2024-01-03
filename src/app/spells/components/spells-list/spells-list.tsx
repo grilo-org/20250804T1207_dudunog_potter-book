@@ -1,9 +1,10 @@
-import { Fragment, useState } from 'react'
+import { Fragment, useCallback, useState } from 'react'
 import { DEFAULT_PAGINATION_PAGE_SIZE } from '@/constants'
 import { useGetSpells } from '@/shared/hooks/use-get-spells'
 import { Error } from '@/shared/components/error'
 import { Pagination } from '@/shared/components/pagination'
 import { Skeleton } from '@/shared/components/ui/skeleton'
+import { SearchField } from '@/shared/components/search-field'
 import {
 	Card,
 	CardContent,
@@ -40,15 +41,23 @@ const SpellsListSkeleton = ({ length }: { length: number }) => {
 }
 
 const SpellsList = () => {
+	const [search, setSearch] = useState('')
 	const [currentPage, setCurrentPage] = useState(1)
 
 	const { spells, isLoading, isFetching, isError } = useGetSpells({
+		name: search,
 		currentPage,
 		rowsPerPage: DEFAULT_PAGINATION_PAGE_SIZE,
 	})
 
+	const handleSearch = useCallback(async (search: string) => {
+		setSearch(search.trim())
+	}, [])
+
 	return (
 		<Fragment>
+			<SearchField className="mt-4 w-full" onSearch={handleSearch} />
+
 			{isError ? (
 				<Error
 					title="Erro ao buscar dados"
@@ -67,17 +76,20 @@ const SpellsList = () => {
 						)}
 					</div>
 
-					{spells?.data && !isLoading && !isFetching && (
-						<Pagination
-							currentPage={currentPage}
-							registersPerPage={DEFAULT_PAGINATION_PAGE_SIZE}
-							totalCountOfRegisters={spells?.totalRows}
-							onPageChange={setCurrentPage}
-						/>
-					)}
+					{spells?.data &&
+						spells?.data.length > 0 &&
+						!isLoading &&
+						!isFetching && (
+							<Pagination
+								currentPage={currentPage}
+								registersPerPage={DEFAULT_PAGINATION_PAGE_SIZE}
+								totalCountOfRegisters={spells?.totalRows}
+								onPageChange={setCurrentPage}
+							/>
+						)}
 
 					{spells?.data?.length === 0 && !isLoading && !isFetching && (
-						<div className="flex flex-col items-center max-w-[40rem] max-h-[30rem]">
+						<div className="mt-4 flex flex-col items-center max-w-[40rem] max-h-[30rem]">
 							<p className="text-minimal text-lg">
 								Não há feitiços para serem listados
 							</p>

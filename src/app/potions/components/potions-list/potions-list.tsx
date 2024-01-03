@@ -93,7 +93,7 @@ const PotionsList = () => {
 						)}
 
 					{potions?.data?.length === 0 && !isLoading && !isFetching && (
-						<div className="flex flex-col items-center max-w-[40rem] max-h-[30rem]">
+						<div className="mt-4 flex flex-col items-center max-w-[40rem] max-h-[30rem]">
 							<p className="text-minimal text-lg">
 								Não há poções para serem listadas
 							</p>
