@@ -19,7 +19,7 @@ export default function RootLayout({
 		<html lang="en">
 			<body className={cn(inter.className, 'w-full flex justify-center')}>
 				<Providers>
-					<div className="mt-4 max-w-7xl px-4 w-full flex flex-col items-center">
+					<div className="mt-8 max-w-7xl px-4 w-full flex flex-col items-center">
 						<Link href="/">
 							<h1
 								className={cn(

@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react'
+import { Fragment, useCallback, useState } from 'react'
 import { Book } from '@/entities/Book'
 import { Character } from '@/entities/Character'
 import { Movie } from '@/entities/Movie'
@@ -41,7 +41,7 @@ const SearchSection = () => {
 	}, [])
 
 	return (
-		<>
+		<Fragment>
 			<SearchField
 				className="mt-[9rem] max-w-[30rem]"
 				placeholder="Procurando algo específico?"
@@ -77,7 +77,7 @@ const SearchSection = () => {
 					)}
 				</PopoverContent>
 			</Popover>
-		</>
+		</Fragment>
 	)
 }
 

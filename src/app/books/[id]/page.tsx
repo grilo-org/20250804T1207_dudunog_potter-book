@@ -1,5 +1,6 @@
 'use client'
 
+import { Fragment } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
@@ -18,7 +19,7 @@ import {
 import { FaArrowRightLong } from 'react-icons/fa6'
 
 const BookSkeleton = () => (
-	<>
+	<Fragment>
 		<CardHeader className="flex items-center gap-4 justify-between xs:flex-row">
 			<Skeleton className="h-[1.5rem] w-full max-w-[25rem]" />
 			<Skeleton className="h-[2.5rem] w-[5rem]" />
@@ -61,7 +62,7 @@ const BookSkeleton = () => (
 				))}
 			</div>
 		</CardFooter>
-	</>
+	</Fragment>
 )
 
 export default function Book() {
@@ -79,7 +80,7 @@ export default function Book() {
 			{isLoading ? (
 				<BookSkeleton />
 			) : (
-				<>
+				<Fragment>
 					<CardHeader className="flex flex-row items-center justify-between">
 						<CardTitle className="text-green max-w-[70%] font-bold">
 							{book?.title}
@@ -146,7 +147,7 @@ export default function Book() {
 					<CardFooter>
 						<ChaptersList bookId={String(bookId)} />
 					</CardFooter>
-				</>
+				</Fragment>
 			)}
 		</Card>
 	)

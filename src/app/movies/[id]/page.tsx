@@ -1,6 +1,6 @@
 'use client'
 
-import { useMemo } from 'react'
+import { Fragment, useMemo } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
@@ -19,7 +19,7 @@ import {
 import { FaArrowRightLong } from 'react-icons/fa6'
 
 const MovieSkeleton = () => (
-	<>
+	<Fragment>
 		<CardHeader className="flex items-center gap-4 justify-between xs:flex-row">
 			<div className="mt-2 w-full flex flex-col gap-1">
 				<Skeleton className="h-[1.5rem] w-full max-w-[25rem]" />
@@ -59,7 +59,7 @@ const MovieSkeleton = () => (
 				))}
 			</div>
 		</CardFooter>
-	</>
+	</Fragment>
 )
 
 export default function Movie() {
@@ -87,7 +87,7 @@ export default function Movie() {
 			{isLoading ? (
 				<MovieSkeleton />
 			) : (
-				<>
+				<Fragment>
 					<CardHeader className="flex items-center gap-4 justify-between xs:flex-row">
 						<CardTitle className="mt-2 text-green font-bold w-full">
 							{movie?.title}
@@ -189,7 +189,7 @@ export default function Movie() {
 					<CardFooter>
 						<MovieTabsList movieId={String(movieId)} />
 					</CardFooter>
-				</>
+				</Fragment>
 			)}
 		</Card>
 	)

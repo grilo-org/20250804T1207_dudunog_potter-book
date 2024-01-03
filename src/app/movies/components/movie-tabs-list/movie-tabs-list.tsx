@@ -1,3 +1,4 @@
+import { Fragment } from 'react'
 import { useGetMovie } from '@/app/movies/hooks/use-get-movie'
 import {
 	Tabs,
@@ -58,7 +59,7 @@ const MovieTabsList = ({ movieId }: MovieTabsListProps) => {
 			className="mt-2 w-full max-w-[49rem]"
 		>
 			{tabs.some(tab => movie?.[tab.key] && movie?.[tab.key].length > 0) && (
-				<>
+				<Fragment>
 					<TabsList className="w-full justify-around bg-green">
 						{tabs.map(tab => {
 							if (movie?.[tab.key] && movie?.[tab.key].length > 0) {
@@ -81,7 +82,7 @@ const MovieTabsList = ({ movieId }: MovieTabsListProps) => {
 							))}
 						</TabsContent>
 					))}
-				</>
+				</Fragment>
 			)}
 		</Tabs>
 	)

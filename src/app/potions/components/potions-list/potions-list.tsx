@@ -1,9 +1,10 @@
-import { Fragment, useState } from 'react'
+import { Fragment, useCallback, useState } from 'react'
 import { DEFAULT_PAGINATION_PAGE_SIZE } from '@/constants'
 import { useGetPotions } from '@/shared/hooks/use-get-potions'
 import { Error } from '@/shared/components/error'
 import { Pagination } from '@/shared/components/pagination'
 import { Skeleton } from '@/shared/components/ui/skeleton'
+import { SearchField } from '@/shared/components/search-field'
 import {
 	Card,
 	CardContent,
@@ -44,15 +45,23 @@ const PotionsListSkeleton = ({ length }: { length: number }) => {
 }
 
 const PotionsList = () => {
+	const [search, setSearch] = useState('')
 	const [currentPage, setCurrentPage] = useState(1)
 
 	const { potions, isLoading, isFetching, isError } = useGetPotions({
+		name: search,
 		currentPage,
 		rowsPerPage: DEFAULT_PAGINATION_PAGE_SIZE,
 	})
 
+	const handleSearch = useCallback(async (search: string) => {
+		setSearch(search.trim())
+	}, [])
+
 	return (
 		<Fragment>
+			<SearchField className="mt-4 w-full" onSearch={handleSearch} />
+
 			{isError ? (
 				<Error
 					title="Erro ao buscar dados"
@@ -71,17 +80,20 @@ const PotionsList = () => {
 						)}
 					</div>
 
-					{potions?.data && !isLoading && !isFetching && (
-						<Pagination
-							currentPage={currentPage}
-							registersPerPage={DEFAULT_PAGINATION_PAGE_SIZE}
-							totalCountOfRegisters={potions?.totalRows}
-							onPageChange={setCurrentPage}
-						/>
-					)}
+					{potions?.data &&
+						potions.data.length > 0 &&
+						!isLoading &&
+						!isFetching && (
+							<Pagination
+								currentPage={currentPage}
+								registersPerPage={DEFAULT_PAGINATION_PAGE_SIZE}
+								totalCountOfRegisters={potions?.totalRows}
+								onPageChange={setCurrentPage}
+							/>
+						)}
 
 					{potions?.data?.length === 0 && !isLoading && !isFetching && (
-						<div className="flex flex-col items-center max-w-[40rem] max-h-[30rem]">
+						<div className="mt-4 flex flex-col items-center max-w-[40rem] max-h-[30rem]">
 							<p className="text-minimal text-lg">
 								Não há poções para serem listadas
 							</p>

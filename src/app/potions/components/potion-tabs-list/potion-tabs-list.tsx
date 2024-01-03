@@ -1,3 +1,4 @@
+import { Fragment } from 'react'
 import { useGetPotion } from '@/app/potions/hooks/use-get-potion'
 import {
 	Tabs,
@@ -44,7 +45,7 @@ const PotionTabsList = ({ potionId }: PotionTabsListProps) => {
 			className="mt-2 w-full max-w-[49rem]"
 		>
 			{tabs.some(tab => potion?.[tab.key] && potion?.[tab.key].length > 0) && (
-				<>
+				<Fragment>
 					<TabsList className="w-full justify-around bg-green">
 						{tabs.map(tab => {
 							if (potion?.[tab.key] && potion?.[tab.key].length > 0) {
@@ -67,7 +68,7 @@ const PotionTabsList = ({ potionId }: PotionTabsListProps) => {
 								?.map?.((item: string) => <li key={item}>{item}</li>)}
 						</TabsContent>
 					))}
-				</>
+				</Fragment>
 			)}
 		</Tabs>
 	)

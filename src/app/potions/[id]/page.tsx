@@ -1,6 +1,6 @@
 'use client'
 
-import { useMemo } from 'react'
+import { Fragment, useMemo } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
@@ -20,7 +20,7 @@ import { FaArrowRightLong } from 'react-icons/fa6'
 import { GiStandingPotion } from 'react-icons/gi'
 
 const PotionSkeleton = () => (
-	<>
+	<Fragment>
 		<CardHeader className="flex items-center gap-4 justify-between xs:flex-row">
 			<div className="mt-2 w-full flex flex-col gap-1">
 				<Skeleton className="h-[1.5rem] w-full max-w-[25rem]" />
@@ -59,7 +59,7 @@ const PotionSkeleton = () => (
 				))}
 			</div>
 		</CardFooter>
-	</>
+	</Fragment>
 )
 
 export default function Potion() {
@@ -82,7 +82,7 @@ export default function Potion() {
 			{isLoading ? (
 				<PotionSkeleton />
 			) : (
-				<>
+				<Fragment>
 					<CardHeader className="flex items-center gap-4 justify-between xs:flex-row">
 						<CardTitle className="mt-2 text-green font-bold w-full">
 							{potion?.name}
@@ -167,7 +167,7 @@ export default function Potion() {
 					<CardFooter>
 						<PotionTabsList potionId={String(potionId)} />
 					</CardFooter>
-				</>
+				</Fragment>
 			)}
 		</Card>
 	)

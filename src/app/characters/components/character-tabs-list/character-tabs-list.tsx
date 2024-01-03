@@ -1,3 +1,4 @@
+import { Fragment } from 'react'
 import { useGetCharacter } from '@/app/characters/hooks/use-get-character'
 import {
 	Tabs,
@@ -52,7 +53,7 @@ const CharacterTabsList = ({ characterId }: CharacterTabsListProps) => {
 			{tabs.some(
 				tab => character?.[tab.key] && character?.[tab.key].length > 0,
 			) && (
-				<>
+				<Fragment>
 					<TabsList className="w-full justify-around bg-green">
 						{tabs.map(tab => {
 							if (character?.[tab.key] && character?.[tab.key].length > 0) {
@@ -75,7 +76,7 @@ const CharacterTabsList = ({ characterId }: CharacterTabsListProps) => {
 							))}
 						</TabsContent>
 					))}
-				</>
+				</Fragment>
 			)}
 		</Tabs>
 	)

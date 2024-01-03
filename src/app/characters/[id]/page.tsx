@@ -1,6 +1,6 @@
 'use client'
 
-import { useMemo } from 'react'
+import { Fragment, useMemo } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import { useParams } from 'next/navigation'
@@ -20,7 +20,7 @@ import { FaArrowRightLong } from 'react-icons/fa6'
 const missingCharacterAvatarPath = '/missing_character.svg'
 
 const CharacterSkeleton = () => (
-	<>
+	<Fragment>
 		<CardHeader className="flex items-center gap-4 justify-between xs:flex-row">
 			<div className="mt-2 w-full flex flex-col gap-1">
 				<Skeleton className="h-[1.5rem] w-full max-w-[25rem]" />
@@ -60,7 +60,7 @@ const CharacterSkeleton = () => (
 				))}
 			</div>
 		</CardFooter>
-	</>
+	</Fragment>
 )
 
 export default function Character() {
@@ -95,7 +95,7 @@ export default function Character() {
 			{isLoading ? (
 				<CharacterSkeleton />
 			) : (
-				<>
+				<Fragment>
 					<CardHeader className="flex items-center gap-4 justify-between xs:flex-row">
 						<div className="mt-2 w-full">
 							<CardTitle className="text-green font-bold">
@@ -271,7 +271,7 @@ export default function Character() {
 					<CardFooter>
 						<CharacterTabsList characterId={String(characterId)} />
 					</CardFooter>
-				</>
+				</Fragment>
 			)}
 		</Card>
 	)
