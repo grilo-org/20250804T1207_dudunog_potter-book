@@ -1,8 +1,8 @@
 'use client'
 
 import React, { useEffect, useState } from 'react'
-import { Input } from '@/shared/components/ui/input'
 import { useDebounce } from '@/shared/hooks/use-debounce'
+import { Input } from '@/shared/components/ui/input'
 
 interface SearchFieldProps extends React.InputHTMLAttributes<HTMLInputElement> {
 	onSearch: (search: string) => void
@@ -51,7 +51,7 @@ const SearchField: React.FC<SearchFieldProps> = ({
 		<Input
 			type="text"
 			name="search"
-			placeholder="Digite a localidade..."
+			placeholder="Pesquisar por..."
 			value={search}
 			onChange={e => handleSearch(e.target.value)}
 			{...rest}

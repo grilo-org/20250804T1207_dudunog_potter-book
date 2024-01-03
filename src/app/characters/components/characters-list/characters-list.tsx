@@ -1,9 +1,10 @@
-import { Fragment, useState } from 'react'
+import { Fragment, useCallback, useState } from 'react'
 import { DEFAULT_PAGINATION_PAGE_SIZE } from '@/constants'
 import { useGetCharacters } from '@/shared/hooks/use-get-characters'
 import { Error } from '@/shared/components/error'
 import { Pagination } from '@/shared/components/pagination'
 import { Skeleton } from '@/shared/components/ui/skeleton'
+import { SearchField } from '@/shared/components/search-field'
 import {
 	Card,
 	CardContent,
@@ -40,15 +41,23 @@ const CharactersListSkeleton = ({ length }: { length: number }) => {
 }
 
 const CharactersList = () => {
+	const [search, setSearch] = useState('')
 	const [currentPage, setCurrentPage] = useState(1)
 
 	const { characters, isLoading, isFetching, isError } = useGetCharacters({
+		name: search,
 		currentPage,
 		rowsPerPage: DEFAULT_PAGINATION_PAGE_SIZE,
 	})
 
+	const handleSearch = useCallback(async (search: string) => {
+		setSearch(search.trim())
+	}, [])
+
 	return (
 		<Fragment>
+			<SearchField className="mt-4 w-full" onSearch={handleSearch} />
+
 			{isError ? (
 				<Error
 					title="Erro ao buscar dados"
@@ -67,17 +76,20 @@ const CharactersList = () => {
 						)}
 					</div>
 
-					{characters?.data && !isLoading && !isFetching && (
-						<Pagination
-							currentPage={currentPage}
-							registersPerPage={DEFAULT_PAGINATION_PAGE_SIZE}
-							totalCountOfRegisters={characters?.totalRows}
-							onPageChange={setCurrentPage}
-						/>
-					)}
+					{characters?.data &&
+						characters.data.length > 0 &&
+						!isLoading &&
+						!isFetching && (
+							<Pagination
+								currentPage={currentPage}
+								registersPerPage={DEFAULT_PAGINATION_PAGE_SIZE}
+								totalCountOfRegisters={characters?.totalRows}
+								onPageChange={setCurrentPage}
+							/>
+						)}
 
 					{characters?.data?.length === 0 && !isLoading && !isFetching && (
-						<div className="flex flex-col items-center max-w-[40rem] max-h-[30rem]">
+						<div className="mt-4 flex flex-col items-center max-w-[40rem] max-h-[30rem]">
 							<p className="text-minimal text-lg">
 								Não há personagens para serem listados
 							</p>
