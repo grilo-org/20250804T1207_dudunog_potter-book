@@ -4,8 +4,8 @@ import { useGetCharacters } from '@/shared/hooks/use-get-characters'
 import { server } from '@/setup-tests'
 import { wrapper } from '@/tests/utils'
 import {
-	getCharactersEmptyResponseHandler,
 	getCharactersErrorResponseHandler,
+	getCharactersNullBodyResponseHandler,
 	getCharactersSuccessResponseHandler,
 } from '@/tests/hooks/handlers'
 import { HttpHandler } from 'msw'
@@ -44,7 +44,7 @@ describe('use-get-characters hook', () => {
 	})
 
 	test('should return an empty list when the server returns no characters', async () => {
-		const { result } = makeSut(getCharactersEmptyResponseHandler)
+		const { result } = makeSut(getCharactersNullBodyResponseHandler)
 
 		await waitFor(() => {
 			expect(result.current.isSuccess).toBeTruthy()

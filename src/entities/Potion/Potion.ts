@@ -1,4 +1,4 @@
-type PotionProps = {
+export type PotionProps = {
 	id: string
 	type: string
 	characteristics: string

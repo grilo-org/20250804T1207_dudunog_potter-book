@@ -4,7 +4,7 @@ import { useGetPotions } from '@/shared/hooks/use-get-potions'
 import { server } from '@/setup-tests'
 import { wrapper } from '@/tests/utils'
 import {
-	getPotionsEmptyResponseHandler,
+	getPotionsNullBodyResponseHandler,
 	getPotionsErrorResponseHandler,
 	getPotionsSuccessResponseHandler,
 } from '@/tests/hooks/handlers'
@@ -44,7 +44,7 @@ describe('use-get-potions hook', () => {
 	})
 
 	test('should return an empty list when the server returns no potions', async () => {
-		const { result } = makeSut(getPotionsEmptyResponseHandler)
+		const { result } = makeSut(getPotionsNullBodyResponseHandler)
 
 		await waitFor(() => {
 			expect(result.current.isSuccess).toBeTruthy()

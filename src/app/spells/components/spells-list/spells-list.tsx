@@ -1,91 +1,92 @@
-import Link from 'next/link'
-import Image from 'next/image'
-import { Spell } from '@/entities/Spell'
-import { Badge } from '@/shared/components/ui/badge'
+import { Fragment, useState } from 'react'
+import { DEFAULT_PAGINATION_PAGE_SIZE } from '@/constants'
+import { useGetSpells } from '@/shared/hooks/use-get-spells'
+import { Error } from '@/shared/components/error'
+import { Pagination } from '@/shared/components/pagination'
+import { Skeleton } from '@/shared/components/ui/skeleton'
 import {
 	Card,
 	CardContent,
 	CardFooter,
 	CardHeader,
-	CardTitle,
 } from '@/shared/components/ui/card'
-import {
-	Tooltip,
-	TooltipContent,
-	TooltipProvider,
-	TooltipTrigger,
-} from '@/shared/components/ui/tooltip'
-import { truncateText } from '@/lib/utils'
-import { GiFairyWand } from 'react-icons/gi'
+import { SpellItem } from '@/app/spells/components/spell-item'
 
-type SpellsListProps = {
-	spells: Spell[]
-}
-
-const SpellsList = ({ spells }: SpellsListProps) => {
-	return spells.map(spell => (
-		<Card key={spell.id} className="w-[20rem] bg-secondary border-green">
+const SpellsListSkeleton = ({ length }: { length: number }) => {
+	return Array.from({ length }, (_, index) => (
+		<Card
+			data-testid="spell-skeleton-item"
+			key={index}
+			className="w-[20rem] bg-secondary border-green"
+		>
 			<CardHeader>
-				<Link href={`spells/${spell.id}`}>
-					<CardTitle className="text-green font-bold">{spell.name}</CardTitle>
-				</Link>
+				<Skeleton className="h-[2rem] w-full" />
 			</CardHeader>
 			<CardContent>
-				<div className="flex justify-center w-full">
-					<Link
-						href={`spells/${spell.id}`}
-						className="w-[20rem] h-[12rem] relative"
-					>
-						{spell.image ? (
-							<Image
-								src={spell.image}
-								className="transition-all hover:scale-105"
-								alt="Spell image"
-								fill
-							/>
-						) : (
-							<GiFairyWand size="100%" />
-						)}
-					</Link>
+				<div className="flex flex-col items-center gap-6">
+					<Skeleton className="h-[12.5rem] w-[12.5rem]" />
 				</div>
 			</CardContent>
 
 			<CardFooter className="flex flex-col">
-				{spell.category && (
-					<TooltipProvider>
-						<Tooltip delayDuration={200}>
-							<TooltipTrigger>
-								<Badge className="bg-green">{spell.category}</Badge>
-							</TooltipTrigger>
-							<TooltipContent>
-								<p>Categoria</p>
-							</TooltipContent>
-						</Tooltip>
-					</TooltipProvider>
-				)}
-				{spell.incantation && (
-					<TooltipProvider>
-						<Tooltip delayDuration={200}>
-							<TooltipTrigger>
-								<div className="mt-3 flex items-center gap-2">
-									<GiFairyWand
-										size={20}
-										className="text-green hover:cursor-default"
-									/>
-									<label className="text-green text-md hover:cursor-text">
-										{truncateText(spell.incantation, 40)}
-									</label>
-								</div>
-							</TooltipTrigger>
-							<TooltipContent>
-								<p>Encantamento</p>
-							</TooltipContent>
-						</Tooltip>
-					</TooltipProvider>
-				)}
+				<Skeleton className="h-[1.3rem] w-[5.5rem] rounded-full" />
+				<div className="mt-3 flex items-center gap-2">
+					<Skeleton className="h-[1.2rem] w-[1.2rem]" />
+					<Skeleton className="h-[1.3rem] w-[5.5rem] rounded-full" />
+				</div>
 			</CardFooter>
 		</Card>
 	))
+}
+
+const SpellsList = () => {
+	const [currentPage, setCurrentPage] = useState(1)
+
+	const { spells, isLoading, isFetching, isError } = useGetSpells({
+		currentPage,
+		rowsPerPage: DEFAULT_PAGINATION_PAGE_SIZE,
+	})
+
+	return (
+		<Fragment>
+			{isError ? (
+				<Error
+					title="Erro ao buscar dados"
+					error="Ocorreu algum erro ao buscar os feitiços. Tente novamente recarregando
+				a página!"
+				/>
+			) : (
+				<Fragment>
+					<div className="mt-4 grid grid-cols-1 justify-items-center md:grid-cols-2 lg:grid-cols-3 gap-3">
+						{isLoading || isFetching ? (
+							<SpellsListSkeleton length={6} />
+						) : (
+							spells?.data.map(spell => (
+								<SpellItem key={spell.id} spell={spell} />
+							))
+						)}
+					</div>
+
+					{spells?.data && !isLoading && !isFetching && (
+						<Pagination
+							currentPage={currentPage}
+							registersPerPage={DEFAULT_PAGINATION_PAGE_SIZE}
+							totalCountOfRegisters={spells?.totalRows}
+							onPageChange={setCurrentPage}
+						/>
+					)}
+
+					{spells?.data?.length === 0 && !isLoading && !isFetching && (
+						<div className="flex flex-col items-center max-w-[40rem] max-h-[30rem]">
+							<p className="text-minimal text-lg">
+								Não há feitiços para serem listados
+							</p>
+						</div>
+					)}
+				</Fragment>
+			)}
+		</Fragment>
+	)
 }
 
 export { SpellsList }

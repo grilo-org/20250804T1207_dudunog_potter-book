@@ -3,7 +3,7 @@ import { useGetMovies } from '@/shared/hooks/use-get-movies'
 import { server } from '@/setup-tests'
 import { wrapper } from '@/tests/utils'
 import {
-	getMoviesEmptyResponseHandler,
+	getMoviesNullBodyResponseHandler,
 	getMoviesErrorResponseHandler,
 	getMoviesSuccessResponseHandler,
 } from '@/tests/hooks/handlers'
@@ -42,7 +42,7 @@ describe('use-get-movies hook', () => {
 	})
 
 	test('should return null when the server returns no movies', async () => {
-		const { result } = makeSut(getMoviesEmptyResponseHandler)
+		const { result } = makeSut(getMoviesNullBodyResponseHandler)
 
 		await waitFor(() => {
 			expect(result.current.isSuccess).toBeTruthy()

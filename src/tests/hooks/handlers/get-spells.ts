@@ -132,12 +132,28 @@ export const getSpellsSuccessResponseHandler = http.get(
 	},
 )
 
-export const getSpellsEmptyResponseHandler = http.get(
+export const getSpellsNullBodyResponseHandler = http.get(
 	`${BASE_API_URL}spells`,
 	async () => {
 		return new Response(JSON.stringify({}), {
 			status: 200,
 		})
+	},
+)
+
+export const getSpellsEmptyResponseHandler = http.get(
+	`${BASE_API_URL}spells`,
+	async () => {
+		return new Response(
+			JSON.stringify({
+				meta: makeSpellListResponse().meta,
+				links: makeSpellListResponse().links,
+				data: [],
+			}),
+			{
+				status: 200,
+			},
+		)
 	},
 )
 
