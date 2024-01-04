@@ -73,82 +73,94 @@ export default function Book() {
 	})
 
 	return (
-		<Card
-			key={book?.id}
-			className="my-4 bg-secondary border-green max-w-[52rem] w-full"
-		>
+		<Fragment>
 			{isLoading ? (
-				<BookSkeleton />
+				<Card
+					key={book?.id}
+					className="my-4 bg-secondary border-green max-w-[52rem] w-full"
+				>
+					<BookSkeleton />
+				</Card>
 			) : (
-				<Fragment>
-					<CardHeader className="flex flex-row items-center justify-between">
-						<CardTitle className="text-green max-w-[70%] font-bold">
-							{book?.title}
-						</CardTitle>
-						<Link
-							href={String(book?.wiki)}
-							target="_blank"
-							className="flex items-center gap-3"
-						>
-							<Button
-								variant="default"
-								className="flex items-center gap-3 bg-green"
+				<Card
+					data-testid="book-details"
+					key={book?.id}
+					className="my-4 bg-secondary border-green max-w-[52rem] w-full"
+				>
+					<Fragment>
+						<CardHeader className="flex flex-row items-center justify-between">
+							<CardTitle className="text-green max-w-[70%] font-bold">
+								{book?.title}
+							</CardTitle>
+							<Link
+								href={String(book?.wiki)}
+								target="_blank"
+								className="flex items-center gap-3"
 							>
-								Wiki
-								<FaArrowRightLong />
-							</Button>
-						</Link>
-					</CardHeader>
-					<CardContent className="flex flex-col md:flex-row gap-8">
-						{book?.cover && (
-							<div className="flex flex-col items-center gap-6">
-								<Image
-									width={200}
-									height={200}
-									src={String(book?.cover)}
-									className="transition-all hover:scale-105"
-									alt="Book image"
-								/>
-								<Badge className="bg-green">{book?.pages} páginas</Badge>
+								<Button
+									variant="default"
+									className="flex items-center gap-3 bg-green"
+								>
+									Wiki
+									<FaArrowRightLong />
+								</Button>
+							</Link>
+						</CardHeader>
+						<CardContent className="flex flex-col md:flex-row gap-8">
+							{book?.cover && (
+								<div className="flex flex-col items-center gap-6">
+									<Image
+										width={200}
+										height={200}
+										src={String(book?.cover)}
+										className="transition-all hover:scale-105"
+										alt="Book image"
+									/>
+									<Badge className="bg-green">{book?.pages} páginas</Badge>
+								</div>
+							)}
+							<div className="flex flex-col gap-4">
+								<div className="space-y-1">
+									<p className="text-sm text-green font-bold leading-none">
+										Autor
+									</p>
+									<p className="text-sm text-muted-foreground">
+										{book?.author}
+									</p>
+								</div>
+								<div className="space-y-1">
+									<p className="text-sm text-green font-bold leading-none">
+										Data de lançamento
+									</p>
+									<p className="text-sm text-muted-foreground">
+										{book?.releaseDate}
+									</p>
+								</div>
+								<div className="space-y-1 max-w-[35rem]">
+									<p className="text-sm text-green font-bold leading-none">
+										Dedicação
+									</p>
+									<p className="text-sm text-muted-foreground">
+										{book?.dedication}
+									</p>
+								</div>
+								<div className="space-y-1 max-w-[35rem]">
+									<p className="text-sm text-green font-bold leading-none">
+										Resumo
+									</p>
+									<p className="text-sm text-muted-foreground">
+										{book?.summary}
+									</p>
+								</div>
 							</div>
-						)}
-						<div className="flex flex-col gap-4">
-							<div className="space-y-1">
-								<p className="text-sm text-green font-bold leading-none">
-									Autor
-								</p>
-								<p className="text-sm text-muted-foreground">{book?.author}</p>
-							</div>
-							<div className="space-y-1">
-								<p className="text-sm text-green font-bold leading-none">
-									Data de lançamento
-								</p>
-								<p className="text-sm text-muted-foreground">
-									{book?.releaseDate}
-								</p>
-							</div>
-							<div className="space-y-1 max-w-[35rem]">
-								<p className="text-sm text-green font-bold leading-none">
-									Dedicação
-								</p>
-								<p className="text-sm text-muted-foreground">
-									{book?.dedication}
-								</p>
-							</div>
-							<div className="space-y-1 max-w-[35rem]">
-								<p className="text-sm text-green font-bold leading-none">
-									Resumo
-								</p>
-								<p className="text-sm text-muted-foreground">{book?.summary}</p>
-							</div>
-						</div>
-					</CardContent>
+						</CardContent>
 
-					<CardFooter>
-						<ChaptersList bookId={String(bookId)} />
-					</CardFooter>
-				</Fragment>
+						<CardFooter>
+							<ChaptersList bookId={String(bookId)} />
+						</CardFooter>
+					</Fragment>
+				</Card>
 			)}
-		</Card>
+		</Fragment>
 	)
 }

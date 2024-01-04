@@ -2,8 +2,6 @@ import { Movie } from '@/entities/Movie'
 import { MoviePropsMock } from '@/tests/mocks/movie.mock'
 
 describe('Movies', () => {
-	let firstPageItems
-
 	beforeEach(() => cy.visit('/movies'))
 
 	it('should present movies', () => {

@@ -27,17 +27,20 @@ const ChaptersList = ({ bookId }: ChaptersListProps) => {
 				<TabsTrigger value="chapters">Capítulos</TabsTrigger>
 			</TabsList>
 			<TabsContent value="chapters">
-				<Accordion type="single" collapsible className="w-full">
+				<Accordion data-testid="" type="single" collapsible className="w-full">
 					{bookChapters?.map(chapter => (
 						<AccordionItem
 							key={chapter.id}
 							value={chapter.id}
 							className="border-b-green"
 						>
-							<AccordionTrigger className="text-green font-bold">
+							<AccordionTrigger
+								data-testid="chapter-accordion-title"
+								className="text-green font-bold"
+							>
 								{chapter.order}. {chapter.title}
 							</AccordionTrigger>
-							<AccordionContent>
+							<AccordionContent data-testid="chapter-accordion-content">
 								{chapter.summary || 'Não há resumo para este capítulo'}
 							</AccordionContent>
 						</AccordionItem>
