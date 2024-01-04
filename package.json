@@ -1,5 +1,5 @@
 {
-	"name": "my-app",
+	"name": "potter-world",
 	"version": "0.1.0",
 	"private": true,
 	"scripts": {
@@ -13,6 +13,7 @@
 		"test:ci": "vitest run -- --coverage",
 		"test:cypress": "cypress open",
 		"test:cypress:run": "cypress run",
+		"test:cypress:ci": "start-server-and-test dev http-get://localhost:3000 test:cypress:run",
 		"test:coveralls": "yarn run test:ci && coveralls < coverage/lcov.info"
 	},
 	"dependencies": {
@@ -59,6 +60,7 @@
 		"postcss": "^8",
 		"prettier": "^3.1.1",
 		"prettier-plugin-tailwindcss": "^0.5.9",
+		"start-server-and-test": "^2.0.3",
 		"tailwindcss": "^3.3.0",
 		"typescript": "^5",
 		"vite": "^5.0.10",

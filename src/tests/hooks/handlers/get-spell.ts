@@ -3,7 +3,7 @@ import { http } from 'msw'
 
 export const makeSpellResponse = () => ({
 	data: {
-		id: '363adee4-5b00-47cc-9dab-a2ab5bbbaae4',
+		id: '6fecfd3a-4f00-4574-940e-247d968fac75',
 		type: 'spell',
 		attributes: {
 			slug: 'alarte-ascendare',
