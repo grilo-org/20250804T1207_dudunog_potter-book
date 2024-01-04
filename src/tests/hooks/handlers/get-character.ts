@@ -3,7 +3,7 @@ import { http } from 'msw'
 
 export const makeCharacterResponse = () => ({
 	data: {
-		id: 'f096911b-a140-4cee-96f3-0f92b6a56102',
+		id: 'ada30cc8-39dd-461b-9bac-0f5766fd4638',
 		type: 'character',
 		attributes: {
 			slug: 'zola-farrell',

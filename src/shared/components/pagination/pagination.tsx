@@ -78,7 +78,7 @@ const Pagination = ({
 				<div className="flex gap-1">
 					{currentPage > 1 + siblingsCount && (
 						<Fragment>
-							<PaginationItem>
+							<PaginationItem data-testid="pagination-item-1">
 								<PaginationLink onClick={() => onPageChange(1)} href="#">
 									1
 								</PaginationLink>
@@ -93,14 +93,20 @@ const Pagination = ({
 					{previousPages.length > 0 &&
 						previousPages.map(page => {
 							return (
-								<PaginationItem key={page}>
+								<PaginationItem
+									data-testid={`pagination-item-${page}`}
+									key={page}
+								>
 									<PaginationLink onClick={() => onPageChange(page)} href="#">
 										{page}
 									</PaginationLink>
 								</PaginationItem>
 							)
 						})}
-					<PaginationItem className="bg-minimal text-black rounded-md">
+					<PaginationItem
+						data-testid={`pagination-item-${currentPage}`}
+						className="bg-minimal text-black rounded-md"
+					>
 						<PaginationLink onClick={() => onPageChange(currentPage)} href="#">
 							{currentPage}
 						</PaginationLink>
@@ -108,7 +114,10 @@ const Pagination = ({
 					{nextPages.length > 0 &&
 						nextPages.map(page => {
 							return (
-								<PaginationItem key={page}>
+								<PaginationItem
+									data-testid={`pagination-item-${page}`}
+									key={page}
+								>
 									<PaginationLink onClick={() => onPageChange(page)} href="#">
 										{page}
 									</PaginationLink>
@@ -122,7 +131,7 @@ const Pagination = ({
 									<PaginationEllipsis />
 								</PaginationItem>
 							)}
-							<PaginationItem>
+							<PaginationItem data-testid={`pagination-item-${lastPage}`}>
 								<PaginationLink onClick={() => onPageChange(lastPage)} href="#">
 									{lastPage}
 								</PaginationLink>

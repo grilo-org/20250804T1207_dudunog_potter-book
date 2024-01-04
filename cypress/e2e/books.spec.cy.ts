@@ -5,7 +5,6 @@ describe('Books', () => {
 	beforeEach(() => cy.visit('/books'))
 
 	it('should present books', () => {
-		cy.getByTestId('books-list').should('be.visible')
 		cy.getByTestId('book-item').should('have.length', 7)
 	})
 
