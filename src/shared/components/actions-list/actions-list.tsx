@@ -10,31 +10,31 @@ const missingCharacterWhiteAvatarPath = '/missing_character_white.svg'
 const resources = [
 	{
 		icon: <IoBookOutline size={37} />,
-		key: 'Book',
+		key: 'book',
 		value: 'Livros',
 		href: '/books',
 	},
 	{
 		icon: missingCharacterAvatarPath,
-		key: 'Character',
+		key: 'character',
 		value: 'Personagens',
 		href: '/characters',
 	},
 	{
 		icon: <MdOutlineMovie size={37} />,
-		key: 'Movie',
+		key: 'movie',
 		value: 'Filmes',
 		href: '/movies',
 	},
 	{
 		icon: <GiStandingPotion size={37} />,
-		key: 'Potion',
+		key: 'potion',
 		value: 'Poções',
 		href: '/potions',
 	},
 	{
 		icon: <GiFairyWand size={37} />,
-		key: 'Spell',
+		key: 'spell',
 		value: 'Feitiços',
 		href: '/spells',
 	},
@@ -44,7 +44,11 @@ const ActionsList = () => {
 	return (
 		<div className="mt-[20rem] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
 			{resources.map(resource => (
-				<Link key={resource.key} href={resource.href}>
+				<Link
+					key={resource.key}
+					data-testid={`${resource.key}-listing-item`}
+					href={resource.href}
+				>
 					<div className="group flex items-center space-x-4 rounded-md border p-4 bg-background hover:bg-green hover:text-minimal">
 						{typeof resource.icon === 'string' ? (
 							<Avatar className="w-[2.4rem] h-[2.4rem] relative">

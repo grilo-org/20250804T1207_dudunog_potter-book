@@ -11,6 +11,8 @@
 		"test:watch": "vitest --watch",
 		"test:staged": "vitest run -- --findRelatedTests ./src",
 		"test:ci": "vitest run -- --coverage",
+		"test:cypress": "cypress open",
+		"test:cypress:run": "cypress run",
 		"test:coveralls": "yarn run test:ci && coveralls < coverage/lcov.info"
 	},
 	"dependencies": {
@@ -49,8 +51,10 @@
 		"@vitest/coverage-istanbul": "^1.1.0",
 		"autoprefixer": "^10.0.1",
 		"coveralls": "^3.1.1",
+		"cypress": "^13.6.2",
 		"eslint": "^8",
 		"eslint-config-next": "14.0.4",
+		"eslint-plugin-cypress": "^2.15.1",
 		"jsdom": "^23.0.1",
 		"postcss": "^8",
 		"prettier": "^3.1.1",

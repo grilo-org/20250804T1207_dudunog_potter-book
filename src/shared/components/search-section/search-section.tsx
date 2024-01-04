@@ -43,6 +43,7 @@ const SearchSection = () => {
 	return (
 		<Fragment>
 			<SearchField
+				data-testid="homepage-search-field"
 				className="mt-[9rem] max-w-[30rem]"
 				placeholder="Procurando algo específico?"
 				onSearch={handleSearch}
@@ -57,7 +58,10 @@ const SearchSection = () => {
 				onOpenChange={open => setShowSearchResult(open)}
 			>
 				<PopoverTrigger></PopoverTrigger>
-				<PopoverContent className="w-full max-w-[40rem] max-h-[26rem] flex flex-col gap-3 overflow-y-auto">
+				<PopoverContent
+					data-testid="homepage-search-results"
+					className="w-full max-w-[40rem] max-h-[26rem] flex flex-col gap-3 overflow-y-auto"
+				>
 					{isLoading ? (
 						<SearchResultsSkeleton length={6} />
 					) : (
