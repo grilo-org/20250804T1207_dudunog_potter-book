@@ -3,7 +3,7 @@ import { http } from 'msw'
 
 export const makePotionResponse = () => ({
 	data: {
-		id: 'af984889-3b1f-4b43-a49c-71c45d6fc012',
+		id: '04f6e0eb-5695-469f-8b07-ff1264d78178',
 		type: 'potion',
 		attributes: {
 			slug: 'ageing-potion',
@@ -18,7 +18,7 @@ export const makePotionResponse = () => ({
 			name: 'Ageing Potion',
 			side_effects: '',
 			time: '',
-			wiki: 'https://harrypotter.fandom.com/wiki/Ageing_Potion',
+			wiki: 'https://harrypotter.fandom.com/wiki/Amortentia',
 		},
 		links: {
 			self: '/v1/potions/af984889-3b1f-4b43-a49c-71c45d6fc012',

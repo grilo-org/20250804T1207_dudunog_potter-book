@@ -75,14 +75,20 @@ export default function Potion() {
 	)
 
 	return (
-		<Card
-			key={potion?.id}
-			className="my-4 bg-secondary border-green max-w-[52rem] w-full"
-		>
+		<Fragment>
 			{isLoading ? (
-				<PotionSkeleton />
+				<Card
+					key={potion?.id}
+					className="my-4 bg-secondary border-green max-w-[52rem] w-full"
+				>
+					<PotionSkeleton />
+				</Card>
 			) : (
-				<Fragment>
+				<Card
+					data-testid="potion-details"
+					key={potion?.id}
+					className="my-4 bg-secondary border-green max-w-[52rem] w-full"
+				>
 					<CardHeader className="flex items-center gap-4 justify-between xs:flex-row">
 						<CardTitle className="mt-2 text-green font-bold w-full">
 							{potion?.name}
@@ -163,12 +169,11 @@ export default function Potion() {
 							</div>
 						)}
 					</CardContent>
-
 					<CardFooter>
 						<PotionTabsList potionId={String(potionId)} />
 					</CardFooter>
-				</Fragment>
+				</Card>
 			)}
-		</Card>
+		</Fragment>
 	)
 }
