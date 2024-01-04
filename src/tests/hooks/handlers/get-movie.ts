@@ -3,7 +3,7 @@ import { http } from 'msw'
 
 export const makeMovieResponse = () => ({
 	data: {
-		id: '6c2ba173-85e8-4708-8c1a-30620e14294a',
+		id: '58e26658-e894-44be-9a5f-da9b524d02ad',
 		type: 'movie',
 		attributes: {
 			slug: 'harry-potter-and-the-chamber-of-secrets',
