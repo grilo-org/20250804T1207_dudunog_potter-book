@@ -64,14 +64,20 @@ export default function Spell() {
 	const hasData = useMemo(() => spell && (spell.name || spell?.effect), [spell])
 
 	return (
-		<Card
-			key={spell?.id}
-			className="my-4 bg-secondary border-green max-w-[52rem] w-full"
-		>
+		<Fragment>
 			{isLoading ? (
-				<SpellSkeleton />
+				<Card
+					key={spell?.id}
+					className="my-4 bg-secondary border-green max-w-[52rem] w-full"
+				>
+					<SpellSkeleton />
+				</Card>
 			) : (
-				<Fragment>
+				<Card
+					data-testid="spell-details"
+					key={spell?.id}
+					className="my-4 bg-secondary border-green max-w-[52rem] w-full"
+				>
 					<CardHeader className="flex items-center gap-4 justify-between xs:flex-row">
 						<CardTitle className="mt-2 text-green font-bold w-full">
 							{spell?.name}
@@ -162,10 +168,9 @@ export default function Spell() {
 							</div>
 						)}
 					</CardContent>
-
 					<CardFooter />
-				</Fragment>
+				</Card>
 			)}
-		</Card>
+		</Fragment>
 	)
 }
