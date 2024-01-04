@@ -34,8 +34,6 @@ describe('Characters', () => {
 	})
 
 	it('should change page when click on some page', () => {
-		console.log('firstPageItems:', firstPageItems)
-
 		cy.getByTestId('pagination-item-2').click()
 
 		cy.getByTestId('character-item').should('have.length', 10)
