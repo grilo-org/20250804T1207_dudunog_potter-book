@@ -3,7 +3,7 @@ import { http } from 'msw'
 
 export const makeCharacterResponse = () => ({
 	data: {
-		id: 'ada30cc8-39dd-461b-9bac-0f5766fd4638',
+		id: '70107ed4-9555-4d21-8fbc-c79bd90800ba',
 		type: 'character',
 		attributes: {
 			slug: 'zola-farrell',
@@ -36,7 +36,7 @@ export const makeCharacterResponse = () => ({
 			titles: ['Chaser'],
 			wands: ["12¼', Cedar, unicorn hair"],
 			weight: '',
-			wiki: 'https://harrypotter.fandom.com/wiki/Zola_Farrell',
+			wiki: 'https://harrypotter.fandom.com/wiki/Aberforth_Dumbledore',
 		},
 		links: {
 			self: '/v1/characters/f096911b-a140-4cee-96f3-0f92b6a56102',

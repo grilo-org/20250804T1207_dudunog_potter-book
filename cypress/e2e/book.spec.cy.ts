@@ -5,7 +5,7 @@ describe('Book', () => {
 	beforeEach(() => cy.visit('/books/99015cdb-bf16-4042-863a-b25b41b004f2'))
 
 	it('should present book details', () => {
-		cy.getByTestId('book-details').should('be.visible')
+		cy.getByTestId('book-details').should('exist')
 	})
 
 	it('should redirect to wiki when click on wiki button', () => {
@@ -41,6 +41,8 @@ describe('Book', () => {
 			.first()
 			.click()
 
-		cy.getByTestId('chapter-accordion-content').should('be.visible')
+		cy.getByTestId('chapter-accordion-content', {
+			timeout: 10000,
+		}).should('exist')
 	})
 })

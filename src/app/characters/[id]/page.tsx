@@ -88,14 +88,20 @@ export default function Character() {
 	)
 
 	return (
-		<Card
-			key={character?.id}
-			className="my-4 bg-secondary border-green max-w-[52rem] w-full"
-		>
+		<Fragment>
 			{isLoading ? (
-				<CharacterSkeleton />
+				<Card
+					key={character?.id}
+					className="my-4 bg-secondary border-green max-w-[52rem] w-full"
+				>
+					<CharacterSkeleton />
+				</Card>
 			) : (
-				<Fragment>
+				<Card
+					data-testid="character-details"
+					key={character?.id}
+					className="my-4 bg-secondary border-green max-w-[52rem] w-full"
+				>
 					<CardHeader className="flex items-center gap-4 justify-between xs:flex-row">
 						<div className="mt-2 w-full">
 							<CardTitle className="text-green font-bold">
@@ -267,12 +273,11 @@ export default function Character() {
 							</div>
 						)}
 					</CardContent>
-
 					<CardFooter>
 						<CharacterTabsList characterId={String(characterId)} />
 					</CardFooter>
-				</Fragment>
+				</Card>
 			)}
-		</Card>
+		</Fragment>
 	)
 }
