@@ -40,7 +40,7 @@ const SpellItem = ({ spell }: SpellItemProps) => {
 						href={`spells/${spell.id}`}
 						className="w-[20rem] h-[12rem] relative"
 					>
-						{spell.image ? (
+						{spell?.image ? (
 							<Image
 								src={spell.image}
 								className="transition-all hover:scale-105"
@@ -51,6 +51,7 @@ const SpellItem = ({ spell }: SpellItemProps) => {
 							<GiFairyWand
 								data-testid="alternative-spell-image"
 								size="100%"
+								className="text-green transition-all hover:scale-105"
 								title="Alternative spell image"
 							/>
 						)}

@@ -13,6 +13,7 @@ import {
 } from '@/shared/components/ui/card'
 import { MovieTabsList } from '@/app/movies/components/movie-tabs-list'
 import { FaArrowRightLong } from 'react-icons/fa6'
+import { MdOutlineMovie } from 'react-icons/md'
 
 type MovieDetailsProps = {
 	movie: Movie
@@ -30,7 +31,7 @@ const MovieDetails = ({ movie }: MovieDetailsProps) => {
 	)
 
 	return (
-		<Card className="mb-6 bg-secondary border-green max-w-[52rem] w-full">
+		<Card className="mt-2 mb-6 bg-secondary border-green max-w-[52rem] w-full">
 			<CardHeader className="flex items-center gap-4 justify-between xs:flex-row">
 				<CardTitle className="mt-2 text-green font-bold w-full">
 					{movie?.title}
@@ -51,13 +52,22 @@ const MovieDetails = ({ movie }: MovieDetailsProps) => {
 			</CardHeader>
 			<CardContent className="flex flex-col md:flex-row gap-8">
 				<div className="flex flex-col items-center">
-					<Image
-						width={200}
-						height={200}
-						src={String(movie?.poster)}
-						className="transition-all hover:scale-105"
-						alt="Movie image"
-					/>
+					{movie?.poster ? (
+						<Image
+							width={200}
+							height={200}
+							src={movie?.poster}
+							className="transition-all hover:scale-105"
+							alt="Movie image"
+						/>
+					) : (
+						<MdOutlineMovie
+							data-testid="alternative-movie-image"
+							size="100%"
+							className="text-green transition-all hover:scale-105"
+							title="Alternative movie image"
+						/>
+					)}
 
 					{movie?.rating && <Badge className="bg-green">{movie?.rating}</Badge>}
 

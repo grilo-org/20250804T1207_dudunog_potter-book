@@ -21,12 +21,12 @@ type PotionDetailsProps = {
 
 const PotionDetails = ({ potion }: PotionDetailsProps) => {
 	const hasData = useMemo(
-		() => potion && (potion.name || potion?.effect),
+		() => potion && (potion.effect || potion?.time || potion?.sideEffects),
 		[potion],
 	)
 
 	return (
-		<Card className="mb-4 bg-secondary border-green max-w-[52rem] w-full">
+		<Card className="mt-2 mb-4 bg-secondary border-green max-w-[52rem] w-full">
 			<CardHeader className="flex items-center gap-4 justify-between xs:flex-row">
 				<CardTitle className="mt-2 text-green font-bold w-full">
 					{potion?.name}
@@ -51,12 +51,17 @@ const PotionDetails = ({ potion }: PotionDetailsProps) => {
 						<Image
 							width={200}
 							height={200}
-							src={String(potion?.image)}
+							src={potion?.image}
 							className="transition-all hover:scale-105"
 							alt="Potion image"
 						/>
 					) : (
-						<GiStandingPotion size="100%" />
+						<GiStandingPotion
+							data-testid="alternative-potion-image"
+							size="100%"
+							className="text-green transition-all hover:scale-105"
+							title="Alternative potion image"
+						/>
 					)}
 
 					{potion?.difficulty && (

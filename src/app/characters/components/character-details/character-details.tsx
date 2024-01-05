@@ -38,7 +38,7 @@ const CharacterDetails = ({ character }: CharacterDetailsProps) => {
 	)
 
 	return (
-		<Card className="mb-6 bg-secondary border-green max-w-[52rem] w-full">
+		<Card className="mt-2 mb-6 bg-secondary border-green max-w-[52rem] w-full">
 			<CardHeader className="flex items-center gap-4 justify-between xs:flex-row">
 				<div className="mt-2 w-full">
 					<CardTitle className="text-green font-bold">
@@ -67,12 +67,22 @@ const CharacterDetails = ({ character }: CharacterDetailsProps) => {
 			<CardContent className="flex flex-col md:flex-row gap-8">
 				<div className="flex flex-col items-center gap-6">
 					<div className="w-[12rem] h-[12rem] relative">
-						<Image
-							src={character?.image || missingCharacterAvatarPath}
-							className="transition-all hover:scale-105"
-							alt="Character image"
-							fill
-						/>
+						{character?.image ? (
+							<Image
+								src={character?.image}
+								className="transition-all hover:scale-105"
+								alt="Character image"
+								fill
+							/>
+						) : (
+							<Image
+								data-testid="alternative-character-image"
+								src={missingCharacterAvatarPath}
+								className="transition-all hover:scale-105"
+								alt="Alternative character image"
+								fill
+							/>
+						)}
 					</div>
 					{character?.species && (
 						<Badge className="bg-green">{character?.species}</Badge>

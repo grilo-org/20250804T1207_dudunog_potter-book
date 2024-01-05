@@ -52,6 +52,7 @@ const PotionItem = ({ potion }: PotionItemProps) => {
 							<GiStandingPotion
 								data-testid="alternative-potion-image"
 								size="100%"
+								className="text-green transition-all hover:scale-105"
 								title="Alternative potion image"
 							/>
 						)}

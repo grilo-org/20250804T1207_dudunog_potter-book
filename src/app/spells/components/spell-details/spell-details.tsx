@@ -22,7 +22,7 @@ const SpellDetails = ({ spell }: SpellDetailsProps) => {
 	const hasData = useMemo(() => spell && (spell.name || spell?.effect), [spell])
 
 	return (
-		<Card className="mb-4 bg-secondary border-green max-w-[52rem] w-full">
+		<Card className="mt-2 mb-4 bg-secondary border-green max-w-[52rem] w-full">
 			<CardHeader className="flex items-center gap-4 justify-between xs:flex-row">
 				<CardTitle className="mt-2 text-green font-bold w-full">
 					{spell?.name}
@@ -52,7 +52,12 @@ const SpellDetails = ({ spell }: SpellDetailsProps) => {
 							alt="Spell image"
 						/>
 					) : (
-						<GiFairyWand size="100%" />
+						<GiFairyWand
+							data-testid="alternative-spell-image"
+							size="100%"
+							className="text-green transition-all hover:scale-105"
+							title="Alternative spell image"
+						/>
 					)}
 
 					{spell?.category && (

@@ -12,6 +12,7 @@ import {
 } from '@/shared/components/ui/card'
 import { FaArrowRightLong } from 'react-icons/fa6'
 import { Button } from '@/shared/components/ui/button'
+import { IoBookOutline } from 'react-icons/io5'
 
 type BookDetailsProps = {
 	book: Book
@@ -19,7 +20,7 @@ type BookDetailsProps = {
 
 const BookDetails = ({ book }: BookDetailsProps) => {
 	return (
-		<Card className="mb-6 bg-secondary border-green max-w-[52rem] w-full">
+		<Card className="mt-2 mb-6 bg-secondary border-green max-w-[52rem] w-full">
 			<CardHeader className="flex flex-row items-center justify-between">
 				<CardTitle className="text-green max-w-[70%] font-bold">
 					{book?.title}
@@ -39,18 +40,27 @@ const BookDetails = ({ book }: BookDetailsProps) => {
 				</Link>
 			</CardHeader>
 			<CardContent className="flex flex-col md:flex-row gap-8">
-				{book?.cover && (
-					<div className="flex flex-col items-center gap-6">
+				<div className="flex flex-col items-center gap-6">
+					{book?.cover ? (
 						<Image
 							width={200}
 							height={200}
-							src={String(book?.cover)}
+							src={book?.cover}
 							className="transition-all hover:scale-105"
 							alt="Book image"
 						/>
+					) : (
+						<IoBookOutline
+							data-testid="alternative-book-image"
+							size="100%"
+							className="text-green transition-all hover:scale-105"
+							title="Alternative book image"
+						/>
+					)}
+					{book?.pages && (
 						<Badge className="bg-green">{book?.pages} páginas</Badge>
-					</div>
-				)}
+					)}
+				</div>
 				<div className="flex flex-col gap-4">
 					<div className="space-y-1">
 						<p className="text-sm text-green font-bold leading-none">Autor</p>
