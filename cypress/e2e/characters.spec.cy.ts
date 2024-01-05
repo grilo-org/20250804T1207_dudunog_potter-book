@@ -18,7 +18,7 @@ describe('Characters', () => {
 			...CharacterPropsMock,
 		})
 
-		cy.getByTestId('character-item').first().find('a').first().click()
+		cy.getByTestId('character-item').eq(6).find('a').first().click()
 
 		cy.location('pathname').should('contain', `/characters/${character.id}`)
 	})
@@ -28,7 +28,7 @@ describe('Characters', () => {
 			...CharacterPropsMock,
 		})
 
-		cy.getByTestId('character-item').first().find('a').last().click()
+		cy.getByTestId('character-item').eq(6).find('a').last().click()
 
 		cy.location('pathname').should('contain', `/characters/${character.id}`)
 	})

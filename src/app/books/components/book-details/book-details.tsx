@@ -20,7 +20,10 @@ type BookDetailsProps = {
 
 const BookDetails = ({ book }: BookDetailsProps) => {
 	return (
-		<Card className="mt-2 mb-6 bg-secondary border-green max-w-[52rem] w-full">
+		<Card
+			data-testid="book-details"
+			className="mt-2 mb-6 bg-secondary border-green max-w-[52rem] w-full"
+		>
 			<CardHeader className="flex flex-row items-center justify-between">
 				<CardTitle className="text-green max-w-[70%] font-bold">
 					{book?.title}

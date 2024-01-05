@@ -63,26 +63,24 @@ const Pagination = ({
 				<strong>{lastItem}</strong> de <strong>{totalCountOfRegisters}</strong>
 			</div>
 			<PaginationContent className="flex flex-col sm:flex-row">
-				<PaginationItem>
-					<PaginationPrevious
-						onClick={() =>
-							onPageChange(currentPage === 1 ? 1 : currentPage - 1)
-						}
-						className={cn({
-							'opacity-50 hover:bg-inherit hover:text-inherit hover:cursor-not-allowed':
-								currentPage === 1,
-						})}
-						href=""
-					/>
-				</PaginationItem>
+				<PaginationPrevious
+					onClick={() => onPageChange(currentPage === 1 ? 1 : currentPage - 1)}
+					className={cn({
+						'opacity-50 hover:bg-inherit hover:text-inherit hover:cursor-not-allowed':
+							currentPage === 1,
+					})}
+					href=""
+				/>
 				<div className="flex gap-1">
 					{currentPage > 1 + siblingsCount && (
 						<Fragment>
-							<PaginationItem data-testid="pagination-item-1">
-								<PaginationLink onClick={() => onPageChange(1)} href="#">
-									1
-								</PaginationLink>
-							</PaginationItem>
+							<PaginationLink
+								data-testid="pagination-item-1"
+								onClick={() => onPageChange(1)}
+								href="#"
+							>
+								1
+							</PaginationLink>
 							{currentPage > 2 + siblingsCount && (
 								<PaginationItem>
 									<PaginationEllipsis />
@@ -93,35 +91,35 @@ const Pagination = ({
 					{previousPages.length > 0 &&
 						previousPages.map(page => {
 							return (
-								<PaginationItem
+								<PaginationLink
 									data-testid={`pagination-item-${page}`}
 									key={page}
+									onClick={() => onPageChange(page)}
+									href="#"
 								>
-									<PaginationLink onClick={() => onPageChange(page)} href="#">
-										{page}
-									</PaginationLink>
-								</PaginationItem>
+									{page}
+								</PaginationLink>
 							)
 						})}
-					<PaginationItem
+					<PaginationLink
 						data-testid={`pagination-item-${currentPage}`}
 						className="bg-minimal text-black rounded-md"
+						onClick={() => onPageChange(currentPage)}
+						href="#"
 					>
-						<PaginationLink onClick={() => onPageChange(currentPage)} href="#">
-							{currentPage}
-						</PaginationLink>
-					</PaginationItem>
+						{currentPage}
+					</PaginationLink>
 					{nextPages.length > 0 &&
 						nextPages.map(page => {
 							return (
-								<PaginationItem
+								<PaginationLink
 									data-testid={`pagination-item-${page}`}
 									key={page}
+									onClick={() => onPageChange(page)}
+									href="#"
 								>
-									<PaginationLink onClick={() => onPageChange(page)} href="#">
-										{page}
-									</PaginationLink>
-								</PaginationItem>
+									{page}
+								</PaginationLink>
 							)
 						})}
 					{currentPage < lastPage - siblingsCount && (
@@ -131,28 +129,26 @@ const Pagination = ({
 									<PaginationEllipsis />
 								</PaginationItem>
 							)}
-							<PaginationItem data-testid={`pagination-item-${lastPage}`}>
-								<PaginationLink onClick={() => onPageChange(lastPage)} href="#">
-									{lastPage}
-								</PaginationLink>
-							</PaginationItem>
+							<PaginationLink
+								data-testid={`pagination-item-${lastPage}`}
+								onClick={() => onPageChange(lastPage)}
+								href="#"
+							>
+								{lastPage}
+							</PaginationLink>
 						</Fragment>
 					)}
 				</div>
-				<PaginationItem>
-					<PaginationNext
-						onClick={() =>
-							onPageChange(
-								nextPages.length === 0 ? currentPage : currentPage + 1,
-							)
-						}
-						className={cn({
-							'opacity-50 hover:bg-inherit hover:text-inherit hover:cursor-not-allowed':
-								nextPages.length === 0,
-						})}
-						href=""
-					/>
-				</PaginationItem>
+				<PaginationNext
+					onClick={() =>
+						onPageChange(nextPages.length === 0 ? currentPage : currentPage + 1)
+					}
+					className={cn({
+						'opacity-50 hover:bg-inherit hover:text-inherit hover:cursor-not-allowed':
+							nextPages.length === 0,
+					})}
+					href=""
+				/>
 			</PaginationContent>
 		</PaginationUi>
 	)

@@ -38,7 +38,10 @@ const CharacterDetails = ({ character }: CharacterDetailsProps) => {
 	)
 
 	return (
-		<Card className="mt-2 mb-6 bg-secondary border-green max-w-[52rem] w-full">
+		<Card
+			data-testid="character-details"
+			className="mt-2 mb-6 bg-secondary border-green max-w-[52rem] w-full"
+		>
 			<CardHeader className="flex items-center gap-4 justify-between xs:flex-row">
 				<div className="mt-2 w-full">
 					<CardTitle className="text-green font-bold">

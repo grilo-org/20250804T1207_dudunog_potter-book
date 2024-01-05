@@ -63,7 +63,11 @@ export default function Spell() {
 		<Fragment>
 			<div className="mt-6 max-w-[52rem] w-full">
 				<Link href="/spells" className="mt-6 flex items-center gap-3">
-					<Button variant="link" className="gap-3 text-minimal">
+					<Button
+						data-testid="back-button"
+						variant="link"
+						className="gap-3 text-minimal"
+					>
 						<FaArrowLeftLong />
 						Voltar para feitiços
 					</Button>

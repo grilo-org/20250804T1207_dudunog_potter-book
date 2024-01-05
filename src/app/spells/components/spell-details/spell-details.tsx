@@ -22,7 +22,10 @@ const SpellDetails = ({ spell }: SpellDetailsProps) => {
 	const hasData = useMemo(() => spell && (spell.name || spell?.effect), [spell])
 
 	return (
-		<Card className="mt-2 mb-4 bg-secondary border-green max-w-[52rem] w-full">
+		<Card
+			data-testid="spell-details"
+			className="mt-2 mb-4 bg-secondary border-green max-w-[52rem] w-full"
+		>
 			<CardHeader className="flex items-center gap-4 justify-between xs:flex-row">
 				<CardTitle className="mt-2 text-green font-bold w-full">
 					{spell?.name}

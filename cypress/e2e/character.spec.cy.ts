@@ -43,4 +43,10 @@ describe('Character', () => {
 
 		cy.getByTestId(`${wandsTabKey}-tab-item-content`).should('exist')
 	})
+
+	it('should back to characters list when click in back button', () => {
+		cy.getByTestId('back-button').click()
+
+		cy.location('pathname').should('equal', '/characters')
+	})
 })

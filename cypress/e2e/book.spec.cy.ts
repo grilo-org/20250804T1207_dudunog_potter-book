@@ -45,4 +45,10 @@ describe('Book', () => {
 			timeout: 10000,
 		}).should('exist')
 	})
+
+	it('should back to books list when click in back button', () => {
+		cy.getByTestId('back-button').click()
+
+		cy.location('pathname').should('equal', '/books')
+	})
 })

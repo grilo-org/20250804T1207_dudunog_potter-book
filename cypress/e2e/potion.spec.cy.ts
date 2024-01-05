@@ -43,4 +43,10 @@ describe('Potion', () => {
 
 		cy.getByTestId(`${characteristicsTabKey}-tab-item-content`).should('exist')
 	})
+
+	it('should back to potions list when click in back button', () => {
+		cy.getByTestId('back-button').click()
+
+		cy.location('pathname').should('equal', '/potions')
+	})
 })
