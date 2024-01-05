@@ -7,7 +7,15 @@ import { FaArrowRightLong } from 'react-icons/fa6'
 const missingCharacterAvatarPath = '/missing_character.svg'
 const missingCharacterWhiteAvatarPath = '/missing_character_white.svg'
 
-const resources = [
+type ResourceProps = {
+	icon: string | JSX.Element
+	key: string
+	value: string
+	href: string
+	iconOnHover?: string
+}
+
+const resources: ResourceProps[] = [
 	{
 		icon: <IoBookOutline size={37} />,
 		key: 'Book',
@@ -19,6 +27,7 @@ const resources = [
 		key: 'Character',
 		value: 'Personagens',
 		href: '/characters',
+		iconOnHover: missingCharacterWhiteAvatarPath,
 	},
 	{
 		icon: <MdOutlineMovie size={37} />,
@@ -42,7 +51,7 @@ const resources = [
 
 const ActionsList = () => {
 	return (
-		<div className="mt-[20rem] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+		<div className="mt-[20rem] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 text-green">
 			{resources.map(resource => (
 				<Link key={resource.key} href={resource.href}>
 					<div className="group flex items-center space-x-4 rounded-md border p-4 bg-background hover:bg-green hover:text-minimal">
@@ -51,13 +60,13 @@ const ActionsList = () => {
 								<AvatarImage
 									width="auto"
 									height="auto"
-									src={missingCharacterAvatarPath}
+									src={resource.icon}
 									className="group-hover:hidden"
 								/>
 								<AvatarImage
 									width="auto"
 									height="auto"
-									src={missingCharacterWhiteAvatarPath}
+									src={String(resource.iconOnHover) ?? resource.icon}
 									className="hidden group-hover:block"
 								/>
 							</Avatar>

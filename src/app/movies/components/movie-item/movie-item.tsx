@@ -38,7 +38,7 @@ const MovieItem = ({ movie }: MovieItemProps) => {
 			<CardContent>
 				<div className="flex justify-center w-full">
 					<Link href={`movies/${movie.id}`}>
-						{movie.poster ? (
+						{movie?.poster ? (
 							<Image
 								width={200}
 								height={200}
@@ -50,6 +50,7 @@ const MovieItem = ({ movie }: MovieItemProps) => {
 							<MdOutlineMovie
 								data-testid="alternative-movie-image"
 								size="100%"
+								className="text-green transition-all hover:scale-105"
 								title="Alternative movie image"
 							/>
 						)}
