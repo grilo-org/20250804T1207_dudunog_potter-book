@@ -14,7 +14,7 @@ import {
 } from '@/shared/components/ui/card'
 import { useGetCharacter } from '@/app/characters/hooks/use-get-character'
 import { CharacterDetails } from '@/app/characters/components/character-details'
-import { FaArrowRightLong } from 'react-icons/fa6'
+import { FaArrowLeftLong, FaArrowRightLong } from 'react-icons/fa6'
 const missingCharacterAvatarPath = '/missing_character.svg'
 
 const CharacterSkeleton = () => (
@@ -70,8 +70,17 @@ export default function Character() {
 
 	return (
 		<Fragment>
+			<div className="mt-6 max-w-[52rem] w-full">
+				<Link href="/characters" className="mt-6 flex items-center gap-3">
+					<Button variant="link" className="gap-3 text-minimal">
+						<FaArrowLeftLong />
+						Voltar para personagens
+					</Button>
+				</Link>
+			</div>
+
 			{isLoading && (
-				<Card className="my-6 bg-secondary border-green max-w-[52rem] w-full">
+				<Card className="mb-6 bg-secondary border-green max-w-[52rem] w-full">
 					<CharacterSkeleton />
 				</Card>
 			)}
@@ -79,7 +88,7 @@ export default function Character() {
 			{character && <CharacterDetails character={character} />}
 
 			{!character && !isLoading && (
-				<Card className="my-4 bg-secondary border-green max-w-[52rem] w-full">
+				<Card className="my-6 bg-secondary border-green max-w-[52rem] w-full">
 					<div className="my-8 flex flex-col items-center text-center text-green font-bold">
 						<Avatar className="w-[12rem] h-[12rem] relative">
 							<AvatarImage

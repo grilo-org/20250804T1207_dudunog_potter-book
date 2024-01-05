@@ -13,7 +13,7 @@ import {
 	CardHeader,
 } from '@/shared/components/ui/card'
 import { MovieDetails } from '@/app/movies/components/movie-details'
-import { FaArrowRightLong } from 'react-icons/fa6'
+import { FaArrowLeftLong, FaArrowRightLong } from 'react-icons/fa6'
 import { MdOutlineMovie } from 'react-icons/md'
 
 const MovieSkeleton = () => (
@@ -69,8 +69,17 @@ export default function Movie() {
 
 	return (
 		<Fragment>
+			<div className="mt-6 max-w-[52rem] w-full">
+				<Link href="/movies" className="mt-6 flex items-center gap-3">
+					<Button variant="link" className="gap-3 text-minimal">
+						<FaArrowLeftLong />
+						Voltar para filmes
+					</Button>
+				</Link>
+			</div>
+
 			{isLoading && (
-				<Card className="my-6 bg-secondary border-green max-w-[52rem] w-full">
+				<Card className="mb-6 bg-secondary border-green max-w-[52rem] w-full">
 					<MovieSkeleton />
 				</Card>
 			)}

@@ -13,7 +13,7 @@ import {
 	CardHeader,
 } from '@/shared/components/ui/card'
 import { SpellDetails } from '@/app/spells/components/spell-details'
-import { FaArrowRightLong } from 'react-icons/fa6'
+import { FaArrowLeftLong, FaArrowRightLong } from 'react-icons/fa6'
 import { GiFairyWand } from 'react-icons/gi'
 
 const SpellSkeleton = () => (
@@ -61,8 +61,17 @@ export default function Spell() {
 
 	return (
 		<Fragment>
+			<div className="mt-6 max-w-[52rem] w-full">
+				<Link href="/spells" className="mt-6 flex items-center gap-3">
+					<Button variant="link" className="gap-3 text-minimal">
+						<FaArrowLeftLong />
+						Voltar para feitiços
+					</Button>
+				</Link>
+			</div>
+
 			{isLoading && (
-				<Card className="my-4 bg-secondary border-green max-w-[52rem] w-full">
+				<Card className="mb-6 bg-secondary border-green max-w-[52rem] w-full">
 					<SpellSkeleton />
 				</Card>
 			)}

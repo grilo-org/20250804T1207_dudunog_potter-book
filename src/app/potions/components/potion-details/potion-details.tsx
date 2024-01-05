@@ -26,7 +26,7 @@ const PotionDetails = ({ potion }: PotionDetailsProps) => {
 	)
 
 	return (
-		<Card className="my-4 bg-secondary border-green max-w-[52rem] w-full">
+		<Card className="mb-4 bg-secondary border-green max-w-[52rem] w-full">
 			<CardHeader className="flex items-center gap-4 justify-between xs:flex-row">
 				<CardTitle className="mt-2 text-green font-bold w-full">
 					{potion?.name}
