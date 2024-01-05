@@ -73,17 +73,14 @@ export default function Book() {
 	return (
 		<Fragment>
 			{isLoading && (
-				<Card
-					key={book?.id}
-					className="my-6 bg-secondary border-green max-w-[52rem] w-full"
-				>
+				<Card className="my-6 bg-secondary border-green max-w-[52rem] w-full">
 					<BookSkeleton />
 				</Card>
 			)}
 
-			{book ? (
-				<BookDetails book={book} />
-			) : (
+			{book && <BookDetails book={book} />}
+
+			{!book && !isLoading && (
 				<Card className="my-6 bg-secondary border-green max-w-[52rem] w-full">
 					<div className="my-8 flex flex-col items-center text-center text-green font-bold">
 						<IoBookOutline size={150} />

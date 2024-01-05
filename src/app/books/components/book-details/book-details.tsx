@@ -19,10 +19,7 @@ type BookDetailsProps = {
 
 const BookDetails = ({ book }: BookDetailsProps) => {
 	return (
-		<Card
-			key={book?.id}
-			className="my-6 bg-secondary border-green max-w-[52rem] w-full"
-		>
+		<Card className="my-6 bg-secondary border-green max-w-[52rem] w-full">
 			<CardHeader className="flex flex-row items-center justify-between">
 				<CardTitle className="text-green max-w-[70%] font-bold">
 					{book?.title}
