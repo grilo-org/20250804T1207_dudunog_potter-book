@@ -15,8 +15,7 @@ import {
 	TooltipProvider,
 	TooltipTrigger,
 } from '@/shared/components/ui/tooltip'
-import { IoCalendarNumberOutline } from 'react-icons/io5'
-import { GoBook } from 'react-icons/go'
+import { IoBookOutline, IoCalendarNumberOutline } from 'react-icons/io5'
 
 type BookItemProps = {
 	book: Book
@@ -37,7 +36,7 @@ const BookItem = ({ book }: BookItemProps) => {
 			<CardContent>
 				<div className="flex justify-center w-full">
 					<Link href={`books/${book.id}`}>
-						{book.cover ? (
+						{book?.cover ? (
 							<Image
 								width={200}
 								height={200}
@@ -46,9 +45,10 @@ const BookItem = ({ book }: BookItemProps) => {
 								alt="Book image"
 							/>
 						) : (
-							<GoBook
+							<IoBookOutline
 								data-testid="alternative-book-image"
 								size="100%"
+								className="text-green transition-all hover:scale-105"
 								title="Alternative book image"
 							/>
 						)}
