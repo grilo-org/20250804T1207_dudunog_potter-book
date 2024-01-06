@@ -6,6 +6,7 @@ import Image from 'next/image'
 import { Character } from '@/entities/Character'
 import { Badge } from '@/shared/components/ui/badge'
 import { Button } from '@/shared/components/ui/button'
+import { Alert, AlertDescription } from '@/shared/components/ui/alert'
 import {
 	Card,
 	CardContent,
@@ -93,6 +94,7 @@ const CharacterDetails = ({ character }: CharacterDetailsProps) => {
 						<Badge className="bg-green">{character?.species}</Badge>
 					)}
 				</div>
+
 				{hasData && (
 					<div className="flex flex-col gap-4">
 						{character?.born && (
@@ -217,11 +219,18 @@ const CharacterDetails = ({ character }: CharacterDetailsProps) => {
 						)}
 					</div>
 				)}
+
 				{!hasData && (
-					<div className="mt-6">
-						<p className="text-base text-green leading-none">
-							Não há dados para este personagem
-						</p>
+					<div>
+						<Alert
+							data-testid="no-character-data"
+							variant="default"
+							className="mt-4 bg-transparent border-green"
+						>
+							<AlertDescription>
+								Não há dados disponíveis para este personagem
+							</AlertDescription>
+						</Alert>
 					</div>
 				)}
 			</CardContent>

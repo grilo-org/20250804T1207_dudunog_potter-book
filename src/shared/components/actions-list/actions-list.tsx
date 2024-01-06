@@ -58,7 +58,7 @@ const ActionsList = () => {
 					data-testid={`${resource.key}-listing-item`}
 					href={resource.href}
 				>
-					<div className="group flex items-center space-x-4 rounded-md border p-4 bg-background hover:bg-green hover:text-minimal">
+					<div className="group flex items-center space-x-4 rounded-md border p-4 bg-background transition-all hover:scale-105 hover:bg-green hover:text-minimal">
 						{typeof resource.icon === 'string' ? (
 							<Avatar className="w-[2.4rem] h-[2.4rem] relative">
 								<AvatarImage

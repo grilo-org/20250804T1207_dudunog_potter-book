@@ -26,8 +26,8 @@ const BookDetails = ({ book }: BookDetailsProps) => {
 			data-testid="book-details"
 			className="mt-2 mb-6 bg-secondary border-green max-w-[52rem] w-full"
 		>
-			<CardHeader className="flex flex-row items-center justify-between">
-				<CardTitle className="text-green max-w-[70%] font-bold">
+			<CardHeader className="flex items-center gap-4 justify-between xs:flex-row">
+				<CardTitle className="mt-2 text-green font-bold w-full">
 					{book?.title}
 				</CardTitle>
 				<Link

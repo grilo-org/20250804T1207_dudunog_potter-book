@@ -4,8 +4,9 @@ import { useMemo } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Movie } from '@/entities/Movie'
-import { Button } from '@/shared/components/ui/button'
 import { Badge } from '@/shared/components/ui/badge'
+import { Button } from '@/shared/components/ui/button'
+import { Alert, AlertDescription } from '@/shared/components/ui/alert'
 import {
 	Card,
 	CardContent,
@@ -89,7 +90,7 @@ const MovieDetails = ({ movie }: MovieDetailsProps) => {
 					)}
 				</div>
 
-				{hasData && (
+				{!hasData && (
 					<div className="flex flex-col gap-4">
 						{movie?.releaseDate && (
 							<div className="space-y-1 max-w-[35rem]">
@@ -142,11 +143,17 @@ const MovieDetails = ({ movie }: MovieDetailsProps) => {
 					</div>
 				)}
 
-				{!hasData && (
-					<div className="mt-6">
-						<p className="text-base text-green leading-none">
-							Não há dados para este filme
-						</p>
+				{true && (
+					<div>
+						<Alert
+							data-testid="no-character-data"
+							variant="default"
+							className="mt-4 bg-transparent border-green"
+						>
+							<AlertDescription>
+								Não há dados disponíveis para este filme
+							</AlertDescription>
+						</Alert>
 					</div>
 				)}
 			</CardContent>

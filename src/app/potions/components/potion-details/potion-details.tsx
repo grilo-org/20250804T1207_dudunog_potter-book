@@ -2,8 +2,9 @@ import { useMemo } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Potion } from '@/entities/Potion'
-import { Button } from '@/shared/components/ui/button'
 import { Badge } from '@/shared/components/ui/badge'
+import { Button } from '@/shared/components/ui/button'
+import { Alert, AlertDescription } from '@/shared/components/ui/alert'
 import {
 	Card,
 	CardContent,
@@ -28,7 +29,7 @@ const PotionDetails = ({ potion }: PotionDetailsProps) => {
 	return (
 		<Card
 			data-testid="potion-details"
-			className="mt-2 mb-4 bg-secondary border-green max-w-[52rem] w-full"
+			className="mt-2 mb-6 bg-secondary border-green max-w-[52rem] w-full"
 		>
 			<CardHeader className="flex items-center gap-4 justify-between xs:flex-row">
 				<CardTitle className="mt-2 text-green font-bold w-full">
@@ -106,10 +107,16 @@ const PotionDetails = ({ potion }: PotionDetailsProps) => {
 				)}
 
 				{!hasData && (
-					<div className="mt-6">
-						<p className="text-base text-green leading-none">
-							Não há dados para esta poção
-						</p>
+					<div>
+						<Alert
+							data-testid="no-character-data"
+							variant="default"
+							className="mt-4 bg-transparent border-green w-full"
+						>
+							<AlertDescription>
+								Não há dados disponíveis para esta poção
+							</AlertDescription>
+						</Alert>
 					</div>
 				)}
 			</CardContent>
