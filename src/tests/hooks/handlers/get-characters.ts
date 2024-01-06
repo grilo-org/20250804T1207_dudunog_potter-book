@@ -58,7 +58,7 @@ export const makeCharacterListResponse = () => ({
 				image: null,
 				jobs: [],
 				marital_status: null,
-				name: '1996 Gryffindor Quidditch Keeper trials spectators',
+				name: 'Harry Potter',
 				nationality: null,
 				patronus: null,
 				romances: [],
@@ -201,10 +201,29 @@ export const makeCharacterListResponse = () => ({
 
 export const getCharactersSuccessResponseHandler = http.get(
 	`${BASE_API_URL}characters`,
-	async () => {
-		return new Response(JSON.stringify(makeCharacterListResponse()), {
-			status: 200,
-		})
+	async info => {
+		const url = new URL(info.request.url)
+		const nameFilter = url.searchParams?.get('filter[name_cont]')
+
+		let filteredCharacters = makeCharacterListResponse().data
+
+		if (nameFilter) {
+			filteredCharacters = filteredCharacters.filter(character =>
+				character.attributes.name
+					.toLowerCase()
+					.includes(nameFilter.toLowerCase()),
+			)
+		}
+
+		return new Response(
+			JSON.stringify({
+				...makeCharacterListResponse(),
+				data: filteredCharacters,
+			}),
+			{
+				status: 200,
+			},
+		)
 	},
 )
 

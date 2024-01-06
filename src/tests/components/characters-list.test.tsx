@@ -12,7 +12,13 @@ import {
 	getCharactersSuccessResponseHandler,
 } from '@/tests/hooks/handlers'
 import { HttpHandler } from 'msw'
-import { render, renderHook, screen, waitFor } from '@testing-library/react'
+import {
+	fireEvent,
+	render,
+	renderHook,
+	screen,
+	waitFor,
+} from '@testing-library/react'
 
 const makeSut = (handler: HttpHandler) => {
 	server.use(handler)
@@ -37,7 +43,7 @@ const makeSut = (handler: HttpHandler) => {
 }
 
 describe('characters-list component', () => {
-	test('renders skeleton when loading or fetching', async () => {
+	test('should renders skeleton when loading or fetching', async () => {
 		const { result } = makeSut(getCharactersSuccessResponseHandler)
 
 		const skeletons = screen.getAllByTestId('character-skeleton-item')
@@ -78,6 +84,22 @@ describe('characters-list component', () => {
 
 			const error = screen.getByTestId('error')
 			expect(error).toBeInTheDocument()
+		})
+	})
+
+	test('should update characters list when search field is filled', async () => {
+		const { result } = makeSut(getCharactersSuccessResponseHandler)
+
+		const searchField = screen.getByTestId('search-field')
+		fireEvent.input(searchField, { target: { value: 'slytherin' } })
+
+		expect(result.current.isLoading).toBeTruthy()
+
+		await waitFor(() => {
+			expect(result.current.isSuccess).toBeTruthy()
+
+			const characterItems = screen.getAllByTestId('character-item')
+			expect(characterItems).toHaveLength(1)
 		})
 	})
 })

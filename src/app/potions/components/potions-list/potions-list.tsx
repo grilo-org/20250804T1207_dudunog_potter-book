@@ -60,7 +60,11 @@ const PotionsList = () => {
 
 	return (
 		<Fragment>
-			<SearchField className="mt-4 w-full" onSearch={handleSearch} />
+			<SearchField
+				data-testid="search-field"
+				className="mt-4 w-full"
+				onSearch={handleSearch}
+			/>
 
 			{isError ? (
 				<Error

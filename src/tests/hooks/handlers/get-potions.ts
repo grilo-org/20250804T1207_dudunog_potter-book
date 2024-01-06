@@ -136,10 +136,27 @@ export const makePotionListResponse = () => ({
 
 export const getPotionsSuccessResponseHandler = http.get(
 	`${BASE_API_URL}potions`,
-	async () => {
-		return new Response(JSON.stringify(makePotionListResponse()), {
-			status: 200,
-		})
+	async info => {
+		const url = new URL(info.request.url)
+		const nameFilter = url.searchParams?.get('filter[name_cont]')
+
+		let filteredPotions = makePotionListResponse().data
+
+		if (nameFilter) {
+			filteredPotions = filteredPotions.filter(potion =>
+				potion.attributes.name.toLowerCase().includes(nameFilter.toLowerCase()),
+			)
+		}
+
+		return new Response(
+			JSON.stringify({
+				...makePotionListResponse(),
+				data: filteredPotions,
+			}),
+			{
+				status: 200,
+			},
+		)
 	},
 )
 

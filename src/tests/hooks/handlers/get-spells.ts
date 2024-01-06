@@ -125,10 +125,27 @@ export const makeSpellListResponse = () => ({
 
 export const getSpellsSuccessResponseHandler = http.get(
 	`${BASE_API_URL}spells`,
-	async () => {
-		return new Response(JSON.stringify(makeSpellListResponse()), {
-			status: 200,
-		})
+	async info => {
+		const url = new URL(info.request.url)
+		const nameFilter = url.searchParams?.get('filter[name_cont]')
+
+		let filteredSpells = makeSpellListResponse().data
+
+		if (nameFilter) {
+			filteredSpells = filteredSpells.filter(spell =>
+				spell.attributes.name.toLowerCase().includes(nameFilter.toLowerCase()),
+			)
+		}
+
+		return new Response(
+			JSON.stringify({
+				...makeSpellListResponse(),
+				data: filteredSpells,
+			}),
+			{
+				status: 200,
+			},
+		)
 	},
 )
 
