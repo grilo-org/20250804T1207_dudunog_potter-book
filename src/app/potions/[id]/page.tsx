@@ -13,7 +13,7 @@ import {
 	CardHeader,
 } from '@/shared/components/ui/card'
 import { PotionDetails } from '@/app/potions/components/potion-details'
-import { FaArrowLeftLong, FaArrowRightLong } from 'react-icons/fa6'
+import { FaArrowLeftLong } from 'react-icons/fa6'
 import { GiStandingPotion } from 'react-icons/gi'
 
 const PotionSkeleton = () => (
@@ -90,20 +90,10 @@ export default function Potion() {
 			{potion && <PotionDetails potion={potion} />}
 
 			{!potion && !isLoading && (
-				<Card className="my-6 bg-secondary border-green max-w-[52rem] w-full">
+				<Card className="mt-2 bg-secondary border-green max-w-[52rem] w-full">
 					<div className="my-8 flex flex-col items-center text-center text-green font-bold">
 						<GiStandingPotion size={150} />
 						<p>Nenhuma poção encontrada</p>
-
-						<Link href="/potions" className="mt-10 flex items-center gap-3">
-							<Button
-								variant="default"
-								className="mt-0 flex items-center gap-3 bg-green"
-							>
-								Ir para a página de poções
-								<FaArrowRightLong />
-							</Button>
-						</Link>
 					</div>
 				</Card>
 			)}

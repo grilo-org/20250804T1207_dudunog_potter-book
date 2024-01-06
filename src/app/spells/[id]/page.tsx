@@ -13,7 +13,7 @@ import {
 	CardHeader,
 } from '@/shared/components/ui/card'
 import { SpellDetails } from '@/app/spells/components/spell-details'
-import { FaArrowLeftLong, FaArrowRightLong } from 'react-icons/fa6'
+import { FaArrowLeftLong } from 'react-icons/fa6'
 import { GiFairyWand } from 'react-icons/gi'
 
 const SpellSkeleton = () => (
@@ -83,20 +83,10 @@ export default function Spell() {
 			{spell && <SpellDetails spell={spell} />}
 
 			{!spell && !isLoading && (
-				<Card className="my-6 bg-secondary border-green max-w-[52rem] w-full">
+				<Card className="mt-2 bg-secondary border-green max-w-[52rem] w-full">
 					<div className="my-8 flex flex-col items-center text-center text-green font-bold">
 						<GiFairyWand size={150} />
-						<p className="mt-6">Nenhum feitiço encontrada</p>
-
-						<Link href="/spells" className="mt-10 flex items-center gap-3">
-							<Button
-								variant="default"
-								className="mt-0 flex items-center gap-3 bg-green"
-							>
-								Ir para a página de feitiços
-								<FaArrowRightLong />
-							</Button>
-						</Link>
+						<p className="mt-6">Nenhum feitiço encontrado</p>
 					</div>
 				</Card>
 			)}
