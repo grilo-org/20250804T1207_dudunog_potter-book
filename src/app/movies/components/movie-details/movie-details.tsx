@@ -1,3 +1,5 @@
+'use client'
+
 import { useMemo } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
@@ -77,6 +79,7 @@ const MovieDetails = ({ movie }: MovieDetailsProps) => {
 					{movie?.trailer && (
 						<div className="mt-6 w-72 h-40">
 							<iframe
+								data-testid="movie-trailer-iframe"
 								src={movie?.trailer.split('watch?v=').join('embed/')}
 								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 								allowFullScreen
@@ -95,6 +98,16 @@ const MovieDetails = ({ movie }: MovieDetailsProps) => {
 								</p>
 								<p className="text-sm text-muted-foreground">
 									{movie?.releaseDate}
+								</p>
+							</div>
+						)}
+						{movie?.runningTime && (
+							<div className="space-y-1 max-w-[35rem]">
+								<p className="text-sm text-green font-bold leading-none">
+									Duração
+								</p>
+								<p className="text-sm text-muted-foreground">
+									{movie?.runningTime}
 								</p>
 							</div>
 						)}

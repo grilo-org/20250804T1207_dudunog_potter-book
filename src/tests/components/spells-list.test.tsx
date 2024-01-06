@@ -98,7 +98,7 @@ describe('spells-list component', () => {
 		await waitFor(() => {
 			expect(result.current.isSuccess).toBeTruthy()
 
-			const potionItems = screen.getAllByTestId('potion-item')
+			const potionItems = screen.getAllByTestId('spell-item')
 			expect(potionItems).toHaveLength(1)
 		})
 	})

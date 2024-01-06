@@ -8,7 +8,7 @@ export const makeSpellResponse = () => ({
 		attributes: {
 			slug: 'alarte-ascendare',
 			category: 'Charm',
-			creator: '',
+			creator: 'test',
 			effect: 'Rockets target upward',
 			hand: 'Brandish wand',
 			image:

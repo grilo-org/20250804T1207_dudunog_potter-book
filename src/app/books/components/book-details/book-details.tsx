@@ -1,8 +1,10 @@
+'use client'
+
 import Link from 'next/link'
 import Image from 'next/image'
 import { Book } from '@/entities/Book'
 import { Badge } from '@/shared/components/ui/badge'
-import { ChaptersList } from '@/app/books/components/chapters-list'
+import { Button } from '@/shared/components/ui/button'
 import {
 	Card,
 	CardContent,
@@ -10,8 +12,8 @@ import {
 	CardHeader,
 	CardTitle,
 } from '@/shared/components/ui/card'
+import { ChaptersList } from '@/app/books/components/chapters-list'
 import { FaArrowRightLong } from 'react-icons/fa6'
-import { Button } from '@/shared/components/ui/button'
 import { IoBookOutline } from 'react-icons/io5'
 
 type BookDetailsProps = {

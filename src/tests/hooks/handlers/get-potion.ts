@@ -16,8 +16,8 @@ export const makePotionResponse = () => ({
 			ingredients: 'Newt spleens, Bananas, An orange snake, A green leaf',
 			manufacturers: '',
 			name: 'Ageing Potion',
-			side_effects: '',
-			time: '',
+			side_effects: 'test',
+			time: 'Six hours',
 			wiki: 'https://harrypotter.fandom.com/wiki/Amortentia',
 		},
 		links: {

@@ -27,9 +27,16 @@ const SpellDetails = ({ spell }: SpellDetailsProps) => {
 			className="mt-2 mb-4 bg-secondary border-green max-w-[52rem] w-full"
 		>
 			<CardHeader className="flex items-center gap-4 justify-between xs:flex-row">
-				<CardTitle className="mt-2 text-green font-bold w-full">
-					{spell?.name}
-				</CardTitle>
+				<div className="mt-2 w-full">
+					<CardTitle className="mt-2 text-green font-bold w-full">
+						{spell?.name}
+					</CardTitle>
+					{spell && spell?.incantation && (
+						<p className="text-sm text-muted-foreground">
+							{spell?.incantation}
+						</p>
+					)}
+				</div>
 				<Link
 					href={String(spell?.wiki)}
 					target="_blank"
