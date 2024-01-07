@@ -64,7 +64,7 @@ describe('use-get-book-chapters hook', () => {
 
 		await waitFor(() => {
 			expect(result.current.isSuccess).toBeTruthy()
-			expect(result.current.bookChapters).toBeNull()
+			expect(result.current.bookChapters).toEqual([])
 		})
 	})
 

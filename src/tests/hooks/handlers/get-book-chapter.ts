@@ -75,8 +75,7 @@ export const makeBookChaptersResponse = () => ({
 			attributes: {
 				slug: 'the-keeper-of-the-keys',
 				order: 4,
-				summary:
-					"The person hammering on the door enters the cabin and introduces himself as Hagrid, the Keeper of the Keys in Hogwarts School of Witchcraft and Wizardry. He is a half-giant and a friend of Harry's parents, Lily and James. Hagrid informs Harry about his magical heritage, reveals his true identity as a wizard, and explains that he is to attend Hogwarts. Hagrid's arrival marks the beginning of Harry's journey into the wizarding world, his introduction to the magical community and his newfound destiny.",
+				summary: '',
 				title: 'The Keeper of the Keys',
 			},
 			relationships: {
@@ -136,11 +135,25 @@ export const getBookChaptersSuccessResponseHandler = (id: string) =>
 		})
 	})
 
-export const getBookChaptersEmptyResponseHandler = (id: string) =>
+export const getBookChaptersNullBodyResponseHandler = (id: string) =>
 	http.get(`${BASE_API_URL}books/${id}/chapters`, async () => {
 		return new Response(JSON.stringify({}), {
 			status: 200,
 		})
+	})
+
+export const getBookChaptersEmptyResponseHandler = (id: string) =>
+	http.get(`${BASE_API_URL}books/${id}/chapters`, async () => {
+		return new Response(
+			JSON.stringify({
+				meta: makeBookChaptersResponse().meta,
+				links: makeBookChaptersResponse().links,
+				data: [],
+			}),
+			{
+				status: 200,
+			},
+		)
 	})
 
 export const getBookChaptersErrorResponseHandler = (id: string) =>

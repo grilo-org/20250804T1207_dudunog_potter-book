@@ -89,7 +89,7 @@ const BookDetails = ({ book }: BookDetailsProps) => {
 					</div>
 				</div>
 			</CardContent>
-			<CardFooter>
+			<CardFooter className="mt-4 flex flex-col">
 				<ChaptersList bookId={book.id} />
 			</CardFooter>
 		</Card>

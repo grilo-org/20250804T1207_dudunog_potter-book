@@ -70,7 +70,10 @@ const SpellsList = () => {
 				/>
 			) : (
 				<Fragment>
-					<div className="mt-4 grid grid-cols-1 justify-items-center md:grid-cols-2 lg:grid-cols-3 gap-3">
+					<div
+						data-testid="spells-list"
+						className="mt-4 grid grid-cols-1 justify-items-center md:grid-cols-2 lg:grid-cols-3 gap-3"
+					>
 						{isLoading || isFetching ? (
 							<SpellsListSkeleton length={6} />
 						) : (

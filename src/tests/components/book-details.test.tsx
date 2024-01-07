@@ -1,11 +1,19 @@
 import { Book } from '@/entities/Book'
+import { useGetBookChapters } from '@/app/books/hooks/use-get-book-chapters'
 import { BookDetails } from '@/app/books/components/book-details'
+import { server } from '@/setup-tests'
 import { BookPropsMock } from '@/tests/mocks/book.mock'
 import { makeRouterSut, resetMockRouter, wrapper } from '@/tests/utils'
-import { render, screen } from '@testing-library/react'
+import { getBookChaptersSuccessResponseHandler } from '@/tests/hooks/handlers'
+import { HttpHandler } from 'msw'
+import { render, renderHook, screen, waitFor } from '@testing-library/react'
 import { MemoryRouterProvider } from 'next-router-mock/MemoryRouterProvider'
 
-const makeSut = (initialBook?: Book) => {
+const makeSut = (handler?: HttpHandler, initialBook?: Book) => {
+	if (handler) {
+		server.use(handler)
+	}
+
 	makeRouterSut()
 
 	const book =
@@ -13,6 +21,14 @@ const makeSut = (initialBook?: Book) => {
 		new Book({
 			...BookPropsMock,
 		})
+
+	const { result } = renderHook(
+		() =>
+			useGetBookChapters({
+				id: book.id,
+			}),
+		{ wrapper },
+	)
 
 	render(<BookDetails book={book} />, {
 		wrapper: ({ children }) =>
@@ -23,6 +39,7 @@ const makeSut = (initialBook?: Book) => {
 
 	return {
 		book,
+		result,
 	}
 }
 
@@ -48,6 +65,7 @@ describe('book-details component', () => {
 
 	test('should renders alternative image when book image is not available', async () => {
 		makeSut(
+			undefined,
 			new Book({
 				...BookPropsMock,
 				cover: '',
@@ -55,5 +73,16 @@ describe('book-details component', () => {
 		)
 
 		expect(screen.getByTestId('alternative-book-image')).toBeInTheDocument()
+	})
+
+	test('should renders ChaptersList', async () => {
+		const bookId = '99015cdb-bf16-4042-863a-b25b41b004f2'
+		const { result } = makeSut(getBookChaptersSuccessResponseHandler(bookId))
+
+		await waitFor(() => {
+			expect(result.current.isSuccess).toBeTruthy()
+
+			expect(screen.getByTestId('chapters-list')).toBeInTheDocument()
+		})
 	})
 })

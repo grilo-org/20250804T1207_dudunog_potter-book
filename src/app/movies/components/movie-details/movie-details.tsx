@@ -90,7 +90,7 @@ const MovieDetails = ({ movie }: MovieDetailsProps) => {
 					)}
 				</div>
 
-				{!hasData && (
+				{hasData && (
 					<div className="flex flex-col gap-4">
 						{movie?.releaseDate && (
 							<div className="space-y-1 max-w-[35rem]">
@@ -143,7 +143,7 @@ const MovieDetails = ({ movie }: MovieDetailsProps) => {
 					</div>
 				)}
 
-				{true && (
+				{!hasData && (
 					<div>
 						<Alert
 							data-testid="no-character-data"

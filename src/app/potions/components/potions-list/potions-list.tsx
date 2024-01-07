@@ -74,7 +74,10 @@ const PotionsList = () => {
 				/>
 			) : (
 				<Fragment>
-					<div className="mt-4 grid grid-cols-1 justify-items-center md:grid-cols-2 lg:grid-cols-3 gap-3">
+					<div
+						data-testid="potions-list"
+						className="mt-4 grid grid-cols-1 justify-items-center md:grid-cols-2 lg:grid-cols-3 gap-3"
+					>
 						{isLoading || isFetching ? (
 							<PotionsListSkeleton length={6} />
 						) : (

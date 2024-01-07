@@ -12,9 +12,9 @@ export const makePotionResponse = () => ({
 			effect: 'Aged drinker temporarily',
 			image:
 				'https://static.wikia.nocookie.net/harrypotter/images/5/51/Ageing_Potion_PM.png',
-			inventors: '',
+			inventors: 'Fred and George Weasley',
 			ingredients: 'Newt spleens, Bananas, An orange snake, A green leaf',
-			manufacturers: '',
+			manufacturers: 'Fred and George Weasley',
 			name: 'Ageing Potion',
 			side_effects: 'test',
 			time: 'Six hours',
