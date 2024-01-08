@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
-import { inter } from '@/fonts'
+import { harryPotterFont, inter } from '@/fonts'
 import Providers from '@/app/Providers'
 import { cn } from '@/lib/utils'
 import './globals.css'
@@ -23,7 +23,7 @@ export default function RootLayout({
 						<Link href="/">
 							<h1
 								className={cn(
-									// harryPotterFont.className,
+									harryPotterFont.className,
 									'text-[5rem] text-minimal text-center leading-none',
 								)}
 							>
