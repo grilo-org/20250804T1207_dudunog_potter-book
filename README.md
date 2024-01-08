@@ -1,4 +1,4 @@
-[![Coverage Status](https://coveralls.io/repos/github/dudunog/potter-book/badge.svg?branch=)](https://coveralls.io/github/dudunog/potter-book?branch=)
+[![Coverage Status](https://coveralls.io/repos/github/dudunog/potter-book/badge.svg?branch=main)](https://coveralls.io/github/dudunog/potter-book?branch=main)
 [![MIT License](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 <h1 align="center">
