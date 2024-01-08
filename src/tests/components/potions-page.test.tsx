@@ -12,7 +12,7 @@ const makeSut = () => {
 	return {}
 }
 
-describe('potions-page component', () => {
+describe('potions page', () => {
 	test('should renders correctly', () => {
 		makeSut()
 

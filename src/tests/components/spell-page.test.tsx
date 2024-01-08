@@ -48,7 +48,7 @@ const makeSut = (handler: HttpHandler, spellId: string) => {
 	}
 }
 
-describe('spell-page component', () => {
+describe('spell page', () => {
 	afterEach(() =>
 		resetMockRouter('/spells/363adee4-5b00-47cc-9dab-a2ab5bbbaae4'),
 	)

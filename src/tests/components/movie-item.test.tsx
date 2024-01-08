@@ -3,8 +3,8 @@ import { MovieItem } from '@/app/movies/components/movie-item'
 import { MoviePropsMock } from '@/tests/mocks/movie.mock'
 import { makeRouterSut, resetMockRouter } from '@/tests/utils'
 import { fireEvent, render, screen } from '@testing-library/react'
-import { MemoryRouterProvider } from 'next-router-mock/MemoryRouterProvider'
 import mockRouter from 'next-router-mock'
+import { MemoryRouterProvider } from 'next-router-mock/MemoryRouterProvider'
 
 const makeSut = (initialMovie?: Movie) => {
 	makeRouterSut()

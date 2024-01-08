@@ -12,7 +12,7 @@ const makeSut = () => {
 	return {}
 }
 
-describe('books-page component', () => {
+describe('books page', () => {
 	test('should renders correctly', () => {
 		makeSut()
 

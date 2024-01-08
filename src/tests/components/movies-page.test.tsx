@@ -12,7 +12,7 @@ const makeSut = () => {
 	return {}
 }
 
-describe('movies-page component', () => {
+describe('movies page', () => {
 	test('should renders correctly', () => {
 		makeSut()
 

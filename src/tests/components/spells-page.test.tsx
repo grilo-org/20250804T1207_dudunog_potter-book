@@ -12,7 +12,7 @@ const makeSut = () => {
 	return {}
 }
 
-describe('spells-page component', () => {
+describe('spells page', () => {
 	test('should renders correctly', () => {
 		makeSut()
 

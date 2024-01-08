@@ -3,8 +3,8 @@ import { PotionItem } from '@/app/potions/components/potion-item'
 import { PotionPropsMock } from '@/tests/mocks/potion.mock'
 import { makeRouterSut, resetMockRouter } from '@/tests/utils'
 import { fireEvent, render, screen } from '@testing-library/react'
-import { MemoryRouterProvider } from 'next-router-mock/MemoryRouterProvider'
 import mockRouter from 'next-router-mock'
+import { MemoryRouterProvider } from 'next-router-mock/MemoryRouterProvider'
 
 const makeSut = (initialPotion?: Potion) => {
 	makeRouterSut()
