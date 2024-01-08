@@ -3,14 +3,13 @@ import { http } from 'msw'
 
 export const makeCharacterResponse = () => ({
 	data: {
-		id: 'f096911b-a140-4cee-96f3-0f92b6a56102',
+		id: '70107ed4-9555-4d21-8fbc-c79bd90800ba',
 		type: 'character',
 		attributes: {
-			slug: 'zola-farrell',
-			alias_names: [],
+			alias_names: ['Farrell'],
 			animagus: null,
 			blood_status: 'Pure-blood',
-			boggart: '',
+			boggart: 'boggart test',
 			born: 'Pre 1 September 1977',
 			died: null,
 			eye_color: 'Blue',
@@ -25,18 +24,18 @@ export const makeCharacterResponse = () => ({
 			house: 'Gryffindor',
 			image:
 				'https://static.wikia.nocookie.net/harrypotter/images/a/a4/Zola_Farrell_MA_BBB.png',
-			jobs: ['Chaser for the Holyhead Harpies'],
+			jobs: [],
 			marital_status: 'Married',
 			name: 'Zola G. Farrell',
 			nationality: 'British or Irish',
-			patronus: '',
+			patronus: 'test',
 			romances: ['Milo Farrell (husband)'],
 			skin_color: 'White',
 			species: 'Human',
 			titles: ['Chaser'],
 			wands: ["12¼', Cedar, unicorn hair"],
-			weight: '',
-			wiki: 'https://harrypotter.fandom.com/wiki/Zola_Farrell',
+			weight: '120 lbs',
+			wiki: 'https://harrypotter.fandom.com/wiki/Aberforth_Dumbledore',
 		},
 		links: {
 			self: '/v1/characters/f096911b-a140-4cee-96f3-0f92b6a56102',
@@ -70,4 +69,23 @@ export const getCharacterErrorResponseHandler = (id: string) =>
 		return new Response(null, {
 			status: 500,
 		})
+	})
+
+export const getCharacterNotFoundResponseHandler = (id: string) =>
+	http.get(`${BASE_API_URL}characters/${id}`, async () => {
+		return new Response(
+			JSON.stringify({
+				errors: [
+					{
+						status: '404',
+						source: null,
+						title: 'Not Found',
+						detail: `Couldn't find Character with 'id'=${id}`,
+					},
+				],
+			}),
+			{
+				status: 404,
+			},
+		)
 	})

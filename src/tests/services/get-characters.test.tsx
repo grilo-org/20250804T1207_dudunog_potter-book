@@ -34,7 +34,7 @@ describe('get-characters service', () => {
 			rowsPerPage: DEFAULT_PAGINATION_PAGE_SIZE,
 		})
 
-		expect(characters.data).toHaveLength(5)
+		expect(characters.data).toHaveLength(1)
 	})
 
 	test.fails('should fails when the request fails', async () => {

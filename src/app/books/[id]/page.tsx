@@ -13,7 +13,7 @@ import {
 } from '@/shared/components/ui/card'
 import { BookDetails } from '@/app/books/components/book-details'
 import { useGetBook } from '@/app/books/hooks/use-get-book'
-import { FaArrowLeftLong, FaArrowRightLong } from 'react-icons/fa6'
+import { FaArrowLeftLong } from 'react-icons/fa6'
 import { IoBookOutline } from 'react-icons/io5'
 
 const BookSkeleton = () => (
@@ -74,7 +74,11 @@ export default function Book() {
 		<Fragment>
 			<div className="mt-6 max-w-[52rem] w-full">
 				<Link href="/books" className="mt-6 flex items-center gap-3">
-					<Button variant="link" className="gap-3 text-minimal">
+					<Button
+						data-testid="back-button"
+						variant="link"
+						className="gap-3 text-minimal"
+					>
 						<FaArrowLeftLong />
 						Voltar para livros
 					</Button>
@@ -82,7 +86,10 @@ export default function Book() {
 			</div>
 
 			{isLoading && (
-				<Card className="mb-6 bg-secondary border-green max-w-[52rem] w-full">
+				<Card
+					data-testid="book-details-skeleton"
+					className="mb-6 bg-secondary border-green max-w-[52rem] w-full"
+				>
 					<BookSkeleton />
 				</Card>
 			)}
@@ -90,20 +97,10 @@ export default function Book() {
 			{book && <BookDetails book={book} />}
 
 			{!book && !isLoading && (
-				<Card className="my-6 bg-secondary border-green max-w-[52rem] w-full">
+				<Card className="mt-2 bg-secondary border-green max-w-[52rem] w-full">
 					<div className="my-8 flex flex-col items-center text-center text-green font-bold">
 						<IoBookOutline size={150} />
 						<p>Nenhum livro encontrado</p>
-
-						<Link href="/books" className="mt-10 flex items-center gap-3">
-							<Button
-								variant="default"
-								className="mt-0 flex items-center gap-3 bg-green"
-							>
-								Ir para a página de livros
-								<FaArrowRightLong />
-							</Button>
-						</Link>
 					</div>
 				</Card>
 			)}

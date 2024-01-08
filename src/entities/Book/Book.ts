@@ -6,7 +6,6 @@ export type BookProps = {
 	dedication: string
 	pages: number
 	releaseDate: string
-	slug: string
 	summary: string
 	title: string
 	wiki: string
@@ -39,10 +38,6 @@ export class Book {
 
 	get releaseDate() {
 		return this.props.releaseDate.toString()
-	}
-
-	get slug() {
-		return this.props.slug.toString()
 	}
 
 	get summary() {

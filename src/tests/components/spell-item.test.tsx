@@ -1,11 +1,10 @@
 import { Spell } from '@/entities/Spell'
 import { SpellItem } from '@/app/spells/components/spell-item'
-import { makeSpellResponse } from '@/tests/hooks/handlers'
-import { makeRouterSut, resetMockRouter } from '@/tests/utils'
 import { SpellPropsMock } from '@/tests/mocks/spell.mock'
+import { makeRouterSut, resetMockRouter } from '@/tests/utils'
 import { fireEvent, render, screen } from '@testing-library/react'
-import { MemoryRouterProvider } from 'next-router-mock/MemoryRouterProvider'
 import mockRouter from 'next-router-mock'
+import { MemoryRouterProvider } from 'next-router-mock/MemoryRouterProvider'
 
 const makeSut = (initialSpell?: Spell) => {
 	makeRouterSut()

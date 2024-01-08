@@ -37,9 +37,7 @@ export const getBookChapters = new ApiService<
 			chapter =>
 				new Chapter({
 					id: chapter.id,
-					type: chapter.type,
 					order: chapter.attributes.order,
-					slug: chapter.attributes.slug,
 					summary: chapter.attributes.summary,
 					title: chapter.attributes.title,
 				}),

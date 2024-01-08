@@ -14,7 +14,6 @@ export type GetSpellAPIResponse = BaseApiResponse<{
 		incantation: string
 		light: string
 		name: string
-		slug: string
 		wiki: string
 	}
 }>
@@ -49,7 +48,6 @@ export const getSpell = new ApiService<GetSpellRequest, GetSpellResponse>({
 			incantation: spell.attributes.incantation,
 			light: spell.attributes.light,
 			name: spell.attributes.name,
-			slug: spell.attributes.slug,
 			wiki: spell.attributes.wiki,
 		})
 	},

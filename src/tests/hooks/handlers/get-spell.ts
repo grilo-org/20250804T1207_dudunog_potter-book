@@ -3,12 +3,11 @@ import { http } from 'msw'
 
 export const makeSpellResponse = () => ({
 	data: {
-		id: '363adee4-5b00-47cc-9dab-a2ab5bbbaae4',
+		id: '91210019-bbe2-4e02-be37-6872c033fd6b',
 		type: 'spell',
 		attributes: {
-			slug: 'alarte-ascendare',
 			category: 'Charm',
-			creator: '',
+			creator: 'test',
 			effect: 'Rockets target upward',
 			hand: 'Brandish wand',
 			image:
@@ -16,7 +15,7 @@ export const makeSpellResponse = () => ({
 			incantation: 'Alarte Ascendare(a-LAR-tay a-SEN-der-ay)',
 			light: 'Red',
 			name: 'Alarte Ascendare',
-			wiki: 'https://harrypotter.fandom.com/wiki/Alarte_Ascendare',
+			wiki: 'https://harrypotter.fandom.com/wiki/Anteoculatia',
 		},
 		links: {
 			self: '/v1/spells/363adee4-5b00-47cc-9dab-a2ab5bbbaae4',
@@ -50,4 +49,23 @@ export const getSpellErrorResponseHandler = (id: string) =>
 		return new Response(null, {
 			status: 500,
 		})
+	})
+
+export const getSpellNotFoundResponseHandler = (id: string) =>
+	http.get(`${BASE_API_URL}spells/${id}`, async () => {
+		return new Response(
+			JSON.stringify({
+				errors: [
+					{
+						status: '404',
+						source: null,
+						title: 'Not Found',
+						detail: `Couldn't find Spell with 'id'=${id}`,
+					},
+				],
+			}),
+			{
+				status: 404,
+			},
+		)
 	})

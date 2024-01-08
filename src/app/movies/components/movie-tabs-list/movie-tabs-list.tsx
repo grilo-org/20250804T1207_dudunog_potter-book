@@ -18,27 +18,27 @@ type TabsKey =
 const tabs: { key: TabsKey; label: string }[] = [
 	{
 		key: 'cinematographers',
-		label: 'Nome(s) alternativo(s)',
+		label: 'Cineasta(s)',
 	},
 	{
 		key: 'directors',
-		label: 'Membro(s) da família',
+		label: 'Diretore(s)',
 	},
 	{
 		key: 'editors',
-		label: 'Trabalhos',
+		label: 'Editores',
 	},
 	{
 		key: 'musicComposers',
-		label: 'Romances',
+		label: 'Compositores musicais',
 	},
 	{
 		key: 'producers',
-		label: 'Varinhas',
+		label: 'Produtores',
 	},
 	{
 		key: 'screenwriters',
-		label: 'Varinhas',
+		label: 'Roteiristas',
 	},
 ]
 
@@ -53,6 +53,7 @@ const MovieTabsList = ({ movieId }: MovieTabsListProps) => {
 
 	return (
 		<Tabs
+			data-testid="movie-tabs"
 			defaultValue={
 				tabs.find(tab => movie?.[tab.key] && movie?.[tab.key].length > 0)?.key
 			}
@@ -65,6 +66,7 @@ const MovieTabsList = ({ movieId }: MovieTabsListProps) => {
 							if (movie?.[tab.key] && movie?.[tab.key].length > 0) {
 								return (
 									<TabsTrigger
+										data-testid={`${tab.key}-tab-item-header`}
 										key={tab.key}
 										value={tab.key}
 										className="text-minimal hover:bg-minimal hover:text-green"
@@ -76,7 +78,11 @@ const MovieTabsList = ({ movieId }: MovieTabsListProps) => {
 						})}
 					</TabsList>
 					{tabs.map(tab => (
-						<TabsContent key={tab.key} value={tab.key}>
+						<TabsContent
+							data-testid={`${tab.key}-tab-item-content`}
+							key={tab.key}
+							value={tab.key}
+						>
 							{movie?.[tab.key]?.map?.((item: string) => (
 								<li key={item}>{item}</li>
 							))}

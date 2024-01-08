@@ -43,6 +43,7 @@ const CharacterTabsList = ({ characterId }: CharacterTabsListProps) => {
 
 	return (
 		<Tabs
+			data-testid="character-tabs"
 			defaultValue={
 				tabs.find(
 					tab => character?.[tab.key] && character?.[tab.key].length > 0,
@@ -59,6 +60,7 @@ const CharacterTabsList = ({ characterId }: CharacterTabsListProps) => {
 							if (character?.[tab.key] && character?.[tab.key].length > 0) {
 								return (
 									<TabsTrigger
+										data-testid={`${tab.key}-tab-item-header`}
 										key={tab.key}
 										value={tab.key}
 										className="text-minimal hover:bg-minimal hover:text-green"
@@ -70,7 +72,11 @@ const CharacterTabsList = ({ characterId }: CharacterTabsListProps) => {
 						})}
 					</TabsList>
 					{tabs.map(tab => (
-						<TabsContent key={tab.key} value={tab.key}>
+						<TabsContent
+							data-testid={`${tab.key}-tab-item-content`}
+							key={tab.key}
+							value={tab.key}
+						>
 							{character?.[tab.key]?.map?.((item: string) => (
 								<li key={item}>{item}</li>
 							))}

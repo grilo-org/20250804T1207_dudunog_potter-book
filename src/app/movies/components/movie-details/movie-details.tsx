@@ -1,9 +1,12 @@
+'use client'
+
 import { useMemo } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Movie } from '@/entities/Movie'
-import { Button } from '@/shared/components/ui/button'
 import { Badge } from '@/shared/components/ui/badge'
+import { Button } from '@/shared/components/ui/button'
+import { Alert, AlertDescription } from '@/shared/components/ui/alert'
 import {
 	Card,
 	CardContent,
@@ -31,7 +34,10 @@ const MovieDetails = ({ movie }: MovieDetailsProps) => {
 	)
 
 	return (
-		<Card className="mt-2 mb-6 bg-secondary border-green max-w-[52rem] w-full">
+		<Card
+			data-testid="movie-details"
+			className="mt-2 mb-6 bg-secondary border-green max-w-[52rem] w-full"
+		>
 			<CardHeader className="flex items-center gap-4 justify-between xs:flex-row">
 				<CardTitle className="mt-2 text-green font-bold w-full">
 					{movie?.title}
@@ -74,6 +80,7 @@ const MovieDetails = ({ movie }: MovieDetailsProps) => {
 					{movie?.trailer && (
 						<div className="mt-6 w-72 h-40">
 							<iframe
+								data-testid="movie-trailer-iframe"
 								src={movie?.trailer.split('watch?v=').join('embed/')}
 								allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
 								allowFullScreen
@@ -92,6 +99,16 @@ const MovieDetails = ({ movie }: MovieDetailsProps) => {
 								</p>
 								<p className="text-sm text-muted-foreground">
 									{movie?.releaseDate}
+								</p>
+							</div>
+						)}
+						{movie?.runningTime && (
+							<div className="space-y-1 max-w-[35rem]">
+								<p className="text-sm text-green font-bold leading-none">
+									Duração
+								</p>
+								<p className="text-sm text-muted-foreground">
+									{movie?.runningTime}
 								</p>
 							</div>
 						)}
@@ -127,10 +144,16 @@ const MovieDetails = ({ movie }: MovieDetailsProps) => {
 				)}
 
 				{!hasData && (
-					<div className="mt-6">
-						<p className="text-base text-green leading-none">
-							Não há dados para este filme
-						</p>
+					<div>
+						<Alert
+							data-testid="no-character-data"
+							variant="default"
+							className="mt-4 bg-transparent border-green"
+						>
+							<AlertDescription>
+								Não há dados disponíveis para este filme
+							</AlertDescription>
+						</Alert>
 					</div>
 				)}
 			</CardContent>

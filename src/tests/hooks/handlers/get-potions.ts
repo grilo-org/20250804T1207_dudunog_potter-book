@@ -5,9 +5,7 @@ export const makePotionListResponse = () => ({
 	data: [
 		{
 			id: 'af984889-3b1f-4b43-a49c-71c45d6fc012',
-			type: 'potion',
 			attributes: {
-				slug: 'ageing-potion',
 				characteristics: 'Green',
 				difficulty: 'Advanced',
 				effect: 'Aged drinker temporarily',
@@ -27,9 +25,7 @@ export const makePotionListResponse = () => ({
 		},
 		{
 			id: '78f43f9e-fb3a-4d27-99cb-b4d7674ef208',
-			type: 'potion',
 			attributes: {
-				slug: 'alihotsy-draught',
 				characteristics: 'Blue fumes and colour',
 				difficulty: null,
 				effect: 'Uncontrollable laughter',
@@ -49,9 +45,7 @@ export const makePotionListResponse = () => ({
 		},
 		{
 			id: '04f6e0eb-5695-469f-8b07-ff1264d78178',
-			type: 'potion',
 			attributes: {
-				slug: 'amortentia',
 				characteristics:
 					'Mother-of-pearl sheen, Spiralling steam, Scent was multi-faceted and varied based on what the person liked',
 				difficulty: 'Advanced',
@@ -73,9 +67,7 @@ export const makePotionListResponse = () => ({
 		},
 		{
 			id: '57dffd3c-6d46-4de8-96cb-dea64ac6d3e2',
-			type: 'potion',
 			attributes: {
-				slug: 'angel-s-trumpet-draught',
 				characteristics: null,
 				difficulty: null,
 				effect: 'Poisonous',
@@ -95,9 +87,7 @@ export const makePotionListResponse = () => ({
 		},
 		{
 			id: 'f9b6cfa8-fe9a-45a8-a159-8a75a0694e66',
-			type: 'potion',
 			attributes: {
-				slug: 'antidote',
 				characteristics: null,
 				difficulty: null,
 				effect: null,
@@ -136,10 +126,27 @@ export const makePotionListResponse = () => ({
 
 export const getPotionsSuccessResponseHandler = http.get(
 	`${BASE_API_URL}potions`,
-	async () => {
-		return new Response(JSON.stringify(makePotionListResponse()), {
-			status: 200,
-		})
+	async info => {
+		const url = new URL(info.request.url)
+		const nameFilter = url.searchParams?.get('filter[name_cont]')
+
+		let filteredPotions = makePotionListResponse().data
+
+		if (nameFilter) {
+			filteredPotions = filteredPotions.filter(potion =>
+				potion.attributes.name.toLowerCase().includes(nameFilter.toLowerCase()),
+			)
+		}
+
+		return new Response(
+			JSON.stringify({
+				...makePotionListResponse(),
+				data: filteredPotions,
+			}),
+			{
+				status: 200,
+			},
+		)
 	},
 )
 

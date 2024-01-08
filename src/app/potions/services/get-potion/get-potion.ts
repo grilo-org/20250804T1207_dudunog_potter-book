@@ -15,7 +15,6 @@ export type GetPotionAPIResponse = BaseApiResponse<{
 		manufacturers: string
 		name: string
 		side_effects: string
-		slug: string
 		time: string
 		wiki: string
 	}
@@ -52,7 +51,6 @@ export const getPotion = new ApiService<GetPotionRequest, GetPotionResponse>({
 			manufacturers: potion.attributes.manufacturers,
 			name: potion.attributes.name,
 			sideEffects: potion.attributes.side_effects,
-			slug: potion.attributes.slug,
 			time: potion.attributes.time,
 			wiki: potion.attributes.wiki,
 		})

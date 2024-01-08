@@ -5,9 +5,7 @@ export const makeCharacterListResponse = () => ({
 	data: [
 		{
 			id: 'ada30cc8-39dd-461b-9bac-0f5766fd4638',
-			type: 'character',
 			attributes: {
-				slug: '1992-gryffindor-vs-slytherin-quidditch-match-spectators',
 				alias_names: [],
 				animagus: null,
 				blood_status: null,
@@ -40,9 +38,7 @@ export const makeCharacterListResponse = () => ({
 		},
 		{
 			id: '3838614b-9eeb-4327-86c8-64d3fa838f7b',
-			type: 'character',
 			attributes: {
-				slug: '1996-gryffindor-quidditch-keeper-trials-spectators',
 				alias_names: [],
 				animagus: null,
 				blood_status: null,
@@ -58,7 +54,7 @@ export const makeCharacterListResponse = () => ({
 				image: null,
 				jobs: [],
 				marital_status: null,
-				name: '1996 Gryffindor Quidditch Keeper trials spectators',
+				name: 'Harry Potter',
 				nationality: null,
 				patronus: null,
 				romances: [],
@@ -75,9 +71,7 @@ export const makeCharacterListResponse = () => ({
 		},
 		{
 			id: 'e9f3d579-dfac-491c-bf72-9b2ad1d2ba2f',
-			type: 'character',
 			attributes: {
-				slug: '2-headed-baby',
 				alias_names: [],
 				animagus: null,
 				blood_status: null,
@@ -111,9 +105,7 @@ export const makeCharacterListResponse = () => ({
 		},
 		{
 			id: '18166a07-4528-4f8b-b189-dc892156e893',
-			type: 'character',
 			attributes: {
-				slug: 'unidentified-8-year-old-muggle-girl',
 				alias_names: [],
 				animagus: null,
 				blood_status: 'Muggle',
@@ -146,9 +138,7 @@ export const makeCharacterListResponse = () => ({
 		},
 		{
 			id: '70c77714-8ba9-4629-abb2-70c90d38fdf8',
-			type: 'character',
 			attributes: {
-				slug: 'aamir-loonat',
 				alias_names: [],
 				animagus: null,
 				blood_status: null,
@@ -201,10 +191,29 @@ export const makeCharacterListResponse = () => ({
 
 export const getCharactersSuccessResponseHandler = http.get(
 	`${BASE_API_URL}characters`,
-	async () => {
-		return new Response(JSON.stringify(makeCharacterListResponse()), {
-			status: 200,
-		})
+	async info => {
+		const url = new URL(info.request.url)
+		const nameFilter = url.searchParams?.get('filter[name_cont]')
+
+		let filteredCharacters = makeCharacterListResponse().data
+
+		if (nameFilter) {
+			filteredCharacters = filteredCharacters.filter(character =>
+				character.attributes.name
+					.toLowerCase()
+					.includes(nameFilter.toLowerCase()),
+			)
+		}
+
+		return new Response(
+			JSON.stringify({
+				...makeCharacterListResponse(),
+				data: filteredCharacters,
+			}),
+			{
+				status: 200,
+			},
+		)
 	},
 )
 

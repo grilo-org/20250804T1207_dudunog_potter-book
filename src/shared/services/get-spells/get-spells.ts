@@ -16,7 +16,6 @@ export type GetSpellsAPIResponse = BaseApiResponse<
 			incantation: string
 			light: string
 			name: string
-			slug: string
 			wiki: string
 		}
 	}[]
@@ -55,7 +54,6 @@ export const getSpells = new ApiService<GetSpellsRequest, GetSpellsResponse>({
 					incantation: spell.attributes.incantation,
 					light: spell.attributes.light,
 					name: spell.attributes.name,
-					slug: spell.attributes.slug,
 					wiki: spell.attributes.wiki,
 				}),
 		)

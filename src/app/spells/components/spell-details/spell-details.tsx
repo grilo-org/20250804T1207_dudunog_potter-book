@@ -2,8 +2,9 @@ import { useMemo } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { Spell } from '@/entities/Spell'
-import { Button } from '@/shared/components/ui/button'
 import { Badge } from '@/shared/components/ui/badge'
+import { Button } from '@/shared/components/ui/button'
+import { Alert, AlertDescription } from '@/shared/components/ui/alert'
 import {
 	Card,
 	CardContent,
@@ -22,11 +23,21 @@ const SpellDetails = ({ spell }: SpellDetailsProps) => {
 	const hasData = useMemo(() => spell && (spell.name || spell?.effect), [spell])
 
 	return (
-		<Card className="mt-2 mb-4 bg-secondary border-green max-w-[52rem] w-full">
+		<Card
+			data-testid="spell-details"
+			className="mt-2 mb-6 bg-secondary border-green max-w-[52rem] w-full"
+		>
 			<CardHeader className="flex items-center gap-4 justify-between xs:flex-row">
-				<CardTitle className="mt-2 text-green font-bold w-full">
-					{spell?.name}
-				</CardTitle>
+				<div className="mt-2 w-full">
+					<CardTitle className="mt-2 text-green font-bold w-full">
+						{spell?.name}
+					</CardTitle>
+					{spell && spell?.incantation && (
+						<p className="text-sm text-muted-foreground">
+							{spell?.incantation}
+						</p>
+					)}
+				</div>
 				<Link
 					href={String(spell?.wiki)}
 					target="_blank"
@@ -103,10 +114,16 @@ const SpellDetails = ({ spell }: SpellDetailsProps) => {
 				)}
 
 				{!hasData && (
-					<div className="mt-6">
-						<p className="text-base text-green leading-none">
-							Não há dados para este feitiço
-						</p>
+					<div>
+						<Alert
+							data-testid="no-character-data"
+							variant="default"
+							className="mt-4 bg-transparent border-green w-full"
+						>
+							<AlertDescription>
+								Não há dados disponíveis para este feitiço
+							</AlertDescription>
+						</Alert>
 					</div>
 				)}
 			</CardContent>

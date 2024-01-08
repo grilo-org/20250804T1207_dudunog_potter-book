@@ -3,10 +3,9 @@ import { http } from 'msw'
 
 export const makePotionResponse = () => ({
 	data: {
-		id: 'af984889-3b1f-4b43-a49c-71c45d6fc012',
+		id: '04f6e0eb-5695-469f-8b07-ff1264d78178',
 		type: 'potion',
 		attributes: {
-			slug: 'ageing-potion',
 			characteristics: 'Green',
 			difficulty: 'Advanced',
 			effect: 'Aged drinker temporarily',
@@ -14,11 +13,11 @@ export const makePotionResponse = () => ({
 				'https://static.wikia.nocookie.net/harrypotter/images/5/51/Ageing_Potion_PM.png',
 			inventors: '',
 			ingredients: 'Newt spleens, Bananas, An orange snake, A green leaf',
-			manufacturers: '',
+			manufacturers: 'Fred and George Weasley',
 			name: 'Ageing Potion',
-			side_effects: '',
-			time: '',
-			wiki: 'https://harrypotter.fandom.com/wiki/Ageing_Potion',
+			side_effects: 'test',
+			time: 'Six hours',
+			wiki: 'https://harrypotter.fandom.com/wiki/Amortentia',
 		},
 		links: {
 			self: '/v1/potions/af984889-3b1f-4b43-a49c-71c45d6fc012',
@@ -52,4 +51,23 @@ export const getPotionErrorResponseHandler = (id: string) =>
 		return new Response(null, {
 			status: 500,
 		})
+	})
+
+export const getPotionNotFoundResponseHandler = (id: string) =>
+	http.get(`${BASE_API_URL}potions/${id}`, async () => {
+		return new Response(
+			JSON.stringify({
+				errors: [
+					{
+						status: '404',
+						source: null,
+						title: 'Not Found',
+						detail: `Couldn't find Potion with 'id'=${id}`,
+					},
+				],
+			}),
+			{
+				status: 404,
+			},
+		)
 	})

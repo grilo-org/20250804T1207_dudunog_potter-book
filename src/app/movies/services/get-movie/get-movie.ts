@@ -19,7 +19,6 @@ export type GetMovieAPIResponse = BaseApiResponse<{
 		release_date: string
 		running_time: string
 		screenwriters: string[]
-		slug: string
 		summary: string
 		title: string
 		trailer: string
@@ -62,7 +61,6 @@ export const getMovie = new ApiService<GetMovieRequest, GetMovieResponse>({
 			releaseDate: movie.attributes.release_date,
 			runningTime: movie.attributes.running_time,
 			screenwriters: movie.attributes.screenwriters,
-			slug: movie.attributes.slug,
 			summary: movie.attributes.summary,
 			title: movie.attributes.title,
 			trailer: movie.attributes.trailer,

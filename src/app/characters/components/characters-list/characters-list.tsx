@@ -56,7 +56,11 @@ const CharactersList = () => {
 
 	return (
 		<Fragment>
-			<SearchField className="mt-4 w-full" onSearch={handleSearch} />
+			<SearchField
+				data-testid="search-field"
+				className="mt-4 w-full"
+				onSearch={handleSearch}
+			/>
 
 			{isError ? (
 				<Error
@@ -66,7 +70,10 @@ const CharactersList = () => {
 				/>
 			) : (
 				<Fragment>
-					<div className="mt-4 grid grid-cols-1 justify-items-center md:grid-cols-2 lg:grid-cols-3 gap-3">
+					<div
+						data-testid="characters-list"
+						className="mt-4 grid grid-cols-1 justify-items-center md:grid-cols-2 lg:grid-cols-3 gap-3"
+					>
 						{isLoading || isFetching ? (
 							<CharactersListSkeleton length={6} />
 						) : (

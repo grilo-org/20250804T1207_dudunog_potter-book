@@ -1,8 +1,10 @@
+'use client'
+
 import Link from 'next/link'
 import Image from 'next/image'
 import { Book } from '@/entities/Book'
 import { Badge } from '@/shared/components/ui/badge'
-import { ChaptersList } from '@/app/books/components/chapters-list'
+import { Button } from '@/shared/components/ui/button'
 import {
 	Card,
 	CardContent,
@@ -10,8 +12,8 @@ import {
 	CardHeader,
 	CardTitle,
 } from '@/shared/components/ui/card'
+import { ChaptersList } from '@/app/books/components/chapters-list'
 import { FaArrowRightLong } from 'react-icons/fa6'
-import { Button } from '@/shared/components/ui/button'
 import { IoBookOutline } from 'react-icons/io5'
 
 type BookDetailsProps = {
@@ -20,9 +22,12 @@ type BookDetailsProps = {
 
 const BookDetails = ({ book }: BookDetailsProps) => {
 	return (
-		<Card className="mt-2 mb-6 bg-secondary border-green max-w-[52rem] w-full">
-			<CardHeader className="flex flex-row items-center justify-between">
-				<CardTitle className="text-green max-w-[70%] font-bold">
+		<Card
+			data-testid="book-details"
+			className="mt-2 mb-6 bg-secondary border-green max-w-[52rem] w-full"
+		>
+			<CardHeader className="flex items-center gap-4 justify-between xs:flex-row">
+				<CardTitle className="mt-2 text-green font-bold w-full">
 					{book?.title}
 				</CardTitle>
 				<Link
@@ -84,7 +89,7 @@ const BookDetails = ({ book }: BookDetailsProps) => {
 					</div>
 				</div>
 			</CardContent>
-			<CardFooter>
+			<CardFooter className="mt-4 flex flex-col">
 				<ChaptersList bookId={book.id} />
 			</CardFooter>
 		</Card>

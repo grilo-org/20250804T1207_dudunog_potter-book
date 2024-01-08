@@ -12,7 +12,13 @@ import {
 	getPotionsSuccessResponseHandler,
 } from '@/tests/hooks/handlers'
 import { HttpHandler } from 'msw'
-import { render, renderHook, screen, waitFor } from '@testing-library/react'
+import {
+	fireEvent,
+	render,
+	renderHook,
+	screen,
+	waitFor,
+} from '@testing-library/react'
 
 const makeSut = (handler: HttpHandler) => {
 	server.use(handler)
@@ -78,6 +84,22 @@ describe('potions-list component', () => {
 
 			const error = screen.getByTestId('error')
 			expect(error).toBeInTheDocument()
+		})
+	})
+
+	test('should update characters list when search field is filled', async () => {
+		const { result } = makeSut(getPotionsSuccessResponseHandler)
+
+		const searchField = screen.getByTestId('search-field')
+		fireEvent.input(searchField, { target: { value: 'Ageing Potion' } })
+
+		expect(result.current.isLoading).toBeTruthy()
+
+		await waitFor(() => {
+			expect(result.current.isSuccess).toBeTruthy()
+
+			const potionItems = screen.getAllByTestId('potion-item')
+			expect(potionItems).toHaveLength(1)
 		})
 	})
 })

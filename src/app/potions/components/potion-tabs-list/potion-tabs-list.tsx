@@ -16,11 +16,11 @@ const tabs: { key: TabsKey; label: string }[] = [
 	},
 	{
 		key: 'inventors',
-		label: 'Inventor(s)',
+		label: 'Inventor(es)',
 	},
 	{
 		key: 'manufacturers',
-		label: 'Fabricantes(s)',
+		label: 'Fabricante(s)',
 	},
 	{
 		key: 'characteristics',
@@ -39,6 +39,7 @@ const PotionTabsList = ({ potionId }: PotionTabsListProps) => {
 
 	return (
 		<Tabs
+			data-testid="potion-tabs"
 			defaultValue={
 				tabs.find(tab => potion?.[tab.key] && potion?.[tab.key].length > 0)?.key
 			}
@@ -51,6 +52,7 @@ const PotionTabsList = ({ potionId }: PotionTabsListProps) => {
 							if (potion?.[tab.key] && potion?.[tab.key].length > 0) {
 								return (
 									<TabsTrigger
+										data-testid={`${tab.key}-tab-item-header`}
 										key={tab.key}
 										value={tab.key}
 										className="text-minimal hover:bg-minimal hover:text-green"
@@ -62,7 +64,11 @@ const PotionTabsList = ({ potionId }: PotionTabsListProps) => {
 						})}
 					</TabsList>
 					{tabs.map(tab => (
-						<TabsContent key={tab.key} value={tab.key}>
+						<TabsContent
+							data-testid={`${tab.key}-tab-item-content`}
+							key={tab.key}
+							value={tab.key}
+						>
 							{potion?.[tab.key]
 								?.split(',')
 								?.map?.((item: string) => <li key={item}>{item}</li>)}

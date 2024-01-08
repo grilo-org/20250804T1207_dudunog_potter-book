@@ -29,12 +29,12 @@ describe('get-spells service', () => {
 		makeSut(getSpellsSuccessResponseHandler)
 
 		const spells = await getSpells.execute({
-			name: 'Harry Potter and the Half-Blood Prince',
+			name: 'Alarte Ascendare',
 			currentPage: DEFAULT_PAGINATION_PAGE,
 			rowsPerPage: DEFAULT_PAGINATION_PAGE_SIZE,
 		})
 
-		expect(spells.data).toHaveLength(5)
+		expect(spells.data).toHaveLength(1)
 	})
 
 	test.fails('should fails when the request fails', async () => {

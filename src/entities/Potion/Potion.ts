@@ -10,7 +10,6 @@ export type PotionProps = {
 	manufacturers: string
 	name: string
 	sideEffects: string
-	slug: string
 	time: string
 	wiki: string
 }
@@ -58,10 +57,6 @@ export class Potion {
 
 	get sideEffects() {
 		return this.props.sideEffects?.toString()
-	}
-
-	get slug() {
-		return this.props.slug.toString()
 	}
 
 	get time() {

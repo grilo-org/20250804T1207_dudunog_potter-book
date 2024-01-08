@@ -8,10 +8,16 @@ export default function NotFound() {
 		<div className="mt-24 h-full flex flex-col items-center justify-center text-minimal text-xl">
 			<TbError404 size={100} />
 
-			<h1 className="font-bold">Página ou recurso não encontrado</h1>
+			<h1 data-testid="not-found-title" className="font-bold">
+				Página ou recurso não encontrado
+			</h1>
 			<p>Não foi possível encontrar o recurso solicitado</p>
 
-			<Link href="/" className="mt-4 flex items-center gap-3">
+			<Link
+				data-testid="home-page-button"
+				href="/"
+				className="mt-4 flex items-center gap-3"
+			>
 				<Button
 					variant="default"
 					className="mt-0 flex items-center gap-3 bg-green"

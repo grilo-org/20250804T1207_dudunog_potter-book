@@ -24,7 +24,6 @@ export type GetCharactersAPIResponse = BaseApiResponse<
 			nationality: string
 			patronus: string
 			romances: string[]
-			slug: string
 			species: string
 			wands: string[]
 			weight: string
@@ -78,7 +77,6 @@ export const getCharacters = new ApiService<
 					nationality: character.attributes.nationality,
 					patronus: character.attributes.patronus,
 					romances: character.attributes.romances,
-					slug: character.attributes.slug,
 					species: character.attributes.species,
 					wands: character.attributes.wands,
 					weight: character.attributes.weight,

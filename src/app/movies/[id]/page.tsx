@@ -13,7 +13,7 @@ import {
 	CardHeader,
 } from '@/shared/components/ui/card'
 import { MovieDetails } from '@/app/movies/components/movie-details'
-import { FaArrowLeftLong, FaArrowRightLong } from 'react-icons/fa6'
+import { FaArrowLeftLong } from 'react-icons/fa6'
 import { MdOutlineMovie } from 'react-icons/md'
 
 const MovieSkeleton = () => (
@@ -71,7 +71,11 @@ export default function Movie() {
 		<Fragment>
 			<div className="mt-6 max-w-[52rem] w-full">
 				<Link href="/movies" className="mt-6 flex items-center gap-3">
-					<Button variant="link" className="gap-3 text-minimal">
+					<Button
+						data-testid="back-button"
+						variant="link"
+						className="gap-3 text-minimal"
+					>
 						<FaArrowLeftLong />
 						Voltar para filmes
 					</Button>
@@ -79,7 +83,10 @@ export default function Movie() {
 			</div>
 
 			{isLoading && (
-				<Card className="mb-6 bg-secondary border-green max-w-[52rem] w-full">
+				<Card
+					data-testid="movie-details-skeleton"
+					className="mb-6 bg-secondary border-green max-w-[52rem] w-full"
+				>
 					<MovieSkeleton />
 				</Card>
 			)}
@@ -87,20 +94,10 @@ export default function Movie() {
 			{movie && <MovieDetails movie={movie} />}
 
 			{!movie && !isLoading && (
-				<Card className="my-6 bg-secondary border-green max-w-[52rem] w-full">
+				<Card className="mt-2 bg-secondary border-green max-w-[52rem] w-full">
 					<div className="my-8 flex flex-col items-center text-center text-green font-bold">
 						<MdOutlineMovie size={150} />
 						<p>Nenhum filme encontrado</p>
-
-						<Link href="/movies" className="mt-10 flex items-center gap-3">
-							<Button
-								variant="default"
-								className="mt-0 flex items-center gap-3 bg-green"
-							>
-								Ir para a página de filmes
-								<FaArrowRightLong />
-							</Button>
-						</Link>
 					</div>
 				</Card>
 			)}

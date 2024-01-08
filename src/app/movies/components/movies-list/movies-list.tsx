@@ -54,7 +54,10 @@ const MoviesList = () => {
 				/>
 			) : (
 				<Fragment>
-					<div className="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+					<div
+						data-testid="movies-list"
+						className="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3"
+					>
 						{isLoading || isFetching ? (
 							<MoviesListSkeleton length={6} />
 						) : (

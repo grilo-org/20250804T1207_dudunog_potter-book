@@ -29,12 +29,12 @@ describe('get-potions service', () => {
 		makeSut(getPotionsSuccessResponseHandler)
 
 		const potions = await getPotions.execute({
-			name: 'Harry Potter and the Half-Blood Prince',
+			name: 'Amortentia',
 			currentPage: DEFAULT_PAGINATION_PAGE,
 			rowsPerPage: DEFAULT_PAGINATION_PAGE_SIZE,
 		})
 
-		expect(potions.data).toHaveLength(5)
+		expect(potions.data).toHaveLength(1)
 	})
 
 	test.fails('should fails when the request fails', async () => {
