@@ -62,3 +62,22 @@ export const getBookErrorResponseHandler = (id: string) =>
 			status: 500,
 		})
 	})
+
+export const getBookNotFoundResponseHandler = (id: string) =>
+	http.get(`${BASE_API_URL}books/${id}`, async () => {
+		return new Response(
+			JSON.stringify({
+				errors: [
+					{
+						status: '404',
+						source: null,
+						title: 'Not Found',
+						detail: `Couldn't find Book with 'id'=${id}`,
+					},
+				],
+			}),
+			{
+				status: 404,
+			},
+		)
+	})

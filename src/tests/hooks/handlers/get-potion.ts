@@ -53,3 +53,22 @@ export const getPotionErrorResponseHandler = (id: string) =>
 			status: 500,
 		})
 	})
+
+export const getPotionNotFoundResponseHandler = (id: string) =>
+	http.get(`${BASE_API_URL}potions/${id}`, async () => {
+		return new Response(
+			JSON.stringify({
+				errors: [
+					{
+						status: '404',
+						source: null,
+						title: 'Not Found',
+						detail: `Couldn't find Potion with 'id'=${id}`,
+					},
+				],
+			}),
+			{
+				status: 404,
+			},
+		)
+	})

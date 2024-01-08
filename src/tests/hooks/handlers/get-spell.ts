@@ -51,3 +51,22 @@ export const getSpellErrorResponseHandler = (id: string) =>
 			status: 500,
 		})
 	})
+
+export const getSpellNotFoundResponseHandler = (id: string) =>
+	http.get(`${BASE_API_URL}spells/${id}`, async () => {
+		return new Response(
+			JSON.stringify({
+				errors: [
+					{
+						status: '404',
+						source: null,
+						title: 'Not Found',
+						detail: `Couldn't find Spell with 'id'=${id}`,
+					},
+				],
+			}),
+			{
+				status: 404,
+			},
+		)
+	})

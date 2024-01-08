@@ -60,3 +60,22 @@ export const getMovieErrorResponseHandler = (id: string) =>
 			status: 500,
 		})
 	})
+
+export const getMovieNotFoundResponseHandler = (id: string) =>
+	http.get(`${BASE_API_URL}movies/${id}`, async () => {
+		return new Response(
+			JSON.stringify({
+				errors: [
+					{
+						status: '404',
+						source: null,
+						title: 'Not Found',
+						detail: `Couldn't find Movie with 'id'=${id}`,
+					},
+				],
+			}),
+			{
+				status: 404,
+			},
+		)
+	})

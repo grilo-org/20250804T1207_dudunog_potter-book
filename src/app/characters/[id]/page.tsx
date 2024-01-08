@@ -84,7 +84,10 @@ export default function Character() {
 			</div>
 
 			{isLoading && (
-				<Card className="mb-6 bg-secondary border-green max-w-[52rem] w-full">
+				<Card
+					data-testid="character-details-skeleton"
+					className="mb-6 bg-secondary border-green max-w-[52rem] w-full"
+				>
 					<CharacterSkeleton />
 				</Card>
 			)}

@@ -71,3 +71,22 @@ export const getCharacterErrorResponseHandler = (id: string) =>
 			status: 500,
 		})
 	})
+
+export const getCharacterNotFoundResponseHandler = (id: string) =>
+	http.get(`${BASE_API_URL}characters/${id}`, async () => {
+		return new Response(
+			JSON.stringify({
+				errors: [
+					{
+						status: '404',
+						source: null,
+						title: 'Not Found',
+						detail: `Couldn't find Character with 'id'=${id}`,
+					},
+				],
+			}),
+			{
+				status: 404,
+			},
+		)
+	})
