@@ -66,4 +66,10 @@ describe('character-details component', () => {
 			screen.getByTestId('alternative-character-image'),
 		).toBeInTheDocument()
 	})
+
+	test('should renders CharacterTabsList', async () => {
+		makeSut()
+
+		expect(screen.getByTestId('character-tabs')).toBeInTheDocument()
+	})
 })

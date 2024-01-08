@@ -24,7 +24,7 @@ export const makeCharacterResponse = () => ({
 			house: 'Gryffindor',
 			image:
 				'https://static.wikia.nocookie.net/harrypotter/images/a/a4/Zola_Farrell_MA_BBB.png',
-			jobs: ['Chaser for the Holyhead Harpies'],
+			jobs: [],
 			marital_status: 'Married',
 			name: 'Zola G. Farrell',
 			nationality: 'British or Irish',

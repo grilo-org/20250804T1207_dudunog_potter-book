@@ -53,6 +53,7 @@ const MovieTabsList = ({ movieId }: MovieTabsListProps) => {
 
 	return (
 		<Tabs
+			data-testid="movie-tabs"
 			defaultValue={
 				tabs.find(tab => movie?.[tab.key] && movie?.[tab.key].length > 0)?.key
 			}

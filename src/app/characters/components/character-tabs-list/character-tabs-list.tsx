@@ -43,6 +43,7 @@ const CharacterTabsList = ({ characterId }: CharacterTabsListProps) => {
 
 	return (
 		<Tabs
+			data-testid="character-tabs"
 			defaultValue={
 				tabs.find(
 					tab => character?.[tab.key] && character?.[tab.key].length > 0,

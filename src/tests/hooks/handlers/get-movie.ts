@@ -12,7 +12,7 @@ export const makeMovieResponse = () => ({
 			directors: ['Chris Columbus'],
 			distributors: ['Warner Bros. Pictures'],
 			editors: ['Peter Honess'],
-			music_composers: ['John Williams', 'William Ross', 'Conrad Pope'],
+			music_composers: [],
 			poster:
 				'https://www.wizardingworld.com/images/products/films/rectangle-2.png',
 			producers: ['Chris Columbus', 'David Heyman', 'Mark Radcliffe'],

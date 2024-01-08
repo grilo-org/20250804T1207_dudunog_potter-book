@@ -39,6 +39,7 @@ const PotionTabsList = ({ potionId }: PotionTabsListProps) => {
 
 	return (
 		<Tabs
+			data-testid="potion-tabs"
 			defaultValue={
 				tabs.find(tab => potion?.[tab.key] && potion?.[tab.key].length > 0)?.key
 			}
