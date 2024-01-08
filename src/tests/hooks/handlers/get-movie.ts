@@ -6,7 +6,6 @@ export const makeMovieResponse = () => ({
 		id: '58e26658-e894-44be-9a5f-da9b524d02ad',
 		type: 'movie',
 		attributes: {
-			slug: 'harry-potter-and-the-chamber-of-secrets',
 			box_office: '$879.6 million',
 			budget: '$125 million',
 			cinematographers: ['Roger Pratt'],

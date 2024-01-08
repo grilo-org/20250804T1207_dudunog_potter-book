@@ -5,9 +5,7 @@ export const makeMovieListResponse = () => ({
 	data: [
 		{
 			id: '58e26658-e894-44be-9a5f-da9b524d02ad',
-			type: 'movie',
 			attributes: {
-				slug: 'harry-potter-and-the-philosopher-s-stone',
 				box_office: '$1.018 million',
 				budget: '$125 million',
 				cinematographers: ['John Seale'],
@@ -34,9 +32,7 @@ export const makeMovieListResponse = () => ({
 		},
 		{
 			id: '6c2ba173-85e8-4708-8c1a-30620e14294a',
-			type: 'movie',
 			attributes: {
-				slug: 'harry-potter-and-the-chamber-of-secrets',
 				box_office: '$879.6 million',
 				budget: '$125 million',
 				cinematographers: ['Roger Pratt'],
@@ -63,9 +59,7 @@ export const makeMovieListResponse = () => ({
 		},
 		{
 			id: '2dc416cf-7fa3-449c-93f0-76c478085d33',
-			type: 'movie',
 			attributes: {
-				slug: 'harry-potter-and-the-prisoner-of-azkaban',
 				box_office: '$797.4 million',
 				budget: '$130 million',
 				cinematographers: ['Michael Seresin'],
@@ -92,9 +86,7 @@ export const makeMovieListResponse = () => ({
 		},
 		{
 			id: 'd5ebb9f5-d7d1-4e49-9b78-cbc92b9bc3b8',
-			type: 'movie',
 			attributes: {
-				slug: 'harry-potter-and-the-goblet-of-fire',
 				box_office: '$896.7 million',
 				budget: '$150 million',
 				cinematographers: ['Roger Pratt'],
@@ -121,9 +113,7 @@ export const makeMovieListResponse = () => ({
 		},
 		{
 			id: 'fc8f79e9-216d-4362-9377-9f19da4b7ae8',
-			type: 'movie',
 			attributes: {
-				slug: 'harry-potter-and-the-order-of-the-phoenix',
 				box_office: '$942.2 million',
 				budget: '$150-200 million',
 				cinematographers: ['Sławomir Idziak'],

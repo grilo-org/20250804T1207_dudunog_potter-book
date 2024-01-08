@@ -5,7 +5,6 @@ export const makeBookListResponse = () => ({
 	data: [
 		{
 			id: '99015cdb-bf16-4042-863a-b25b41b004f2',
-			type: 'book',
 			attributes: {
 				slug: 'harry-potter-and-the-philosopher-s-stone',
 				author: 'J. K. Rowling',
@@ -36,7 +35,6 @@ export const makeBookListResponse = () => ({
 		},
 		{
 			id: '35bc68ec-1ea1-40a9-a511-2d80f5dc7c71',
-			type: 'book',
 			attributes: {
 				slug: 'harry-potter-and-the-chamber-of-secrets',
 				author: 'J. K. Rowling',
@@ -67,7 +65,6 @@ export const makeBookListResponse = () => ({
 		},
 		{
 			id: '2734666a-f4d3-4831-84fc-562648441ab1',
-			type: 'book',
 			attributes: {
 				slug: 'harry-potter-and-the-prisoner-of-azkaban',
 				author: 'J. K. Rowling',
@@ -97,7 +94,6 @@ export const makeBookListResponse = () => ({
 		},
 		{
 			id: 'c8bde67b-7c62-48d4-9c7f-4987c41df86f',
-			type: 'book',
 			attributes: {
 				slug: 'harry-potter-and-the-goblet-of-fire',
 				author: 'J. K. Rowling',
@@ -128,7 +124,6 @@ export const makeBookListResponse = () => ({
 		},
 		{
 			id: '2b9aab25-5ad3-4897-8187-7c5b6d2c4df6',
-			type: 'book',
 			attributes: {
 				slug: 'harry-potter-and-the-order-of-the-phoenix',
 				author: 'J. K. Rowling',

@@ -12,7 +12,6 @@ export type GetBooksAPIResponse = BaseApiResponse<
 			dedication: string
 			pages: number
 			release_date: string
-			slug: string
 			summary: string
 			title: string
 			wiki: string
@@ -45,7 +44,6 @@ export const getBooks = new ApiService<GetBooksRequest, GetBooksResponse>({
 					dedication: book.attributes.dedication,
 					pages: book.attributes.pages,
 					releaseDate: book.attributes.release_date,
-					slug: book.attributes.slug,
 					summary: book.attributes.summary,
 					title: book.attributes.title,
 					wiki: book.attributes.wiki,

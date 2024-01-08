@@ -9,7 +9,6 @@ export type SpellProps = {
 	incantation: string
 	light: string
 	name: string
-	slug: string
 	wiki: string
 }
 
@@ -52,10 +51,6 @@ export class Spell {
 
 	get name() {
 		return this.props.name.toString()
-	}
-
-	get slug() {
-		return this.props.slug.toString()
 	}
 
 	get wiki() {

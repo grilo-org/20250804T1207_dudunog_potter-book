@@ -5,9 +5,7 @@ export const makeSpellListResponse = () => ({
 	data: [
 		{
 			id: '6fecfd3a-4f00-4574-940e-247d968fac75',
-			type: 'spell',
 			attributes: {
-				slug: 'age-line',
 				category: 'Charm',
 				creator: null,
 				effect:
@@ -26,9 +24,7 @@ export const makeSpellListResponse = () => ({
 		},
 		{
 			id: '363adee4-5b00-47cc-9dab-a2ab5bbbaae4',
-			type: 'spell',
 			attributes: {
-				slug: 'alarte-ascendare',
 				category: 'Charm',
 				creator: null,
 				effect: 'Rockets target upward',
@@ -46,9 +42,7 @@ export const makeSpellListResponse = () => ({
 		},
 		{
 			id: 'fe351216-2b9b-49b2-bde0-b4c7b98cf125',
-			type: 'spell',
 			attributes: {
-				slug: 'albus-dumbledore-s-forceful-spell',
 				category: 'Spell',
 				creator: null,
 				effect: 'Great force',
@@ -65,9 +59,7 @@ export const makeSpellListResponse = () => ({
 		},
 		{
 			id: '973da5b1-eebd-4b33-9cf8-160a6fab1a43',
-			type: 'spell',
 			attributes: {
-				slug: 'amplifying-charm',
 				category: 'Charm',
 				creator: null,
 				effect: 'Loudens target',
@@ -85,9 +77,7 @@ export const makeSpellListResponse = () => ({
 		},
 		{
 			id: '3fd4a6f5-20b8-4b3e-8af9-8ffc676e87c5',
-			type: 'spell',
 			attributes: {
-				slug: 'anapneo',
 				category: 'Healing spell, Vanishment, Charm',
 				creator: null,
 				effect: "Cleared target's airway by vanishing blockages",

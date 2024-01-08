@@ -32,7 +32,6 @@ describe('get-book-chapters service', () => {
 				new Chapter({
 					...data[index].attributes,
 					id: data[index].id,
-					type: data[index].type,
 				}),
 			)
 		})

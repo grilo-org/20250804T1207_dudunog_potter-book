@@ -14,7 +14,6 @@ export type MovieProps = {
 	releaseDate: string
 	runningTime: string
 	screenwriters: string[]
-	slug: string
 	summary: string
 	title: string
 	trailer: string
@@ -80,10 +79,6 @@ export class Movie {
 
 	get screenwriters() {
 		return this.props.screenwriters
-	}
-
-	get slug() {
-		return this.props.slug.toString()
 	}
 
 	get summary() {

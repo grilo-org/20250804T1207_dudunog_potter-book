@@ -6,7 +6,6 @@ export const makeSpellResponse = () => ({
 		id: '91210019-bbe2-4e02-be37-6872c033fd6b',
 		type: 'spell',
 		attributes: {
-			slug: 'alarte-ascendare',
 			category: 'Charm',
 			creator: 'test',
 			effect: 'Rockets target upward',

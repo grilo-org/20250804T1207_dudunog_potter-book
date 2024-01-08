@@ -6,7 +6,6 @@ export const makeCharacterResponse = () => ({
 		id: '70107ed4-9555-4d21-8fbc-c79bd90800ba',
 		type: 'character',
 		attributes: {
-			slug: 'zola-farrell',
 			alias_names: ['Farrell'],
 			animagus: null,
 			blood_status: 'Pure-blood',

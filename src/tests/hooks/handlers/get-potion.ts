@@ -6,7 +6,6 @@ export const makePotionResponse = () => ({
 		id: '04f6e0eb-5695-469f-8b07-ff1264d78178',
 		type: 'potion',
 		attributes: {
-			slug: 'ageing-potion',
 			characteristics: 'Green',
 			difficulty: 'Advanced',
 			effect: 'Aged drinker temporarily',

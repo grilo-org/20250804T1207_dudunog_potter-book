@@ -17,7 +17,6 @@ export type CharacterProps = {
 	nationality: string
 	patronus: string
 	romances: string[]
-	slug: string
 	species: string
 	wands: string[]
 	weight: string
@@ -96,10 +95,6 @@ export class Character {
 
 	get romances() {
 		return this.props.romances
-	}
-
-	get slug() {
-		return this.props.slug.toString()
 	}
 
 	get species() {

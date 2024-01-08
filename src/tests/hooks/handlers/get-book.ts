@@ -6,7 +6,6 @@ export const makeBookResponse = () => ({
 		id: '99015cdb-bf16-4042-863a-b25b41b004f2',
 		type: 'book',
 		attributes: {
-			slug: 'harry-potter-and-the-philosopher-s-stone',
 			author: 'J. K. Rowling',
 			cover:
 				'https://www.wizardingworld.com/images/products/books/UK/rectangle-1.jpg',
