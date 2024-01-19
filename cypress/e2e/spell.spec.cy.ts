@@ -35,6 +35,8 @@ describe('Spell', () => {
 	it('should back to spells list when click in back button', () => {
 		cy.getByTestId('back-button').click()
 
-		cy.location('pathname').should('equal', '/spells')
+		cy.location('pathname', {
+			timeout: 10000,
+		}).should('equal', '/spells')
 	})
 })

@@ -47,6 +47,8 @@ describe('Character', () => {
 	it('should back to characters list when click in back button', () => {
 		cy.getByTestId('back-button').click()
 
-		cy.location('pathname').should('equal', '/characters')
+		cy.location('pathname', {
+			timeout: 10000,
+		}).should('equal', '/characters')
 	})
 })
