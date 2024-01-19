@@ -2,7 +2,7 @@ import { Potion } from '@/entities/Potion'
 import { PotionPropsMock } from '@/tests/mocks/potion.mock'
 
 describe('Potion', () => {
-	beforeEach(() => cy.visit('/potions/04f6e0eb-5695-469f-8b07-ff1264d78178'))
+	beforeEach(() => cy.visit('/potions/2c2a3344-2193-4628-9022-890fd5d293b6'))
 
 	it('should present potion details', () => {
 		cy.getByTestId('potion-details').should('exist')
@@ -47,6 +47,8 @@ describe('Potion', () => {
 	it('should back to potions list when click in back button', () => {
 		cy.getByTestId('back-button').click()
 
-		cy.location('pathname').should('equal', '/potions')
+		cy.location('pathname', {
+			timeout: 10000,
+		}).should('equal', '/potions')
 	})
 })

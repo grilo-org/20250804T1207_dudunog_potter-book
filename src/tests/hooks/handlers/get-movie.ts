@@ -3,7 +3,7 @@ import { http } from 'msw'
 
 export const makeMovieResponse = () => ({
 	data: {
-		id: '58e26658-e894-44be-9a5f-da9b524d02ad',
+		id: 'e80d5a37-620e-4be2-92b9-fb1f5262494f',
 		type: 'movie',
 		attributes: {
 			box_office: '$879.6 million',

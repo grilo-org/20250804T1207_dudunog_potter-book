@@ -2,7 +2,7 @@ import { Character } from '@/entities/Character'
 import { CharacterPropsMock } from '@/tests/mocks/character.mock'
 
 describe('Character', () => {
-	beforeEach(() => cy.visit('/characters/70107ed4-9555-4d21-8fbc-c79bd90800ba'))
+	beforeEach(() => cy.visit('/characters/38d09709-b1b4-45ab-b7e5-064dad9ea889'))
 
 	it('should present character details', () => {
 		cy.getByTestId('character-details').should('exist')

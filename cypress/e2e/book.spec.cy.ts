@@ -2,7 +2,7 @@ import { Book } from '@/entities/Book'
 import { BookPropsMock } from '@/tests/mocks/book.mock'
 
 describe('Book', () => {
-	beforeEach(() => cy.visit('/books/99015cdb-bf16-4042-863a-b25b41b004f2'))
+	beforeEach(() => cy.visit('/books/d6e641e7-f1e1-4d79-b137-86e32c7120b4'))
 
 	it('should present book details', () => {
 		cy.getByTestId('book-details').should('exist')

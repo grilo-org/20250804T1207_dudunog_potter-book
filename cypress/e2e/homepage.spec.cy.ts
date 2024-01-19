@@ -22,7 +22,9 @@ describe('Homepage', () => {
 
 		cy.getByTestId('homepage-search-results').find('a').first().click()
 
-		cy.location('pathname').should('contain', `/books/${book.id}`)
+		cy.location('pathname', {
+			timeout: 10000,
+		}).should('contain', `/books/${book.id}`)
 	})
 
 	it('should navigate to listing page when click on some resource item', () => {

@@ -3,7 +3,7 @@ import { http } from 'msw'
 
 export const makePotionResponse = () => ({
 	data: {
-		id: '04f6e0eb-5695-469f-8b07-ff1264d78178',
+		id: 'eb918612-81ae-4bb6-9712-4a8194c89384',
 		type: 'potion',
 		attributes: {
 			characteristics: 'Green',

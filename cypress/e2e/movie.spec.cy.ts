@@ -2,7 +2,7 @@ import { Movie } from '@/entities/Movie'
 import { MoviePropsMock } from '@/tests/mocks/movie.mock'
 
 describe('Movie', () => {
-	beforeEach(() => cy.visit('/movies/d5ebb9f5-d7d1-4e49-9b78-cbc92b9bc3b8'))
+	beforeEach(() => cy.visit('/movies/e80d5a37-620e-4be2-92b9-fb1f5262494f'))
 
 	it('should present movie details', () => {
 		cy.getByTestId('movie-details').should('exist')

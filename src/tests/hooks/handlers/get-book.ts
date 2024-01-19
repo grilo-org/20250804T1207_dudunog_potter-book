@@ -3,7 +3,7 @@ import { http } from 'msw'
 
 export const makeBookResponse = () => ({
 	data: {
-		id: '99015cdb-bf16-4042-863a-b25b41b004f2',
+		id: 'd6e641e7-f1e1-4d79-b137-86e32c7120b4',
 		type: 'book',
 		attributes: {
 			author: 'J. K. Rowling',

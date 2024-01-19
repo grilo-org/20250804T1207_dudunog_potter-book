@@ -3,7 +3,7 @@ import { http } from 'msw'
 
 export const makeCharacterResponse = () => ({
 	data: {
-		id: '70107ed4-9555-4d21-8fbc-c79bd90800ba',
+		id: '9ec2f28a-2ec8-49b1-9799-a5c1aaf46609',
 		type: 'character',
 		attributes: {
 			alias_names: ['Farrell'],
