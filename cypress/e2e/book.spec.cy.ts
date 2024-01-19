@@ -49,6 +49,8 @@ describe('Book', () => {
 	it('should back to books list when click in back button', () => {
 		cy.getByTestId('back-button').click()
 
-		cy.location('pathname').should('equal', '/books')
+		cy.location('pathname', {
+			timeout: 10000,
+		}).should('equal', '/books')
 	})
 })

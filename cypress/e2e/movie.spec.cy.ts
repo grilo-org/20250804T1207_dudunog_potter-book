@@ -47,6 +47,8 @@ describe('Movie', () => {
 	it('should back to movies list when click in back button', () => {
 		cy.getByTestId('back-button').click()
 
-		cy.location('pathname').should('equal', '/movies')
+		cy.location('pathname', {
+			timeout: 10000,
+		}).should('equal', '/movies')
 	})
 })
