@@ -88,7 +88,7 @@ export default function Book() {
 			{isLoading && (
 				<Card
 					data-testid="book-details-skeleton"
-					className="mb-6 bg-secondary border-green max-w-[52rem] w-full"
+					className="mt-2 mb-6 bg-secondary border-green max-w-[52rem] w-full"
 				>
 					<BookSkeleton />
 				</Card>

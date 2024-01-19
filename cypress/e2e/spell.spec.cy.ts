@@ -2,7 +2,7 @@ import { Spell } from '@/entities/Spell'
 import { SpellPropsMock } from '@/tests/mocks/spell.mock'
 
 describe('Spell', () => {
-	beforeEach(() => cy.visit('/spells/91210019-bbe2-4e02-be37-6872c033fd6b'))
+	beforeEach(() => cy.visit('/spells/c8f024e0-8b1a-441b-8138-013fdbf42e3e'))
 
 	it('should present spell details', () => {
 		cy.getByTestId('spell-details').should('exist')

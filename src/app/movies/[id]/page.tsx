@@ -85,7 +85,7 @@ export default function Movie() {
 			{isLoading && (
 				<Card
 					data-testid="movie-details-skeleton"
-					className="mb-6 bg-secondary border-green max-w-[52rem] w-full"
+					className="mt-2 mb-6 bg-secondary border-green max-w-[52rem] w-full"
 				>
 					<MovieSkeleton />
 				</Card>

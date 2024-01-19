@@ -86,7 +86,7 @@ export default function Character() {
 			{isLoading && (
 				<Card
 					data-testid="character-details-skeleton"
-					className="mb-6 bg-secondary border-green max-w-[52rem] w-full"
+					className="mt-2 mb-6 bg-secondary border-green max-w-[52rem] w-full"
 				>
 					<CharacterSkeleton />
 				</Card>

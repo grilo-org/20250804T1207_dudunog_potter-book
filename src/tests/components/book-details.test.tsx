@@ -45,7 +45,7 @@ const makeSut = (handler?: HttpHandler, initialBook?: Book) => {
 
 describe('book-details component', () => {
 	afterEach(() =>
-		resetMockRouter('/books/99015cdb-bf16-4042-863a-b25b41b004f2'),
+		resetMockRouter('/books/d6e641e7-f1e1-4d79-b137-86e32c7120b4'),
 	)
 
 	test('renders book details correctly', async () => {
@@ -76,7 +76,7 @@ describe('book-details component', () => {
 	})
 
 	test('should renders ChaptersList', async () => {
-		const bookId = '99015cdb-bf16-4042-863a-b25b41b004f2'
+		const bookId = 'd6e641e7-f1e1-4d79-b137-86e32c7120b4'
 		const { result } = makeSut(getBookChaptersSuccessResponseHandler(bookId))
 
 		await waitFor(() => {

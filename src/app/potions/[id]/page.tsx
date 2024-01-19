@@ -84,7 +84,7 @@ export default function Potion() {
 			{isLoading && (
 				<Card
 					data-testid="potion-details-skeleton"
-					className="mb-6 bg-secondary border-green max-w-[52rem] w-full"
+					className="mt-2 mb-6 bg-secondary border-green max-w-[52rem] w-full"
 				>
 					<PotionSkeleton />
 				</Card>

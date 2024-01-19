@@ -3,7 +3,7 @@ import { http } from 'msw'
 
 export const makeSpellResponse = () => ({
 	data: {
-		id: '91210019-bbe2-4e02-be37-6872c033fd6b',
+		id: 'c8f024e0-8b1a-441b-8138-013fdbf42e3e',
 		type: 'spell',
 		attributes: {
 			category: 'Charm',
