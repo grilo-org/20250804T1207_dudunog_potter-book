@@ -31,7 +31,7 @@
 		"lodash": "^4.17.21",
 		"lucide-react": "^0.301.0",
 		"msw": "^2.0.11",
-		"next": "14.2.5",
+		"next": "14.2.21",
 		"next-router-mock": "^0.9.11",
 		"react": "^18",
 		"react-dom": "^18",
